@@ -1,0 +1,22 @@
+====================
+TEXT STUFF
+====================
+df[text_col].str.len().describe() =
+count    5.835600e+04
+mean     5.866240e+03
+std      1.419868e+04
+min      1.000000e+00
+25%      2.524000e+03
+50%      4.100000e+03
+75%      5.660000e+03
+max      1.214988e+06
+Name: article, dtype: float64 
+
+df['text_length'] =
+0    6075
+1     786
+2    2739
+3    2347
+4    3952
+Name: text_length, dtype: int64 
+
