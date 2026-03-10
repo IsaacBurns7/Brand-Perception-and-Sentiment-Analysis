@@ -22,49 +22,51 @@ def stage(name: str):
 data_dir = Path("./data")
 
 with stage("load CSV"):
-    df = pd.read_csv(data_dir / "rating.csv")
+    df = pd.read_csv(data_dir / "rating_normalized_for_LDA.csv")
 
-with stage("trim rows"):
-    df = df.head(1000)  # cut that shit down
+# with stage("trim rows"):
+#     df = df.head(1000)  # cut that shit down
 text_column = "article"
+token_column = "tokens_str"
 
-
-with stage("load spaCy model"):
-    nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])  # what type is this ? is this a function ?
-
-with stage("extract texts"):
-    texts = df[text_column].astype(str).tolist()
-
-print(f"[info] documents: {len(texts)}", flush=True)
-
-def preprocess_doc(doc):
-    return [
-        token.lemma_.lower()
-        for token in doc
-        if not token.is_stop and not token.is_punct and not token.is_digit and len(token) > 2
-    ]
-
-with stage("preprocess (spaCy nlp.pipe + lemmatize/stopword filter)"):
-    processed_texts = [preprocess_doc(doc) for doc in nlp.pipe(texts, batch_size=500)]
-
+with stage("Tokenizing documents"):
+    documents = df[token_column].apply(lambda x:x.split())
+    documents = documents.to_list()
+    for doc in documents:
+        for token in doc:
+            assert isinstance(token, str)
 # Create a dictionary and corpus for LDA
 with stage("build gensim dictionary"):
-    dictionary = corpora.Dictionary(processed_texts)
+    dictionary = corpora.Dictionary(documents)
 
 with stage("build bag-of-words corpus"):
-    corpus = [dictionary.doc2bow(text) for text in processed_texts]
+    corpus = [dictionary.doc2bow(text) for text in documents]
 
+# print("BEFORE FILTERING: ", len(dictionary))
+# dictionary.filter_extremes(no_below=20, no_above=0.5)
+# print("AFTER FILTERING: ", len(dictionary))
+# print(len(corpus))
+# empty_docs = sum(1 for doc in corpus if len(doc) == 0)
+# print("empty docs:", empty_docs)
 
 num_topics = 15  # choose number of topics
+chunksize= 500
+passes = 20
+iterations = 400
+eval_every = True
+# id2word = dictionary.id2token
+
 with stage("train LDA model"):
     lda_model = LdaModel(
         corpus=corpus,
         id2word=dictionary,
+        chunksize=chunksize,
+        alpha='auto',
+        eta='auto',
+        iterations=iterations,
         num_topics=num_topics,
-        random_state=42,
-        passes=5,  # number of passes over the corpus
-        alpha="auto",  # helps with topic sparsity
-        per_word_topics=True,
+        passes=passes,
+        eval_every=eval_every
     )
 
 with stage("print topics"):
@@ -72,8 +74,8 @@ with stage("print topics"):
         print(f"Topic {idx}: {topic}\n", flush=True)
 
 with stage("infer example document"):
-    example_doc = nlp("Example new document text")
-    doc_bow = dictionary.doc2bow(preprocess_doc(example_doc))
+    example_doc = ["Example","text", "of", "ukraine"]
+    doc_bow = dictionary.doc2bow(example_doc)
     doc_topics = lda_model.get_document_topics(doc_bow)
 
-print(doc_topics, flush=True)  # list of (topic_id, probability)
+print(doc_topics, flush=True)  

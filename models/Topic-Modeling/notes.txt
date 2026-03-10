@@ -1,1 +1,12 @@
 python LDA_normalize_corpus.py --input ./data/rating.csv --text-col article --output ./data/rating_normalized_for_LDA.csv > LDA_normalize_out.txt 2>&1
+
+For generic documents, LDA advises: 
+
+All docs, preprocessed
+-> Train LDA
+-> Topic Model of Entire Corpus 
+-> Filter docs mentioning brand
+-> Analyze topic distribution of those filtered documents 
+
+Humans have to assign the actual topic itself 
+Maybe an LLM can do this? It actually might be a good application for the clanker... 
