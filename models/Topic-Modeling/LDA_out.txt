@@ -1,0 +1,57 @@
+[timing] start: load CSV
+[timing] end:   load CSV (3.43s)
+[timing] start: trim rows
+[timing] end:   trim rows (0.03s)
+[timing] start: load spaCy model
+[timing] end:   load spaCy model (0.23s)
+[timing] start: extract texts
+[timing] end:   extract texts (0.00s)
+[info] documents: 1000
+[timing] start: preprocess (spaCy nlp.pipe + lemmatize/stopword filter)
+[timing] end:   preprocess (spaCy nlp.pipe + lemmatize/stopword filter) (115.03s)
+[timing] start: build gensim dictionary
+[timing] end:   build gensim dictionary (0.28s)
+[timing] start: build bag-of-words corpus
+[timing] end:   build bag-of-words corpus (0.13s)
+[timing] start: train LDA model
+[timing] end:   train LDA model (4.24s)
+[timing] start: print topics
+Topic 0: 0.013*"say" + 0.010*"
+												" + 0.007*"purpose" + 0.006*"hurricane" + 0.006*"year" + 0.005*"mexico" + 0.005*"study" + 0.005*"climate" + 0.004*"storm" + 0.004*"november"
+
+Topic 1: 0.016*"say" + 0.011*"people" + 0.006*"museum" + 0.005*"remain" + 0.005*"government" + 0.005*"new" + 0.004*"myanmar" + 0.004*"
+												" + 0.004*"school" + 0.004*"tell"
+
+Topic 2: 0.014*"nigeria" + 0.008*"team" + 0.008*"germany" + 0.007*"group" + 0.006*"africa" + 0.006*"say" + 0.006*"atubolu" + 0.006*"play" + 0.006*"cup" + 0.006*"noah"
+
+Topic 3: 0.012*"eclipse" + 0.009*"vaccine" + 0.008*"malaria" + 0.006*"say" + 0.006*"water" + 0.006*"fire" + 0.006*"new" + 0.005*"ring" + 0.005*"state" + 0.005*"saturday"
+
+Topic 4: 0.012*"eagle" + 0.011*"game" + 0.010*"team" + 0.009*"goal" + 0.008*"nigeria" + 0.007*"country" + 0.006*"world" + 0.006*"year" + 0.006*"saudi" + 0.006*"mozambique"
+
+Topic 5: 0.010*"nigeria" + 0.010*"wata" + 0.009*"direct" + 0.009*"water" + 0.009*"mami" + 0.009*"achievement" + 0.008*"south" + 0.008*"senegal" + 0.008*"like" + 0.008*"burkina"
+
+Topic 6: 0.010*"india" + 0.005*"say" + 0.005*"year" + 0.005*"news" + 0.005*"frog" + 0.005*"market" + 0.004*"company" + 0.004*"world" + 0.004*"time" + 0.004*"chicken"
+
+Topic 7: 0.006*"south" + 0.005*"artist" + 0.005*"drug" + 0.005*"october" + 0.005*"arrest" + 0.005*"year" + 0.004*"nigeria" + 0.003*"marine" + 0.003*"include" + 0.003*"africa"
+
+Topic 8: 0.013*"say" + 0.008*"china" + 0.007*"company" + 0.005*"year" + 0.005*"graphite" + 0.003*"military" + 0.003*"report" + 0.003*"production" + 0.003*"project" + 0.003*"new"
+
+Topic 9: 0.006*"say" + 0.006*"country" + 0.006*"china" + 0.005*"new" + 0.005*"state" + 0.005*"year" + 0.004*"right" + 0.004*"company" + 0.004*"episode" + 0.004*"include"
+
+Topic 10: 0.010*"trade" + 0.008*"nigeria" + 0.008*"country" + 0.007*"need" + 0.006*"sector" + 0.006*"good" + 0.005*"say" + 0.005*"afcfta" + 0.005*"private" + 0.005*"road"
+
+Topic 11: 0.018*"say" + 0.010*"water" + 0.007*"hurricane" + 0.007*"
+												" + 0.006*"waste" + 0.006*"time" + 0.006*"morocco" + 0.006*"storm" + 0.005*"myanmar" + 0.005*"year"
+
+Topic 12: 0.014*"say" + 0.006*"country" + 0.006*"year" + 0.005*"people" + 0.005*"junta" + 0.004*"military" + 0.003*"myanmar" + 0.003*"rfa" + 0.003*"government" + 0.003*"africa"
+
+Topic 13: 0.016*"hurricane" + 0.015*"storm" + 0.011*"
+												" + 0.010*"mexico" + 0.010*"say" + 0.009*"category" + 0.009*"state" + 0.008*"hit" + 0.007*"people" + 0.007*"purpose"
+
+Topic 14: 0.008*"mountain" + 0.006*"resource" + 0.005*"area" + 0.005*"ecosystem" + 0.005*"protect" + 0.004*"plant" + 0.004*"environmental" + 0.004*"
+												" + 0.004*"lead" + 0.004*"water"
+
+[timing] end:   print topics (0.00s)
+[timing] start: infer example document
+[timing] end:   infer example document (0.02s)
+[(0, np.float32(0.010289998)), (1, np.float32(0.013940596)), (4, np.float32(0.011322358)), (6, np.float32(0.0130036855)), (7, np.float32(0.010802423)), (8, np.float32(0.012772983)), (9, np.float32(0.018559432)), (10, np.float32(0.012696826)), (12, np.float32(0.36180657)), (13, np.float32(0.010828846)), (14, np.float32(0.48771963))]

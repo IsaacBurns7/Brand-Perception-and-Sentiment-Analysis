@@ -1,0 +1,1 @@
+python LDA_normalize_corpus.py --input ./data/rating.csv --text-col article --output ./data/rating_normalized_for_LDA.csv > LDA_normalize_out.txt 2>&1
