@@ -10,6 +10,8 @@ class PipelineConfig:
     batch_size: int = 500
     n_process: int = 4
     oov_placeholder: str | None = None
+    diagnostics_output: str | None = None
+    diagnostics_top_n: int = 25
 
     def validate(self) -> None:
         if self.min_token_len < 1:
@@ -24,6 +26,8 @@ class PipelineConfig:
             raise ValueError("batch_size must be >= 1")
         if self.n_process < 1:
             raise ValueError("n_process must be >= 1")
+        if self.diagnostics_top_n < 1:
+            raise ValueError("diagnostics_top_n must be >= 1")
 
 
 DEFAULT_CONFIG = PipelineConfig()

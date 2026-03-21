@@ -48,6 +48,10 @@ def parse_args():
                    help="Number of parallel spaCy workers (use 1 on Windows)")
     p.add_argument("--oov-placeholder", default=None,
                    help="Replace OOV tokens with this string instead of dropping them")
+    p.add_argument("--diagnostics-output", default=None,
+                   help="Optional path to write diagnostics JSON")
+    p.add_argument("--diagnostics-top-n", type=int, default=DEFAULT_CONFIG.diagnostics_top_n,
+                   help="Number of top terms to include in diagnostics output")
     return p.parse_args()
 
 
@@ -62,6 +66,8 @@ if __name__ == "__main__":
         batch_size=args.batch_size,
         n_process=args.n_process,
         oov_placeholder=args.oov_placeholder,
+        diagnostics_output=args.diagnostics_output,
+        diagnostics_top_n=args.diagnostics_top_n,
     )
 
     run_pipeline(

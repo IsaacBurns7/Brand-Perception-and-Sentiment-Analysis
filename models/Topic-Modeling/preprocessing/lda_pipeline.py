@@ -1,4 +1,7 @@
 import logging
+import json
+from collections import Counter
+from pathlib import Path
 
 import pandas as pd
 import spacy
@@ -55,7 +58,15 @@ def run_pipeline(
         cfg.min_freq,
         cfg.min_doc_freq,
     )
+    token_count_before_filter = sum(len(doc) for doc in tokenized)
     tokenized = filter_rare(tokenized, vocab)
+    token_count_after_filter = sum(len(doc) for doc in tokenized)
+    removed_tokens = token_count_before_filter - token_count_after_filter
+
+    if token_count_before_filter > 0:
+        token_removed_pct = (removed_tokens / token_count_before_filter) * 100.0
+    else:
+        token_removed_pct = 0.0
 
     df["tokens"] = tokenized
     df["tokens_str"] = df["tokens"].map(" ".join)
@@ -63,7 +74,8 @@ def run_pipeline(
 
     before = len(df)
     df = df[df["token_count"] > 0].reset_index(drop=True)
-    log.info("Dropped %d empty documents after filtering.", before - len(df))
+    dropped_docs = before - len(df)
+    log.info("Dropped %d empty documents after filtering.", dropped_docs)
     log.info("Final corpus: %d documents.", len(df))
 
     out = df[[text_col, "tokens_str", "token_count"]]
@@ -77,4 +89,44 @@ def run_pipeline(
         df["token_count"].min(),
         df["token_count"].max(),
     )
+
+    if cfg.diagnostics_output:
+        top_terms = Counter(token for doc in tokenized for token in doc).most_common(cfg.diagnostics_top_n)
+        diagnostics_path = Path(cfg.diagnostics_output)
+        diagnostics_path.parent.mkdir(parents=True, exist_ok=True)
+
+        if before > 0:
+            empty_docs_removed_pct = (dropped_docs / before) * 100.0
+        else:
+            empty_docs_removed_pct = 0.0
+
+        diagnostics_payload = {
+            "input_path": input_path,
+            "output_path": output_path,
+            "text_col": text_col,
+            "loaded_docs": before,
+            "final_docs": len(df),
+            "dropped_empty_docs": dropped_docs,
+            "empty_docs_removed_pct": round(empty_docs_removed_pct, 4),
+            "tokens_before_rare_filter": token_count_before_filter,
+            "tokens_after_rare_filter": token_count_after_filter,
+            "tokens_removed_by_rare_filter": removed_tokens,
+            "tokens_removed_by_rare_filter_pct": round(token_removed_pct, 4),
+            "vocab_size_before_filtering": term_count,
+            "vocab_size_after_filtering": len(vocab),
+            "token_stats": {
+                "mean": float(df["token_count"].mean()),
+                "median": float(df["token_count"].median()),
+                "min": int(df["token_count"].min()),
+                "max": int(df["token_count"].max()),
+            },
+            "top_terms": [{"term": term, "count": count} for term, count in top_terms],
+        }
+
+        diagnostics_path.write_text(
+            json.dumps(diagnostics_payload, indent=2) + "\n",
+            encoding="ascii",
+        )
+        log.info("Saved diagnostics output to %s", diagnostics_path)
+
     return df
