@@ -1,0 +1,128 @@
+{
+  "input_path": "../data/rating.csv",
+  "output_path": "../data/phasefinal_experiment_rating_normalized_for_LDA.csv",
+  "text_col": "article",
+  "loaded_docs": 10000,
+  "final_docs": 9999,
+  "dropped_empty_docs": 1,
+  "empty_docs_removed_pct": 0.01,
+  "tokens_before_rare_filter": 4156752,
+  "tokens_after_rare_filter": 3946277,
+  "tokens_removed_by_rare_filter": 210475,
+  "tokens_removed_by_rare_filter_pct": 5.0634,
+  "vocab_size_before_filtering": 69629,
+  "vocab_size_after_filtering": 33293,
+  "ngrams": {
+    "enabled": true,
+    "min_count": 15,
+    "threshold": 10.0
+  },
+  "token_stats": {
+    "mean": 394.66716671667166,
+    "median": 237.0,
+    "min": 3,
+    "max": 12250
+  },
+  "top_terms": [
+    {
+      "term": "company",
+      "count": 18131
+    },
+    {
+      "term": "include",
+      "count": 15755
+    },
+    {
+      "term": "country",
+      "count": 14737
+    },
+    {
+      "term": "state",
+      "count": 11354
+    },
+    {
+      "term": "need",
+      "count": 11082
+    },
+    {
+      "term": "work",
+      "count": 11059
+    },
+    {
+      "term": "share",
+      "count": 11031
+    },
+    {
+      "term": "report",
+      "count": 10728
+    },
+    {
+      "term": "market",
+      "count": 9891
+    },
+    {
+      "term": "come",
+      "count": 9772
+    },
+    {
+      "term": "good",
+      "count": 9247
+    },
+    {
+      "term": "world",
+      "count": 9025
+    },
+    {
+      "term": "government",
+      "count": 8426
+    },
+    {
+      "term": "provide",
+      "count": 8399
+    },
+    {
+      "term": "high",
+      "count": 8322
+    },
+    {
+      "term": "group",
+      "count": 8108
+    },
+    {
+      "term": "change",
+      "count": 7985
+    },
+    {
+      "term": "help",
+      "count": 7778
+    },
+    {
+      "term": "support",
+      "count": 7693
+    },
+    {
+      "term": "business",
+      "count": 7610
+    },
+    {
+      "term": "add",
+      "count": 7552
+    },
+    {
+      "term": "accord",
+      "count": 7453
+    },
+    {
+      "term": "increase",
+      "count": 7423
+    },
+    {
+      "term": "find",
+      "count": 7340
+    },
+    {
+      "term": "israel",
+      "count": 7326
+    }
+  ]
+}

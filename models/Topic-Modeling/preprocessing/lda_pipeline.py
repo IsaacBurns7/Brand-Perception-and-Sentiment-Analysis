@@ -34,11 +34,6 @@ def run_pipeline(
     df = df.dropna(subset=[text_col]).reset_index(drop=True)
     log.info("  %d rows after dropping nulls.", len(df))
 
-    log.info("Cleaning text (regex pass) ...")
-    # CPU hotspot: runs multiple regex substitutions for every document in the corpus.
-    # High memory overhead: materializes all cleaned documents as one list of strings.
-    cleaned = df[text_col].map(clean_text).tolist()
-
     log.info("Loading spaCy model ...")
     nlp = spacy.load("en_core_web_md", disable=["parser", "ner"])
     nlp.max_length = 2_000_000
@@ -46,14 +41,28 @@ def run_pipeline(
     stopwords = EXTRA_STOPWORDS | {word.lower() for word in nlp.Defaults.stop_words}
 
     log.info("Running spaCy pipeline (batch_size=%d) ...", cfg.batch_size)
-    # High memory overhead: keeps token lists for the full corpus in memory.
-    tokenized: list[list[str]] = []
     batch_size = cfg.batch_size
 
-    for i in tqdm(range(0, len(cleaned), batch_size), desc="Batches"):
-        batch = cleaned[i : i + batch_size]
+    df["tokens"] = None
+    df["tokens_str"] = ""
+    df["token_count"] = 0
+
+    log.info("Cleaning + tokenizing in batches (in-place DataFrame updates) ...")
+
+    for i in tqdm(range(0, len(df), batch_size), desc="Batches"):
+        row_indexer = df.index[i : i + batch_size]
+        df.loc[row_indexer, text_col] = df.loc[row_indexer, text_col].map(clean_text)
+
         # CPU hotspot: token-level spaCy processing and filtering for each item in this batch.
-        tokenized.extend(process_batch(batch, nlp, stopwords, cfg))
+        process_batch(
+            df,
+            text_col,
+            row_indexer,
+            nlp,
+            stopwords,
+            cfg,
+            tokens_col="tokens",
+        )
 
     if cfg.enable_ngrams:
         log.info(
@@ -61,12 +70,19 @@ def run_pipeline(
             cfg.ngram_min_count,
             cfg.ngram_threshold,
         )
-    # High memory overhead: n-gram stage can allocate phrase model state and transformed corpus.
-    tokenized = apply_ngrams(tokenized, cfg)
+        apply_ngrams(df, cfg, tokens_col="tokens")
+
+    df["tokens_str"] = df["tokens"].map(" ".join)
+    df["token_count"] = df["tokens"].map(len).astype("int32", copy=False)
 
     log.info("Building vocabulary and filtering rare tokens ...")
     # High memory overhead: vocabulary building traverses full corpus and keeps frequency maps.
-    vocab, term_count = build_vocab(tokenized, cfg.min_freq, cfg.min_doc_freq)
+    vocab, term_count, token_count_before_filter = build_vocab(
+        df,
+        cfg.min_freq,
+        cfg.min_doc_freq,
+        tokens_col="tokens",
+    )
     log.info(
         "Vocabulary: %d unique tokens before filtering -> %d after "
         "(min_freq=%d, min_doc_freq=%d)",
@@ -75,21 +91,19 @@ def run_pipeline(
         cfg.min_freq,
         cfg.min_doc_freq,
     )
-    token_count_before_filter = sum(len(doc) for doc in tokenized)
-    tokenized = filter_rare(tokenized, vocab)
-    token_count_after_filter = sum(len(doc) for doc in tokenized)
+    token_count_before_filter, token_count_after_filter = filter_rare(
+        df,
+        vocab,
+        tokens_col="tokens",
+        token_count_col="token_count",
+    )
+    df["tokens_str"] = df["tokens"].map(" ".join)
     removed_tokens = token_count_before_filter - token_count_after_filter
 
     if token_count_before_filter > 0:
         token_removed_pct = (removed_tokens / token_count_before_filter) * 100.0
     else:
         token_removed_pct = 0.0
-
-    # High memory overhead: adds nested token lists as an object column.
-    df["tokens"] = tokenized
-    # High memory overhead: creates another full text representation for every document.
-    df["tokens_str"] = df["tokens"].map(" ".join)
-    df["token_count"] = df["tokens"].map(len)
 
     before = len(df)
     df = df[df["token_count"] > 0].reset_index(drop=True) #oh wow
@@ -114,7 +128,7 @@ def run_pipeline(
     if cfg.diagnostics_output:
         # CPU hotspot: full-corpus flatten + counting touches every token again.
         # High memory overhead: computes global term counts across all tokens.
-        top_terms = Counter(token for doc in tokenized for token in doc).most_common(cfg.diagnostics_top_n)
+        top_terms = Counter(token for doc in df["tokens"] for token in doc).most_common(cfg.diagnostics_top_n)
         diagnostics_path = Path(cfg.diagnostics_output)
         diagnostics_path.parent.mkdir(parents=True, exist_ok=True)
 
