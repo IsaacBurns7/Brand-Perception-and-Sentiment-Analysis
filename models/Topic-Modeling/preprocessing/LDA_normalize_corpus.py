@@ -19,6 +19,7 @@ import argparse
 import logging
 from pathlib import Path
 from collections import Counter
+from dataclasses import dataclass
 
 import pandas as pd
 import spacy
@@ -37,15 +38,33 @@ log = logging.getLogger(__name__)
 
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DEFAULT_CONFIG = {
-    "min_token_len": 3,        # drop tokens shorter than this
-    "max_token_len": 40,       # drop tokens longer than this (garbled text)
-    "min_freq": 5,             # rare-word threshold (absolute count)
-    "min_doc_freq": 2,         # drop tokens that appear in fewer than N docs
-    "batch_size": 500,         # spaCy pipe batch size
-    "n_process": 4,            # parallel workers (set >1 on Linux; use 1 on Windows)
-    "oov_placeholder": None,   # replace OOV tokens with this string, or None to drop
-}
+@dataclass(frozen=True)
+class PipelineConfig:
+    min_token_len: int = 3        # drop tokens shorter than this
+    max_token_len: int = 40       # drop tokens longer than this (garbled text)
+    min_freq: int = 5             # rare-word threshold (absolute count)
+    min_doc_freq: int = 2         # drop tokens that appear in fewer than N docs
+    batch_size: int = 500         # spaCy pipe batch size
+    n_process: int = 4            # parallel workers (set >1 on Linux; use 1 on Windows)
+    oov_placeholder: str | None = None  # replace OOV tokens with this string, or None to drop
+
+    def validate(self) -> None:
+        """Validate config invariants early for predictable runtime behavior."""
+        if self.min_token_len < 1:
+            raise ValueError("min_token_len must be >= 1")
+        if self.max_token_len < self.min_token_len:
+            raise ValueError("max_token_len must be >= min_token_len")
+        if self.min_freq < 1:
+            raise ValueError("min_freq must be >= 1")
+        if self.min_doc_freq < 1:
+            raise ValueError("min_doc_freq must be >= 1")
+        if self.batch_size < 1:
+            raise ValueError("batch_size must be >= 1")
+        if self.n_process < 1:
+            raise ValueError("n_process must be >= 1")
+
+
+DEFAULT_CONFIG = PipelineConfig()
 
 # Extended stop words on top of spaCy's built-in list
 EXTRA_STOPWORDS = {
@@ -88,7 +107,7 @@ def clean_text(text: str) -> str:
 
 # ── spaCy Token Filter ────────────────────────────────────────────────────────
 
-def is_valid_token(token, stopwords: set, cfg: dict) -> bool:
+def is_valid_token(token, stopwords: set[str], cfg: PipelineConfig) -> bool:
     """
     Returns True if the token should be kept.
     Combines: stop word removal, POS filtering, length filtering.
@@ -108,7 +127,7 @@ def is_valid_token(token, stopwords: set, cfg: dict) -> bool:
         return False
 
     # Length guard
-    if not (cfg["min_token_len"] <= len(lemma) <= cfg["max_token_len"]):
+    if not (cfg.min_token_len <= len(lemma) <= cfg.max_token_len):
         return False
 
     # Alphabetic only (catches leftover symbols)
@@ -120,7 +139,7 @@ def is_valid_token(token, stopwords: set, cfg: dict) -> bool:
 
 # ── OOV Handling ──────────────────────────────────────────────────────────────
 
-def handle_oov(token, cfg: dict) -> str | None:
+def handle_oov(token, cfg: PipelineConfig) -> str | None:
     """
     Step 6 – Handle out-of-vocabulary / unknown tokens.
     If the token has no word vector AND is flagged OOV, either
@@ -128,20 +147,20 @@ def handle_oov(token, cfg: dict) -> str | None:
     """
     if token.is_oov:
         # print("token determined to be out of vocabulary: ", token)
-        return cfg.get("oov_placeholder")   # None → will be filtered downstream
+        return cfg.oov_placeholder   # None → will be filtered downstream
     return token.lemma_
 
 
 # ── Core Processing ───────────────────────────────────────────────────────────
 
-def process_batch(texts: list[str], nlp, stopwords: set, cfg: dict) -> list[list[str]]:
+def process_batch(texts: list[str], nlp, stopwords: set[str], cfg: PipelineConfig) -> list[list[str]]:
     """
     Run a batch of pre-cleaned texts through the spaCy pipeline.
     Returns a list of token lists (one per document).
     """
     # print("BATCH PROCESSING TEXTS IN: ", texts)
     results = []
-    docs = nlp.pipe(texts, batch_size=cfg["batch_size"], n_process=cfg["n_process"])
+    docs = nlp.pipe(texts, batch_size=cfg.batch_size, n_process=cfg.n_process)
     # print("DOCS AFTER NLP PIPE: ", docs)
     for doc in docs:
         tokens = []
@@ -198,14 +217,16 @@ def run_pipeline(
     input_path: str,
     text_col: str,
     output_path: str,
-    cfg: dict,
+    cfg: PipelineConfig,
     sep: str = ",",
 ) -> pd.DataFrame:
+
+    cfg.validate()
 
     # ── 1. Load data ──────────────────────────────────────────────────────────
     log.info("Loading data from %s …", input_path)
     df = pd.read_csv(input_path, sep=sep, usecols=[text_col], low_memory=False)
-    # df = df.head(100)
+    df = df.head(1000)
     log.info("  Loaded %d rows.", len(df))
 
     # Drop empty rows
@@ -225,9 +246,9 @@ def run_pipeline(
     stopwords = EXTRA_STOPWORDS | {w.lower() for w in nlp.Defaults.stop_words}
 
     # ── 4. Tokenisation, stop-word removal, lemmatisation, OOV handling ───────
-    log.info("Running spaCy pipeline (batch_size=%d) …", cfg["batch_size"])
+    log.info("Running spaCy pipeline (batch_size=%d) …", cfg.batch_size)
     tokenized: list[list[str]] = []
-    batch_size = cfg["batch_size"]
+    batch_size = cfg.batch_size
 
     for i in tqdm(range(0, len(cleaned), batch_size), desc="Batches"):
         batch = cleaned[i : i + batch_size]
@@ -244,7 +265,7 @@ def run_pipeline(
 
     # ── 5. Rare-word removal ──────────────────────────────────────────────────
     log.info("Building vocabulary and filtering rare tokens …")
-    vocab = build_vocab(tokenized, cfg["min_freq"], cfg["min_doc_freq"])
+    vocab = build_vocab(tokenized, cfg.min_freq, cfg.min_doc_freq)
     tokenized = filter_rare(tokenized, vocab)
 
     # ── 6. Assemble output ────────────────────────────────────────────────────
@@ -282,15 +303,15 @@ def parse_args():
     p.add_argument("--text-col",   required=True,  help="Name of the text column")
     p.add_argument("--output",     required=True,  help="Path for output CSV")
     p.add_argument("--sep",        default=",",    help="CSV separator (default: ,)")
-    p.add_argument("--min-freq",   type=int, default=DEFAULT_CONFIG["min_freq"],
+    p.add_argument("--min-freq",   type=int, default=DEFAULT_CONFIG.min_freq,
                    help="Minimum corpus frequency to keep a token")
-    p.add_argument("--min-doc-freq", type=int, default=DEFAULT_CONFIG["min_doc_freq"],
+    p.add_argument("--min-doc-freq", type=int, default=DEFAULT_CONFIG.min_doc_freq,
                    help="Minimum document frequency to keep a token")
-    p.add_argument("--min-token-len", type=int, default=DEFAULT_CONFIG["min_token_len"],
+    p.add_argument("--min-token-len", type=int, default=DEFAULT_CONFIG.min_token_len,
                    help="Minimum token character length")
-    p.add_argument("--batch-size", type=int, default=DEFAULT_CONFIG["batch_size"],
+    p.add_argument("--batch-size", type=int, default=DEFAULT_CONFIG.batch_size,
                    help="spaCy pipe batch size")
-    p.add_argument("--n-process",  type=int, default=DEFAULT_CONFIG["n_process"],
+    p.add_argument("--n-process",  type=int, default=DEFAULT_CONFIG.n_process,
                    help="Number of parallel spaCy workers (use 1 on Windows)")
     p.add_argument("--oov-placeholder", default=None,
                    help="Replace OOV tokens with this string instead of dropping them")
@@ -300,13 +321,15 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
 
-    cfg = {**DEFAULT_CONFIG}
-    cfg["min_freq"]         = args.min_freq
-    cfg["min_doc_freq"]     = args.min_doc_freq
-    cfg["min_token_len"]    = args.min_token_len
-    cfg["batch_size"]       = args.batch_size
-    cfg["n_process"]        = args.n_process
-    cfg["oov_placeholder"]  = args.oov_placeholder
+    cfg = PipelineConfig(
+        min_token_len=args.min_token_len,
+        max_token_len=DEFAULT_CONFIG.max_token_len,
+        min_freq=args.min_freq,
+        min_doc_freq=args.min_doc_freq,
+        batch_size=args.batch_size,
+        n_process=args.n_process,
+        oov_placeholder=args.oov_placeholder,
+    )
 
     run_pipeline(
         input_path  = args.input,

@@ -1,0 +1,13 @@
+11:20:05 [INFO] Loading data from models/Topic-Modeling/data/rating.csv …
+11:20:07 [INFO]   Loaded 1000 rows.
+11:20:07 [INFO]   1000 rows after dropping nulls.
+11:20:07 [INFO] Cleaning text (regex pass) …
+11:20:07 [INFO] Loading spaCy model …
+11:20:07 [INFO] Running spaCy pipeline (batch_size=500) …
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:15<00:15, 15.89s/it]Batches: 100%|██████████| 2/2 [00:30<00:00, 14.96s/it]Batches: 100%|██████████| 2/2 [00:30<00:00, 15.10s/it]
+11:20:38 [INFO] Building vocabulary and filtering rare tokens …
+11:20:38 [INFO] Vocabulary: 4815 unique tokens before filtering → 816 after (min_freq=5, min_doc_freq=2)
+11:20:38 [INFO] Dropped 1 empty documents after filtering.
+11:20:38 [INFO] Final corpus: 999 documents.
+11:20:38 [INFO] Saved normalized output to models/Topic-Modeling/preprocessing/baseline_phase1/rating_normalized_baseline.csv
+11:20:38 [INFO] Token stats → mean: 11.4 | median: 12.0 | min: 1 | max: 24
