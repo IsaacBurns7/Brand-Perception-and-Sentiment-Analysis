@@ -14,19 +14,16 @@ Usage:
     python normalize_for_lda.py --input articles.csv --text-col content --output normalized.csv --min-freq 5 --batch-size 500
 """
 
-import re
 import argparse
 import logging
-from pathlib import Path
-from collections import Counter
-from dataclasses import dataclass
 
 import pandas as pd
 import spacy
 from tqdm import tqdm
 
-from gensim.models import Phrases
-from gensim.models.phrases import Phraser
+from cleaning_utils import EXTRA_STOPWORDS, clean_text
+from pipeline_config import DEFAULT_CONFIG, PipelineConfig
+from token_vocab_utils import build_vocab, filter_rare, process_batch
 
 # ── Logging ──────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -35,181 +32,6 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 log = logging.getLogger(__name__)
-
-
-# ── Config ────────────────────────────────────────────────────────────────────
-@dataclass(frozen=True)
-class PipelineConfig:
-    min_token_len: int = 3        # drop tokens shorter than this
-    max_token_len: int = 40       # drop tokens longer than this (garbled text)
-    min_freq: int = 5             # rare-word threshold (absolute count)
-    min_doc_freq: int = 2         # drop tokens that appear in fewer than N docs
-    batch_size: int = 500         # spaCy pipe batch size
-    n_process: int = 4            # parallel workers (set >1 on Linux; use 1 on Windows)
-    oov_placeholder: str | None = None  # replace OOV tokens with this string, or None to drop
-
-    def validate(self) -> None:
-        """Validate config invariants early for predictable runtime behavior."""
-        if self.min_token_len < 1:
-            raise ValueError("min_token_len must be >= 1")
-        if self.max_token_len < self.min_token_len:
-            raise ValueError("max_token_len must be >= min_token_len")
-        if self.min_freq < 1:
-            raise ValueError("min_freq must be >= 1")
-        if self.min_doc_freq < 1:
-            raise ValueError("min_doc_freq must be >= 1")
-        if self.batch_size < 1:
-            raise ValueError("batch_size must be >= 1")
-        if self.n_process < 1:
-            raise ValueError("n_process must be >= 1")
-
-
-DEFAULT_CONFIG = PipelineConfig()
-
-# Extended stop words on top of spaCy's built-in list
-EXTRA_STOPWORDS = {
-    "said", "say", "says", "would", "could", "also", "one",
-    "two", "three", "new", "like", "get", "make", "know",
-    "use", "just", "year", "time", "way", "day", "man",
-    "woman", "people", "thing",
-}
-
-
-# ── Noise Removal ─────────────────────────────────────────────────────────────
-_URL_RE      = re.compile(r"https?://\S+|www\.\S+")
-_HTML_RE     = re.compile(r"<[^>]+>")
-_EMAIL_RE    = re.compile(r"\S+@\S+\.\S+")
-_MENTION_RE  = re.compile(r"@\w+")
-_HASHTAG_RE  = re.compile(r"#\w+")
-_NUM_RE      = re.compile(r"\b\d+\b")               # standalone numbers
-_PUNCT_RE    = re.compile(r"[^\w\s]")               # all remaining punctuation
-_WHITESPACE  = re.compile(r"\s+")
-
-
-def clean_text(text: str) -> str:
-    """Step 1 & 3 – Noise removal + basic text normalisation."""
-    # print("clean text IN: ", text)
-    if not isinstance(text, str):
-        return ""
-    text = text.lower()                              # lowercase (normalisation)
-    text = _URL_RE.sub(" ", text)                    # remove URLs
-    text = _HTML_RE.sub(" ", text)                   # strip HTML tags
-    text = _EMAIL_RE.sub(" ", text)                  # remove e-mail addresses
-    text = _MENTION_RE.sub(" ", text)                # remove @mentions
-    text = _HASHTAG_RE.sub(" ", text)                # remove #hashtags
-    text = text.replace("\n", " ").replace("\r", " ")
-    text = _NUM_RE.sub(" ", text)                    # drop bare numbers
-    text = _PUNCT_RE.sub(" ", text)                  # remove punctuation
-    text = _WHITESPACE.sub(" ", text).strip()        # collapse whitespace
-    # print("clean text OUT: ", text)
-    return text
-
-
-# ── spaCy Token Filter ────────────────────────────────────────────────────────
-
-def is_valid_token(token, stopwords: set[str], cfg: PipelineConfig) -> bool:
-    """
-    Returns True if the token should be kept.
-    Combines: stop word removal, POS filtering, length filtering.
-    """
-    lemma = token.lemma_
-
-    # Step 4 – Stop word removal (spaCy built-in + extras)
-    if token.is_stop or lemma in stopwords:
-        return False
-
-    # Step 2 – Noise removal at token level
-    if token.is_punct or token.is_space or token.like_num:
-        return False
-
-    # POS filter: keep only nouns, verbs, adjectives, adverbs
-    if token.pos_ not in {"NOUN", "VERB", "ADJ", "ADV", "PROPN"}:
-        return False
-
-    # Length guard
-    if not (cfg.min_token_len <= len(lemma) <= cfg.max_token_len):
-        return False
-
-    # Alphabetic only (catches leftover symbols)
-    if not lemma.isalpha():
-        return False
-
-    return True
-
-
-# ── OOV Handling ──────────────────────────────────────────────────────────────
-
-def handle_oov(token, cfg: PipelineConfig) -> str | None:
-    """
-    Step 6 – Handle out-of-vocabulary / unknown tokens.
-    If the token has no word vector AND is flagged OOV, either
-    replace it with a placeholder or drop it (return None).
-    """
-    if token.is_oov:
-        # print("token determined to be out of vocabulary: ", token)
-        return cfg.oov_placeholder   # None → will be filtered downstream
-    return token.lemma_
-
-
-# ── Core Processing ───────────────────────────────────────────────────────────
-
-def process_batch(texts: list[str], nlp, stopwords: set[str], cfg: PipelineConfig) -> list[list[str]]:
-    """
-    Run a batch of pre-cleaned texts through the spaCy pipeline.
-    Returns a list of token lists (one per document).
-    """
-    # print("BATCH PROCESSING TEXTS IN: ", texts)
-    results = []
-    docs = nlp.pipe(texts, batch_size=cfg.batch_size, n_process=cfg.n_process)
-    # print("DOCS AFTER NLP PIPE: ", docs)
-    for doc in docs:
-        tokens = []
-        for token in doc:
-            # print("token trying to pass through: ", token)
-            if not is_valid_token(token, stopwords, cfg):
-                continue
-            # Step 5 – Lemmatisation + Step 6 – OOV handling
-            lemma = handle_oov(token, cfg)
-            if not lemma:
-                continue
-            tokens.append(lemma)
-            # print("token that passed through lemma: ", lemma)
-
-        results.append(tokens)
-    # print("BATCH PROCESSING RESULTS OUT: ",results)
-    return results
-
-
-# ── Rare-word Removal ─────────────────────────────────────────────────────────
-
-def build_vocab(tokenized_docs: list[list[str]], min_freq: int, min_doc_freq: int):
-    """
-    Build a vocabulary from a fully tokenised corpus.
-    Removes tokens that are too rare (corpus-level and document-level).
-    """
-    term_freq   = Counter()
-    doc_freq    = Counter()
-
-    for doc in tokenized_docs:
-        term_freq.update(doc)
-        doc_freq.update(set(doc))   # count each term once per document
-
-    vocab = {
-        term for term, freq in term_freq.items()
-        if freq >= min_freq and doc_freq[term] >= min_doc_freq
-    }
-    log.info(
-        "Vocabulary: %d unique tokens before filtering → %d after "
-        "(min_freq=%d, min_doc_freq=%d)",
-        len(term_freq), len(vocab), min_freq, min_doc_freq,
-    )
-    return vocab
-
-
-def filter_rare(tokenized_docs: list[list[str]], vocab: set) -> list[list[str]]:
-    """Remove rare / OOV tokens from all documents using the final vocab."""
-    return [[t for t in doc if t in vocab] for doc in tokenized_docs]
-
 
 # ── Pipeline Orchestration ────────────────────────────────────────────────────
 
@@ -265,7 +87,15 @@ def run_pipeline(
 
     # ── 5. Rare-word removal ──────────────────────────────────────────────────
     log.info("Building vocabulary and filtering rare tokens …")
-    vocab = build_vocab(tokenized, cfg.min_freq, cfg.min_doc_freq)
+    vocab, term_count = build_vocab(tokenized, cfg.min_freq, cfg.min_doc_freq)
+    log.info(
+        "Vocabulary: %d unique tokens before filtering → %d after "
+        "(min_freq=%d, min_doc_freq=%d)",
+        term_count,
+        len(vocab),
+        cfg.min_freq,
+        cfg.min_doc_freq,
+    )
     tokenized = filter_rare(tokenized, vocab)
 
     # ── 6. Assemble output ────────────────────────────────────────────────────
