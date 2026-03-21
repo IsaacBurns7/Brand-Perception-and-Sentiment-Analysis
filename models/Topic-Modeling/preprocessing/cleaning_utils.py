@@ -22,6 +22,7 @@ EXTRA_STOPWORDS = {
 def clean_text(text: str) -> str:
     if not isinstance(text, str):
         return ""
+    # CPU hotspot: each call applies a chain of regex substitutions over the full string.
     text = text.lower()
     text = _URL_RE.sub(" ", text)
     text = _HTML_RE.sub(" ", text)

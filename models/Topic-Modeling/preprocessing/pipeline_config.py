@@ -15,6 +15,7 @@ class PipelineConfig:
     enable_ngrams: bool = False
     ngram_min_count: int = 15
     ngram_threshold: float = 10.0
+    max_doc_count: int = 1000
 
     def validate(self) -> None:
         if self.min_token_len < 1:
@@ -35,6 +36,8 @@ class PipelineConfig:
             raise ValueError("ngram_min_count must be >= 1")
         if self.ngram_threshold <= 0:
             raise ValueError("ngram_threshold must be > 0")
+        if self.max_doc_count <= 0:
+            raise ValueError("max_doc_count must be > 0")
 
 
 DEFAULT_CONFIG = PipelineConfig()

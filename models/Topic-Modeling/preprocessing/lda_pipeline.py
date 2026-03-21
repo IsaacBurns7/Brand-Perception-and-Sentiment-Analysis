@@ -24,14 +24,19 @@ def run_pipeline(
     cfg.validate()
 
     log.info("Loading data from %s ...", input_path)
+    # I/O hotspot: large CSV scan/parsing from disk (420 MB input scale).
+    # High memory overhead: reads selected CSV column into a full in-memory DataFrame.
     df = pd.read_csv(input_path, sep=sep, usecols=[text_col], low_memory=False)
-    df = df.head(1000)
+    df = df.head(cfg.max_doc_count)
     log.info("  Loaded %d rows.", len(df))
 
+    # High memory overhead: dropna+reset_index creates a new DataFrame copy.
     df = df.dropna(subset=[text_col]).reset_index(drop=True)
     log.info("  %d rows after dropping nulls.", len(df))
 
     log.info("Cleaning text (regex pass) ...")
+    # CPU hotspot: runs multiple regex substitutions for every document in the corpus.
+    # High memory overhead: materializes all cleaned documents as one list of strings.
     cleaned = df[text_col].map(clean_text).tolist()
 
     log.info("Loading spaCy model ...")
@@ -41,11 +46,13 @@ def run_pipeline(
     stopwords = EXTRA_STOPWORDS | {word.lower() for word in nlp.Defaults.stop_words}
 
     log.info("Running spaCy pipeline (batch_size=%d) ...", cfg.batch_size)
+    # High memory overhead: keeps token lists for the full corpus in memory.
     tokenized: list[list[str]] = []
     batch_size = cfg.batch_size
 
     for i in tqdm(range(0, len(cleaned), batch_size), desc="Batches"):
         batch = cleaned[i : i + batch_size]
+        # CPU hotspot: token-level spaCy processing and filtering for each item in this batch.
         tokenized.extend(process_batch(batch, nlp, stopwords, cfg))
 
     if cfg.enable_ngrams:
@@ -54,9 +61,11 @@ def run_pipeline(
             cfg.ngram_min_count,
             cfg.ngram_threshold,
         )
+    # High memory overhead: n-gram stage can allocate phrase model state and transformed corpus.
     tokenized = apply_ngrams(tokenized, cfg)
 
     log.info("Building vocabulary and filtering rare tokens ...")
+    # High memory overhead: vocabulary building traverses full corpus and keeps frequency maps.
     vocab, term_count = build_vocab(tokenized, cfg.min_freq, cfg.min_doc_freq)
     log.info(
         "Vocabulary: %d unique tokens before filtering -> %d after "
@@ -76,17 +85,21 @@ def run_pipeline(
     else:
         token_removed_pct = 0.0
 
+    # High memory overhead: adds nested token lists as an object column.
     df["tokens"] = tokenized
+    # High memory overhead: creates another full text representation for every document.
     df["tokens_str"] = df["tokens"].map(" ".join)
     df["token_count"] = df["tokens"].map(len)
 
     before = len(df)
-    df = df[df["token_count"] > 0].reset_index(drop=True)
+    df = df[df["token_count"] > 0].reset_index(drop=True) #oh wow
     dropped_docs = before - len(df)
     log.info("Dropped %d empty documents after filtering.", dropped_docs)
     log.info("Final corpus: %d documents.", len(df))
 
-    out = df[[text_col, "tokens_str", "token_count"]]
+    # out = df[[text_col, "tokens_str", "token_count"]] #prints original article, adds lowkey too much data 
+    out = df[["tokens_str", "token_count"]]
+    # I/O hotspot: writes full normalized corpus to disk; throughput depends on filesystem speed.
     out.to_csv(output_path, index=False)
     log.info("Saved normalized output to %s", output_path)
 
@@ -99,6 +112,8 @@ def run_pipeline(
     )
 
     if cfg.diagnostics_output:
+        # CPU hotspot: full-corpus flatten + counting touches every token again.
+        # High memory overhead: computes global term counts across all tokens.
         top_terms = Counter(token for doc in tokenized for token in doc).most_common(cfg.diagnostics_top_n)
         diagnostics_path = Path(cfg.diagnostics_output)
         diagnostics_path.parent.mkdir(parents=True, exist_ok=True)
@@ -137,6 +152,7 @@ def run_pipeline(
         }
 
         diagnostics_path.write_text(
+            # I/O hotspot: serializes and writes diagnostics payload to disk in one operation.
             json.dumps(diagnostics_payload, indent=2) + "\n",
             encoding="ascii",
         )

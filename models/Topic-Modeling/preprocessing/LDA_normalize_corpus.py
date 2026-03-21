@@ -58,6 +58,7 @@ def parse_args():
                    help="Minimum count for n-gram phrase detection")
     p.add_argument("--ngram-threshold", type=float, default=DEFAULT_CONFIG.ngram_threshold,
                    help="Threshold for n-gram phrase detection")
+    p.add_argument("--max-doc-count", type=int, default=DEFAULT_CONFIG.max_doc_count)
     return p.parse_args()
 
 
@@ -77,6 +78,7 @@ if __name__ == "__main__":
         enable_ngrams=args.enable_ngrams,
         ngram_min_count=args.ngram_min_count,
         ngram_threshold=args.ngram_threshold,
+        max_doc_count=args.max_doc_count
     )
 
     run_pipeline(
