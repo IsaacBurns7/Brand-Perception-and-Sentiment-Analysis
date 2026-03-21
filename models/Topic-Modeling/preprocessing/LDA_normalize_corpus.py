@@ -52,6 +52,12 @@ def parse_args():
                    help="Optional path to write diagnostics JSON")
     p.add_argument("--diagnostics-top-n", type=int, default=DEFAULT_CONFIG.diagnostics_top_n,
                    help="Number of top terms to include in diagnostics output")
+    p.add_argument("--enable-ngrams", action="store_true",
+                   help="Enable n-gram detection stage (disabled by default)")
+    p.add_argument("--ngram-min-count", type=int, default=DEFAULT_CONFIG.ngram_min_count,
+                   help="Minimum count for n-gram phrase detection")
+    p.add_argument("--ngram-threshold", type=float, default=DEFAULT_CONFIG.ngram_threshold,
+                   help="Threshold for n-gram phrase detection")
     return p.parse_args()
 
 
@@ -68,6 +74,9 @@ if __name__ == "__main__":
         oov_placeholder=args.oov_placeholder,
         diagnostics_output=args.diagnostics_output,
         diagnostics_top_n=args.diagnostics_top_n,
+        enable_ngrams=args.enable_ngrams,
+        ngram_min_count=args.ngram_min_count,
+        ngram_threshold=args.ngram_threshold,
     )
 
     run_pipeline(

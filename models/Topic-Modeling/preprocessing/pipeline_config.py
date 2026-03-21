@@ -12,6 +12,9 @@ class PipelineConfig:
     oov_placeholder: str | None = None
     diagnostics_output: str | None = None
     diagnostics_top_n: int = 25
+    enable_ngrams: bool = False
+    ngram_min_count: int = 15
+    ngram_threshold: float = 10.0
 
     def validate(self) -> None:
         if self.min_token_len < 1:
@@ -28,6 +31,10 @@ class PipelineConfig:
             raise ValueError("n_process must be >= 1")
         if self.diagnostics_top_n < 1:
             raise ValueError("diagnostics_top_n must be >= 1")
+        if self.ngram_min_count < 1:
+            raise ValueError("ngram_min_count must be >= 1")
+        if self.ngram_threshold <= 0:
+            raise ValueError("ngram_threshold must be > 0")
 
 
 DEFAULT_CONFIG = PipelineConfig()

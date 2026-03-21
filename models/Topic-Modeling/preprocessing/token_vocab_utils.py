@@ -1,5 +1,8 @@
 from collections import Counter
 
+from gensim.models import Phrases
+from gensim.models.phrases import Phraser
+
 from pipeline_config import PipelineConfig
 
 
@@ -63,3 +66,13 @@ def build_vocab(tokenized_docs: list[list[str]], min_freq: int, min_doc_freq: in
 
 def filter_rare(tokenized_docs: list[list[str]], vocab: set[str]) -> list[list[str]]:
     return [[token for token in doc if token in vocab] for doc in tokenized_docs]
+
+
+def apply_ngrams(tokenized_docs: list[list[str]], cfg: PipelineConfig) -> list[list[str]]:
+    """Optionally apply bigram detection to tokenized documents."""
+    if not cfg.enable_ngrams:
+        return tokenized_docs
+
+    bigram = Phrases(tokenized_docs, min_count=cfg.ngram_min_count, threshold=cfg.ngram_threshold)
+    bigram_model = Phraser(bigram)
+    return [list(bigram_model[doc]) for doc in tokenized_docs]

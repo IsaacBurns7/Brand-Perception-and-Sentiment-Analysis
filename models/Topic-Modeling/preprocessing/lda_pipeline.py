@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 from cleaning_utils import EXTRA_STOPWORDS, clean_text
 from pipeline_config import PipelineConfig
-from token_vocab_utils import build_vocab, filter_rare, process_batch
+from token_vocab_utils import apply_ngrams, build_vocab, filter_rare, process_batch
 
 log = logging.getLogger(__name__)
 
@@ -47,6 +47,14 @@ def run_pipeline(
     for i in tqdm(range(0, len(cleaned), batch_size), desc="Batches"):
         batch = cleaned[i : i + batch_size]
         tokenized.extend(process_batch(batch, nlp, stopwords, cfg))
+
+    if cfg.enable_ngrams:
+        log.info(
+            "Applying n-gram detection (min_count=%d, threshold=%.2f) ...",
+            cfg.ngram_min_count,
+            cfg.ngram_threshold,
+        )
+    tokenized = apply_ngrams(tokenized, cfg)
 
     log.info("Building vocabulary and filtering rare tokens ...")
     vocab, term_count = build_vocab(tokenized, cfg.min_freq, cfg.min_doc_freq)
@@ -114,6 +122,11 @@ def run_pipeline(
             "tokens_removed_by_rare_filter_pct": round(token_removed_pct, 4),
             "vocab_size_before_filtering": term_count,
             "vocab_size_after_filtering": len(vocab),
+            "ngrams": {
+                "enabled": cfg.enable_ngrams,
+                "min_count": cfg.ngram_min_count,
+                "threshold": cfg.ngram_threshold,
+            },
             "token_stats": {
                 "mean": float(df["token_count"].mean()),
                 "median": float(df["token_count"].median()),
