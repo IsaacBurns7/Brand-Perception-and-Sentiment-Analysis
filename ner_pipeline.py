@@ -497,9 +497,16 @@ class NERPipeline:
     # ── Helpers ───────────────────────────────────────────────────────────────
 
     def _resolve_text_column(self, df: pd.DataFrame) -> str:
-        """Pick the richest available text column — mirrors the column names
-        used across news_dailyworker.py, news.py, and LDA.py."""
-        for col in [self.text_column, "full_content", "content", "article"]:
+        """Return the first available text column in priority order.
+
+        Priority: constructor text_column arg → article → full_content → content
+        This order reflects typical column richness in the project's CSVs:
+        'article' (scraped full text in rating.csv / news.py) tends to be the
+        longest, followed by 'full_content' (Preprocessing output), then the
+        truncated NewsAPI 'content' field.  Mirrors column names used across
+        news_dailyworker.py, news.py, and LDA.py.
+        """
+        for col in [self.text_column, "article", "full_content", "content"]:
             if col in df.columns:
                 return col
         # Fallback: concatenate title + description (both present in NewsAPI output)

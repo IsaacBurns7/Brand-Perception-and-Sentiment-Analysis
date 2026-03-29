@@ -12,9 +12,20 @@ Usage
 -----
     python evaluate_ner.py                          # built-in corpus
     python evaluate_ner.py --csv data/rating.csv    # score against real data
-                                                    # (requires manual labels)
     python evaluate_ner.py --backend rules          # single backend
     python evaluate_ner.py --verbose                # show per-sample detail
+
+CSV mode
+--------
+  If the CSV contains a column named `ner_gold` (comma-separated brand names)
+  precision / recall / F1 are computed against those labels.
+
+  If no `ner_gold` column is present the script runs the pipeline and
+  prints coverage stats: articles processed, total brands found, and the
+  top-20 brands by mention count.
+
+  Text is read from the first available column in priority order:
+    article → full_content → content → title+description
 """
 
 from __future__ import annotations
@@ -161,14 +172,125 @@ def evaluate(pipeline: NERPipeline, corpus: list[dict], verbose: bool = False) -
     }
 
 
+# ── CSV evaluation ────────────────────────────────────────────────────────────
+
+def _pick_text_column(df) -> str:
+    """Return the first available text column in richness priority order."""
+    for col in ["article", "full_content", "content", "text"]:
+        if col in df.columns:
+            return col
+    # Minimal fallback: title
+    if "title" in df.columns:
+        return "title"
+    return df.columns[0]
+
+
+def evaluate_csv(pipeline: NERPipeline, csv_path: str, verbose: bool = False) -> None:
+    """
+    Run the pipeline over a CSV file and report results.
+
+    If the CSV has a ``ner_gold`` column (comma-separated brand names) precision,
+    recall, and F1 are computed. Otherwise coverage stats are printed.
+    """
+    try:
+        import pandas as pd
+    except ImportError:
+        print("pandas is required for CSV evaluation: pip install pandas")
+        return
+
+    df = pd.read_csv(csv_path)
+    print(f"\nLoaded CSV: {csv_path}  ({len(df)} rows, columns: {list(df.columns)})")
+
+    text_col = _pick_text_column(df)
+    print(f"Using text column: '{text_col}'")
+
+    has_gold = "ner_gold" in df.columns
+
+    # Build corpus list so we can reuse the existing evaluate() logic when
+    # gold labels are present.
+    corpus = []
+    for _, row in df.iterrows():
+        text = str(row.get(text_col, "") or "")
+        if len(text) < 200:
+            title = str(row.get("title", "") or "")
+            desc  = str(row.get("description", "") or "")
+            text  = " ".join(filter(None, [title, desc, text]))
+
+        entry = {
+            "text":     text,
+            "source":   str(row.get("source_name", row.get("source", ""))),
+            "category": str(row.get("category", "")),
+        }
+        if has_gold:
+            raw_gold = str(row.get("ner_gold", "") or "")
+            entry["gold"] = [g.strip() for g in raw_gold.split(",") if g.strip()]
+        corpus.append(entry)
+
+    if has_gold:
+        print("\nGold labels found in 'ner_gold' column — computing P/R/F1\n" + "=" * 72)
+        metrics = evaluate(pipeline, corpus, verbose=verbose)
+        print(f"\n  Result  →  {_fmt(metrics)}\n")
+    else:
+        print("\nNo 'ner_gold' column — running pipeline and reporting coverage stats\n" + "=" * 72)
+        brand_counts: dict[str, int] = defaultdict(int)
+        docs_with_brands = 0
+        total_mentions   = 0
+
+        with stage(f"NER over {len(corpus)} rows"):
+            for i, sample in enumerate(corpus):
+                result = pipeline.run(
+                    sample["text"],
+                    doc_id      = f"csv_{i}",
+                    source_name = sample.get("source"),
+                    category    = sample.get("category"),
+                )
+                if result.brand_entities:
+                    docs_with_brands += 1
+                for ent in result.brand_entities:
+                    brand_counts[ent.canonical_name] += ent.mention_count
+                    total_mentions += ent.mention_count
+
+                if verbose and result.brand_entities:
+                    print(f"  Row {i+1}: {result.brand_names()}")
+
+        coverage = docs_with_brands / len(corpus) * 100 if corpus else 0
+        print(f"\n  Articles processed : {len(corpus)}")
+        print(f"  Articles with brands: {docs_with_brands}  ({coverage:.1f}%)")
+        print(f"  Total brand mentions : {total_mentions}")
+        print(f"  Unique brands found  : {len(brand_counts)}")
+        print("\n  Top 20 brands by mention count:")
+        for brand, count in sorted(brand_counts.items(), key=lambda x: -x[1])[:20]:
+            print(f"    {count:>5}  {brand}")
+        print()
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     p = argparse.ArgumentParser(description="Evaluate NER backends")
+    p.add_argument("--csv",     metavar="PATH",
+                   help="Path to CSV file (e.g. data/rating.csv). "
+                        "Include a 'ner_gold' column (comma-separated brands) for F1 scoring; "
+                        "omit it to get coverage stats instead.")
     p.add_argument("--backend", choices=["spacy", "rules", "both"], default="both")
     p.add_argument("--verbose", action="store_true")
     args = p.parse_args()
 
+    # ── CSV path ──────────────────────────────────────────────────────────────
+    if args.csv:
+        if args.backend in ("both", "spacy"):
+            with stage("spaCy + Rules (combined)"):
+                pipeline = NERPipeline(combine_rules=True)
+            evaluate_csv(pipeline, args.csv, verbose=args.verbose)
+        else:
+            with stage("Rules only"):
+                pipeline = NERPipeline(combine_rules=False)
+                pipeline._spacy._available = False
+                pipeline.model_used        = pipeline._rules.name
+            evaluate_csv(pipeline, args.csv, verbose=args.verbose)
+        return
+
+    # ── Built-in corpus ───────────────────────────────────────────────────────
     corpus = EVAL_CORPUS
     print(f"\nEvaluating on {len(corpus)} articles\n" + "=" * 72)
 
