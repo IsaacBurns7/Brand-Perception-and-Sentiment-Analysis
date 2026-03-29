@@ -3,7 +3,7 @@ spaCy-based Text Normalization Pipeline for LDA
 ================================================
 Handles: Tokenization, Noise Removal, Text Normalization,
          Stop Word Removal, Lemmatization, Rare/OOV Word Handling
-         NOISE REMOVAL BASED ON LDA, BECAUSE IT IS BAG OF WORDS MODEL
+         NOISE REMOVAL BASED ON LDA, BEWARE IT IS A BAG OF WORDS MODEL AND MAY NOT REQUIRE THE SAME PREPROCESSING AS OTHER MODELS
 
 Requirements:
     pip install spacy pandas tqdm
