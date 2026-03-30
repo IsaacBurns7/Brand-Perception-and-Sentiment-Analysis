@@ -1,7 +1,5 @@
 import pandas as pd
 from pathlib import Path
-import re
-import spacy
 import time
 from contextlib import contextmanager
 from gensim import corpora
@@ -26,7 +24,6 @@ with stage("load CSV"):
 
 # with stage("trim rows"):
 #     df = df.head(1000)  # cut that shit down
-text_column = "article"
 token_column = "tokens_str"
 
 with stage("Tokenizing documents"):
@@ -53,7 +50,7 @@ num_topics = 15  # choose number of topics
 chunksize= 500
 passes = 20
 iterations = 400
-eval_every = True
+eval_every = 10
 # id2word = dictionary.id2token
 
 with stage("train LDA model"):
