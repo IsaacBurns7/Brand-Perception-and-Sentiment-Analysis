@@ -10,8 +10,8 @@ Requirements:
     python -m spacy download en_core_web_md
 
 Usage:
-    python normalize_for_lda.py --input articles.csv --text-col content --output normalized.csv
-    python normalize_for_lda.py --input articles.csv --text-col content --output normalized.csv --min-freq 5 --batch-size 500
+    python LDA_normalize_corpus.py --input articles.csv --text-col content --output normalized.csv
+    python LDA_normalize_corpus.py --input articles.csv --text-col content --output normalized.csv --min-freq 5 --batch-size 500
 """
 
 import argparse
