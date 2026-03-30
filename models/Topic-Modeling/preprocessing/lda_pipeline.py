@@ -175,8 +175,8 @@ def run_pipeline(
 
         diagnostics_path.write_text(
             # I/O hotspot: serializes and writes diagnostics payload to disk in one operation.
-            json.dumps(diagnostics_payload, indent=2) + "\n",
-            encoding="ascii",
+            json.dumps(diagnostics_payload, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
         )
         log.info("Saved diagnostics output to %s", diagnostics_path)
 
