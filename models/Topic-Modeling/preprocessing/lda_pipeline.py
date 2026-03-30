@@ -35,7 +35,15 @@ def run_pipeline(
     log.info("  %d rows after dropping nulls.", len(df))
 
     log.info("Loading spaCy model ...")
-    nlp = spacy.load("en_core_web_md", disable=["parser", "ner"])
+    try:
+        nlp = spacy.load("en_core_web_md", disable=["parser", "ner"])
+    except OSError as e:
+        raise RuntimeError(
+            "Failed to load spaCy model 'en_core_web_md'. "
+            "Ensure it is installed by running "
+            "'python -m spacy download en_core_web_md', or configure the "
+            "pipeline to use a different spaCy model."
+        ) from e
     nlp.max_length = 2_000_000
 
     stopwords = EXTRA_STOPWORDS | {word.lower() for word in nlp.Defaults.stop_words}
