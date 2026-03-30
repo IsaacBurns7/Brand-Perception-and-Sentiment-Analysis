@@ -1,0 +1,30 @@
+Preprocessing NLP data for LDA has the following stages: 
+1. Load/ingest data
+2. Cleaning/normalization
+- Convert to lowercase
+- Remove URLs, HTML tags, emojis, special characterize
+- Normalize whitespace
+- Optionally remove numbers
+3. Tokenization
+- Split document of text into words(tokens)
+4. Stopword removal
+- Remove high-frequency common words that give little information 
+5. Lemmatization / Stemming
+- running/runs/ran -> run
+6. Phrase detection
+- Bigrams and Trigrams
+7. Filtering(optional)
+- Extremely rare or common words removed
+    - appearing in fewer than min_docs documents
+    - appearing in more than max_doc_proportion
+    - dictionary.filter_extremes in gensim
+8. Build dictionary and corpus 
+- token lists to numeric representation for LDA
+- corpus is a bag of words(word,freq) per document
+9. TF-IDF Weighting(optional)
+- Reduce weight of common words to improve LDA topics
+10. Stage inspection and logging
+- Save articles and print metrics for debugging 
+
+Refactor LDA_normalize_corpus into these 10 stages, each with a file of their own, and then aggregated via main.py
+This will make this shii a lot easier to optimize, and extend later, while making it easier to understand - just a lot of work... 

@@ -1,0 +1,11 @@
+Phase 1 Baseline Summary
+========================
+output_file: models/Topic-Modeling/preprocessing/baseline_phase1/rating_normalized_baseline.csv
+input_scope: top 1000 rows (temporary fast baseline)
+rows_final: 999
+token_count_mean: 11.4394
+token_count_median: 12.0000
+token_count_min: 1
+token_count_max: 24
+sample_file: models/Topic-Modeling/preprocessing/baseline_phase1/baseline_sample_100.csv
+run_log: models/Topic-Modeling/preprocessing/baseline_phase1/baseline_run.log
