@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from pathlib import Path
 from collections import Counter
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
