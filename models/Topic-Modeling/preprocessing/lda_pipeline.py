@@ -149,7 +149,7 @@ def run_pipeline(
             "input_path": input_path,
             "output_path": output_path,
             "text_col": text_col,
-            "loaded_docs": before,
+            "pre_empty_filter_docs": before,
             "final_docs": len(df),
             "dropped_empty_docs": dropped_docs,
             "empty_docs_removed_pct": round(empty_docs_removed_pct, 4),
