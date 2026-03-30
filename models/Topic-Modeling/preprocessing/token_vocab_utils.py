@@ -1,7 +1,11 @@
 from collections import Counter
 
-from gensim.models import Phrases
-from gensim.models.phrases import Phraser
+try:
+    from gensim.models import Phrases
+    from gensim.models.phrases import Phraser
+except ImportError:  # Allow pipeline to run without gensim when n-grams are disabled
+    Phrases = None
+    Phraser = None
 import pandas as pd
 
 from pipeline_config import PipelineConfig
