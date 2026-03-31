@@ -1,6 +1,11 @@
-.venv/
 __pycache__/
-.ipynb_checkpoints/
 *.pyc
+.venv/
+.ipython/
+.hf_cache/
+.mpl_cache/
+.cache/
+artifacts/
+*.log
 .DS_Store
-EDA/plots/
+.ipynb_checkpoints/

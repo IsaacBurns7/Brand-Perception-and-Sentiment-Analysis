@@ -3,6 +3,12 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+joblib
+transformers
+accelerate
+torch
+sentencepiece
+protobuf
 nltk
 jupyter
 notebook
