@@ -53,13 +53,7 @@ Example below
 python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/phasefinal_experiment_rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 10000
 ```
 
-Example background process
+Example background process with 2 processes
 ```bash
-python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/phasefinal_experiment_rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 10000 --n-process 4 --batch-size 500 > LDA_normalize_corpus.out 2>&1 & 
+python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/phasefinal_experiment_rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 1000000 --n-process 2 --batch-size 500 > LDA_normalize_corpus.out 2>&1 & 
 ```
-
-AFTER memory fix 
-batch-size 500, n-process 1, max-doc-count 1000, macOS 
-228.7 GB 
-
-batch-size 500, n-process 4, max-doc-count 10000, macOS 

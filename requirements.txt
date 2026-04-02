@@ -1,0 +1,10 @@
+gensim
+matplotlib
+nltk
+numpy
+pandas
+ruptures
+scikit-learn
+spacy
+sqlalchemy
+tqdm
