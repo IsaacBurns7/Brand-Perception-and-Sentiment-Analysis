@@ -55,5 +55,25 @@ python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --o
 
 Example background process with 2 processes
 ```bash
-python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/phasefinal_experiment_rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 1000000 --n-process 2 --batch-size 500 > LDA_normalize_corpus.out 2>&1 & 
+python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 100 --n-process 4 --batch-size 100 > LDA_normalize_corpus.out 2>&1 & 
 ```
+
+## BERTopic Mode
+
+Use BERTopic mode to keep cleaned document text instead of aggressively pruning to token lists.
+
+```bash
+python LDA_normalize_corpus.py \
+  --input ../data/rating.csv \
+  --text-col article \
+  --output ../data/rating_normalized_for_BERTopic.csv \
+  --topic-model-target bertopic \
+  --bertopic-min-words 3 \
+  --bertopic-drop-empty-text \
+  --max-doc-count 1000
+```
+
+BERTopic mode output columns:
+- `cleaned_text`
+- `token_count_light`
+- optional original source text when `--bertopic-keep-original-text` is enabled
