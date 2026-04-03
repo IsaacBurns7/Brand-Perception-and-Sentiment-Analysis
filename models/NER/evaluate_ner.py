@@ -37,7 +37,7 @@ import time
 from collections import defaultdict
 from contextlib import contextmanager
 
-from ner_pipeline import NERPipeline
+from .ner_pipeline import NERPipeline
 
 
 # ── Timing helper (matches LDA.py) ───────────────────────────────────────────
