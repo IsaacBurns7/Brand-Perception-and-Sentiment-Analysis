@@ -53,9 +53,9 @@ Example below
 python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/phasefinal_experiment_rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 10000
 ```
 
-Example background process with 2 processes
+Example background process with 4 processes, 100,000 max documents, and batch size of 100 
 ```bash
-python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 100 --n-process 4 --batch-size 100 > LDA_normalize_corpus.out 2>&1 & 
+python LDA_normalize_corpus.py --input ../data/rating.csv --text-col article --output ../data/rating_normalized_for_LDA.csv --diagnostics-output diagnostics/preprocessing_phasefinal.json --diagnostics-top-n 25 --enable-ngrams --ngram-min-count 15 --ngram-threshold 10.0 --max-doc-count 100000 --n-process 4 --batch-size 100 > LDA_normalize_corpus.out 2>&1 & 
 ```
 
 ## BERTopic Mode

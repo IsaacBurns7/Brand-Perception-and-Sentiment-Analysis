@@ -2,127 +2,127 @@
   "input_path": "../data/rating.csv",
   "output_path": "../data/rating_normalized_for_LDA.csv",
   "text_col": "article",
-  "pre_empty_filter_docs": 1000,
-  "final_docs": 1000,
-  "dropped_empty_docs": 0,
-  "empty_docs_removed_pct": 0.0,
-  "tokens_before_rare_filter": 509625,
-  "tokens_after_rare_filter": 441764,
-  "tokens_removed_by_rare_filter": 67861,
-  "tokens_removed_by_rare_filter_pct": 13.3159,
-  "vocab_size_before_filtering": 23857,
-  "vocab_size_after_filtering": 9308,
+  "pre_empty_filter_docs": 10000,
+  "final_docs": 9999,
+  "dropped_empty_docs": 1,
+  "empty_docs_removed_pct": 0.01,
+  "tokens_before_rare_filter": 4156752,
+  "tokens_after_rare_filter": 3946277,
+  "tokens_removed_by_rare_filter": 210475,
+  "tokens_removed_by_rare_filter_pct": 5.0634,
+  "vocab_size_before_filtering": 69629,
+  "vocab_size_after_filtering": 33293,
   "ngrams": {
     "enabled": true,
     "min_count": 15,
     "threshold": 10.0
   },
   "token_stats": {
-    "mean": 441.764,
-    "median": 270.5,
-    "min": 8,
-    "max": 5751
+    "mean": 394.66716671667166,
+    "median": 237.0,
+    "min": 3,
+    "max": 12250
   },
   "top_terms": [
     {
-      "term": "country",
-      "count": 2882
-    },
-    {
-      "term": "nigeria",
-      "count": 2147
-    },
-    {
-      "term": "state",
-      "count": 1718
+      "term": "company",
+      "count": 18131
     },
     {
       "term": "include",
-      "count": 1661
+      "count": 15755
     },
     {
-      "term": "company",
-      "count": 1518
+      "term": "country",
+      "count": 14737
     },
     {
-      "term": "china",
-      "count": 1351
-    },
-    {
-      "term": "group",
-      "count": 1312
+      "term": "state",
+      "count": 11354
     },
     {
       "term": "need",
-      "count": 1176
-    },
-    {
-      "term": "world",
-      "count": 1125
-    },
-    {
-      "term": "government",
-      "count": 1123
-    },
-    {
-      "term": "good",
-      "count": 1110
-    },
-    {
-      "term": "report",
-      "count": 1056
-    },
-    {
-      "term": "team",
-      "count": 1011
-    },
-    {
-      "term": "water",
-      "count": 1002
-    },
-    {
-      "term": "project",
-      "count": 1002
-    },
-    {
-      "term": "game",
-      "count": 996
+      "count": 11082
     },
     {
       "term": "work",
-      "count": 980
+      "count": 11059
     },
     {
-      "term": "region",
-      "count": 959
+      "term": "share",
+      "count": 11031
+    },
+    {
+      "term": "report",
+      "count": 10728
+    },
+    {
+      "term": "market",
+      "count": 9891
     },
     {
       "term": "come",
-      "count": 940
+      "count": 9772
+    },
+    {
+      "term": "good",
+      "count": 9247
+    },
+    {
+      "term": "world",
+      "count": 9025
+    },
+    {
+      "term": "government",
+      "count": 8426
+    },
+    {
+      "term": "provide",
+      "count": 8399
+    },
+    {
+      "term": "high",
+      "count": 8322
+    },
+    {
+      "term": "group",
+      "count": 8108
+    },
+    {
+      "term": "change",
+      "count": 7985
+    },
+    {
+      "term": "help",
+      "count": 7778
+    },
+    {
+      "term": "support",
+      "count": 7693
+    },
+    {
+      "term": "business",
+      "count": 7610
     },
     {
       "term": "add",
-      "count": 897
+      "count": 7552
     },
     {
-      "term": "africa",
-      "count": 891
+      "term": "accord",
+      "count": 7453
     },
     {
-      "term": "area",
-      "count": 882
+      "term": "increase",
+      "count": 7423
     },
     {
-      "term": "month",
-      "count": 874
+      "term": "find",
+      "count": 7340
     },
     {
-      "term": "mexico",
-      "count": 853
-    },
-    {
-      "term": "lead",
-      "count": 845
+      "term": "israel",
+      "count": 7326
     }
   ]
 }

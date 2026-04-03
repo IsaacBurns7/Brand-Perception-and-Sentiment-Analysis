@@ -1,6 +1,7 @@
 import argparse
 import importlib
 import logging
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -16,6 +17,17 @@ def parse_args() -> argparse.Namespace:
         "--embedding-model",
         default="sentence-transformers/all-MiniLM-L6-v2",
         help="Embedding model name passed to BERTopic",
+    )
+    parser.add_argument(
+        "--embedding-device",
+        default="auto",
+        choices=["auto", "mps", "cuda", "cpu"],
+        help="SentenceTransformer device selection (default: auto)",
+    )
+    parser.add_argument(
+        "--cpu-only",
+        action="store_true",
+        help="Force CPU embedding (off by default)",
     )
     parser.add_argument("--language", default="english", help="Language passed to BERTopic")
     parser.add_argument("--min-topic-size", type=int, default=10, help="Minimum cluster/topic size")
@@ -34,6 +46,30 @@ def parse_args() -> argparse.Namespace:
         help="Compute topic probabilities (slower, more memory)",
     )
     parser.add_argument("--max-doc-count", type=int, default=None, help="Optional cap for training docs")
+    parser.add_argument("--umap-n-neighbors", type=int, default=15, help="UMAP n_neighbors")
+    parser.add_argument("--umap-n-components", type=int, default=5, help="UMAP output dimensions")
+    parser.add_argument("--umap-min-dist", type=float, default=0.0, help="UMAP min_dist")
+    parser.add_argument("--umap-metric", default="cosine", help="UMAP metric")
+    parser.add_argument("--umap-random-state", type=int, default=42, help="UMAP random_state")
+    parser.add_argument("--umap-n-jobs", type=int, default=1, help="UMAP n_jobs (safer default: 1)")
+    parser.add_argument(
+        "--hdbscan-min-samples",
+        type=int,
+        default=None,
+        help="HDBSCAN min_samples (default: None, lets library infer)",
+    )
+    parser.add_argument(
+        "--hdbscan-core-dist-n-jobs",
+        type=int,
+        default=1,
+        help="HDBSCAN core distance workers (safer default: 1)",
+    )
+    parser.add_argument(
+        "--omp-num-threads",
+        type=int,
+        default=1,
+        help="Set OMP_NUM_THREADS for native kernels (safer default: 1)",
+    )
     return parser.parse_args()
 
 
@@ -55,6 +91,10 @@ def main() -> None:
 
     args = parse_args()
 
+    if args.omp_num_threads < 1:
+        raise ValueError("--omp-num-threads must be >= 1")
+    os.environ["OMP_NUM_THREADS"] = str(args.omp_num_threads)
+
     try:
         bertopic_module = importlib.import_module("bertopic")
         BERTopic = bertopic_module.BERTopic
@@ -63,17 +103,52 @@ def main() -> None:
             "BERTopic is not installed. Install with: pip install bertopic sentence-transformers"
         ) from exc
 
+    try:
+        sentence_transformers_module = importlib.import_module("sentence_transformers")
+        SentenceTransformer = sentence_transformers_module.SentenceTransformer
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "sentence-transformers is not installed. Install with: pip install sentence-transformers"
+        ) from exc
+
+    try:
+        umap_module = importlib.import_module("umap")
+        UMAP = umap_module.UMAP
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "umap-learn is not installed. Install with: pip install umap-learn"
+        ) from exc
+
+    try:
+        hdbscan_module = importlib.import_module("hdbscan")
+        HDBSCAN = hdbscan_module.HDBSCAN
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "hdbscan is not installed. Install with: pip install hdbscan"
+        ) from exc
+
     if args.ngram_min < 1:
         raise ValueError("--ngram-min must be >= 1")
     if args.ngram_max < args.ngram_min:
         raise ValueError("--ngram-max must be >= --ngram-min")
     if args.min_topic_size < 2:
         raise ValueError("--min-topic-size must be >= 2")
+    if args.umap_n_neighbors < 2:
+        raise ValueError("--umap-n-neighbors must be >= 2")
+    if args.umap_n_components < 2:
+        raise ValueError("--umap-n-components must be >= 2")
+    if args.umap_n_jobs < 1:
+        raise ValueError("--umap-n-jobs must be >= 1")
+    if args.hdbscan_min_samples is not None and args.hdbscan_min_samples < 1:
+        raise ValueError("--hdbscan-min-samples must be >= 1")
+    if args.hdbscan_core_dist_n_jobs < 1:
+        raise ValueError("--hdbscan-core-dist-n-jobs must be >= 1")
 
     nr_topics = _parse_nr_topics(args.nr_topics)
 
     log.info("Loading input CSV: %s", args.input)
     df = pd.read_csv(args.input, low_memory=False)
+    # df = df.head(1000)
     if args.text_col not in df.columns:
         raise ValueError(f"Column '{args.text_col}' not found in input CSV")
 
@@ -90,6 +165,37 @@ def main() -> None:
     docs = docs_df[args.text_col].tolist()
     log.info("Training docs: %d", len(docs))
 
+    if args.cpu_only:
+        device = "cpu"
+    elif args.embedding_device == "auto":
+        device = None
+    else:
+        device = args.embedding_device
+
+    if device is None:
+        embedding_model = SentenceTransformer(args.embedding_model)
+    else:
+        embedding_model = SentenceTransformer(args.embedding_model, device=device)
+
+    umap_model = UMAP(
+        n_neighbors=args.umap_n_neighbors,
+        n_components=args.umap_n_components,
+        min_dist=args.umap_min_dist,
+        metric=args.umap_metric,
+        random_state=args.umap_random_state,
+        low_memory=True,
+        n_jobs=args.umap_n_jobs,
+    )
+
+    hdbscan_model = HDBSCAN(
+        min_cluster_size=args.min_topic_size,
+        min_samples=args.hdbscan_min_samples,
+        metric="euclidean",
+        cluster_selection_method="eom",
+        prediction_data=True,
+        core_dist_n_jobs=args.hdbscan_core_dist_n_jobs,
+    )
+
     vectorizer_model = CountVectorizer(
         stop_words="english",
         ngram_range=(args.ngram_min, args.ngram_max),
@@ -97,8 +203,10 @@ def main() -> None:
     )
 
     topic_model = BERTopic(
-        embedding_model=args.embedding_model,
+        embedding_model=embedding_model,
         vectorizer_model=vectorizer_model,
+        umap_model=umap_model,
+        hdbscan_model=hdbscan_model,
         language=args.language,
         min_topic_size=args.min_topic_size,
         nr_topics=nr_topics,
