@@ -1,4 +1,5 @@
 import argparse
+import importlib
 import logging
 from pathlib import Path
 
@@ -55,8 +56,9 @@ def main() -> None:
     args = parse_args()
 
     try:
-        from bertopic import BERTopic
-    except ImportError as exc:
+        bertopic_module = importlib.import_module("bertopic")
+        BERTopic = bertopic_module.BERTopic
+    except ModuleNotFoundError as exc:
         raise RuntimeError(
             "BERTopic is not installed. Install with: pip install bertopic sentence-transformers"
         ) from exc
