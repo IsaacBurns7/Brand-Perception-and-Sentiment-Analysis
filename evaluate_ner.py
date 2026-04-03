@@ -229,7 +229,7 @@ def evaluate_csv(pipeline: NERPipeline, csv_path: str, verbose: bool = False) ->
     if has_gold:
         print("\nGold labels found in 'ner_gold' column — computing P/R/F1\n" + "=" * 72)
         metrics = evaluate(pipeline, corpus, verbose=verbose)
-        print(f"\n  Result  →  {_fmt(metrics)}\n")
+        print(f"\n  Result  ->  {_fmt(metrics)}\n")
     else:
         print("\nNo 'ner_gold' column — running pipeline and reporting coverage stats\n" + "=" * 72)
         brand_counts: dict[str, int] = defaultdict(int)
@@ -300,7 +300,7 @@ def main():
         with stage("spaCy + Rules (combined)"):
             pipeline = NERPipeline(combine_rules=True)
             results["spaCy+Rules"] = evaluate(pipeline, corpus, args.verbose)
-        print(f"  spaCy+Rules  →  {_fmt(results['spaCy+Rules'])}")
+        print(f"  spaCy+Rules  ->  {_fmt(results['spaCy+Rules'])}")
 
     if args.backend in ("both", "rules"):
         with stage("Rules only"):
@@ -309,7 +309,7 @@ def main():
             pipeline._spacy._available = False
             pipeline.model_used        = pipeline._rules.name
             results["Rules-only"] = evaluate(pipeline, corpus, args.verbose)
-        print(f"  Rules-only   →  {_fmt(results['Rules-only'])}")
+        print(f"  Rules-only   ->  {_fmt(results['Rules-only'])}")
 
     print("\n" + "=" * 72)
     best = max(results, key=lambda k: results[k]["f1"])
