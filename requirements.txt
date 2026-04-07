@@ -8,6 +8,7 @@ transformers
 accelerate
 torch
 sentencepiece
+blobfile
 protobuf
 nltk
 jupyter

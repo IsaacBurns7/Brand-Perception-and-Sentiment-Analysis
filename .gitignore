@@ -9,3 +9,12 @@ artifacts/
 *.log
 .DS_Store
 .ipynb_checkpoints/
+
+# Large local datasets and generated training/eval CSVs (keep repo lightweight)
+data/datasets/
+data/processed/stage1_pretrain.csv
+data/processed/stage2_finetune.csv
+data/processed/reddit_with_sentiment.csv
+data/processed/tweet_sentiment_train_processed.csv
+data/processed/tweet_sentiment_val_processed.csv
+data/processed/eval_sentiment_analysis_test.csv

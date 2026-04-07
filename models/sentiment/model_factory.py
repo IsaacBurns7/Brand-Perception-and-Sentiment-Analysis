@@ -12,7 +12,9 @@ from sklearn.svm import LinearSVC
 
 from .config import (
     BERTWEET_MODEL_NAME,
+    DEBERTA_V3_MODEL_NAME,
     DISTILBERT_MODEL_NAME,
+    ROBERTA_MODEL_NAME,
     LINEAR_SVC_CONFIG,
     LOGISTIC_REGRESSION_CONFIG,
     PROJECT_LABELS,
@@ -95,7 +97,7 @@ def _import_transformers() -> tuple[Any, Any, Any]:
         raise ImportError(
             "Transformer models require the 'transformers' package and a backend such as "
             "'torch'. Install them before requesting transformer backends such as "
-            "'twitter_roberta', 'bertweet', or 'distilbert'."
+            "'twitter_roberta', 'bertweet', 'distilbert', or 'deberta'."
         ) from exc
 
     return AutoConfig, AutoModelForSequenceClassification, AutoTokenizer
@@ -197,6 +199,28 @@ def _build_distilbert_model(label_names: list[str]) -> ModelSpec:
     )
 
 
+def _build_roberta_model(label_names: list[str]) -> ModelSpec:
+    """Return a fine-tunable RoBERTa-base classifier."""
+
+    return _build_transformer_classifier(
+        name="roberta",
+        pretrained_name=ROBERTA_MODEL_NAME,
+        label_names=label_names,
+        notes="Fine-tunes RoBERTa-base for sequence classification.",
+    )
+
+
+def _build_deberta_model(label_names: list[str]) -> ModelSpec:
+    """Return a fine-tunable DeBERTa-v3-base classifier."""
+
+    return _build_transformer_classifier(
+        name="deberta",
+        pretrained_name=DEBERTA_V3_MODEL_NAME,
+        label_names=label_names,
+        notes="Fine-tunes DeBERTa-v3-base for sequence classification.",
+    )
+
+
 def get_model(model_name: str, label_names: list[str] | None = None) -> ModelSpec:
     """Build and return a supported model backend by name."""
 
@@ -213,6 +237,10 @@ def get_model(model_name: str, label_names: list[str] | None = None) -> ModelSpe
         return _build_bertweet_model(resolved_labels)
     if normalized_name == "distilbert":
         return _build_distilbert_model(resolved_labels)
+    if normalized_name == "roberta":
+        return _build_roberta_model(resolved_labels)
+    if normalized_name == "deberta":
+        return _build_deberta_model(resolved_labels)
 
     raise ValueError(
         f"Unsupported model '{model_name}'. Supported models: {', '.join(SUPPORTED_MODEL_NAMES)}"

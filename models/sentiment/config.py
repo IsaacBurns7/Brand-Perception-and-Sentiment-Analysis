@@ -14,6 +14,8 @@ MODEL_ARTIFACTS_DIR = ARTIFACTS_DIR / "models"
 REPORT_ARTIFACTS_DIR = ARTIFACTS_DIR / "reports"
 PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
 COMPARISON_OUTPUT_DIR = PROCESSED_DATA_DIR / "model_comparison"
+HF_FINETUNE_DIR = MODEL_ARTIFACTS_DIR / "hf_finetuning"
+DEBERTA_GOEMOTIONS_MODEL_DIR = HF_FINETUNE_DIR / "deberta_goemotions"
 
 TRAIN_CSV_PATH = TWITTER_SENTIMENT_DIR / "Dataset - Train.csv"
 TEST_CSV_PATH = TWITTER_SENTIMENT_DIR / "Dataset - Test.csv"
@@ -68,22 +70,33 @@ PROJECT_LABELS = [
 
 SUPPORTED_MODEL_NAMES = (
     "distilbert",
+    "roberta",
     "bertweet",
+    "deberta",
 )
 
 TRANSFORMER_MODEL_NAMES = (
     "distilbert",
+    "roberta",
     "bertweet",
+    "deberta",
 )
 
 HF_FINETUNE_MODEL_NAMES = (
     "distilbert",
+    "roberta",
     "bertweet",
+    "deberta",
 )
 
 TWITTER_ROBERTA_MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment-latest"
 BERTWEET_MODEL_NAME = "vinai/bertweet-base"
 DISTILBERT_MODEL_NAME = "distilbert-base-uncased"
+ROBERTA_MODEL_NAME = "roberta-base"
+DEBERTA_V3_MODEL_NAME = "microsoft/deberta-v3-base"
+
+GOEMOTIONS_SEQUENCE_LABELS = ("negative", "neutral", "positive")
+GOEMOTIONS_LABEL2ID = {"negative": 0, "neutral": 1, "positive": 2}
 
 TRANSFORMER_BATCH_SIZE = 16
 TRANSFORMER_EPOCHS = 3
