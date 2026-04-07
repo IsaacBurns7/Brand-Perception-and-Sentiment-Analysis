@@ -28,3 +28,5 @@ Evaluate:
 python -m models.NER.evaluate_ner
 python -m models.NER.evaluate_ner --csv path/to/rating.csv
 ```
+
+*/5 * * * * /Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/.venv/bin/python3 /Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/apify_client2.py > /Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/apify_client2.out 2>&1
