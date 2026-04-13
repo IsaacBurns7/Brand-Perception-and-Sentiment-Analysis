@@ -18,3 +18,6 @@ data/processed/reddit_with_sentiment.csv
 data/processed/tweet_sentiment_train_processed.csv
 data/processed/tweet_sentiment_val_processed.csv
 data/processed/eval_sentiment_analysis_test.csv
+**/*.csv
+**/*.out
+.DS_Store

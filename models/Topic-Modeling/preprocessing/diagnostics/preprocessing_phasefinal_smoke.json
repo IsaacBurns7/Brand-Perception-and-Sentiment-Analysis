@@ -1,0 +1,68 @@
+{
+  "input_path": "../data/rating.csv",
+  "output_path": "../data/phasefinal_experiment_rating_normalized_for_LDA_smoke.csv",
+  "text_col": "article",
+  "loaded_docs": 200,
+  "final_docs": 200,
+  "dropped_empty_docs": 0,
+  "empty_docs_removed_pct": 0.0,
+  "tokens_before_rare_filter": 100513,
+  "tokens_after_rare_filter": 78714,
+  "tokens_removed_by_rare_filter": 21799,
+  "tokens_removed_by_rare_filter_pct": 21.6877,
+  "vocab_size_before_filtering": 10765,
+  "vocab_size_after_filtering": 3264,
+  "ngrams": {
+    "enabled": true,
+    "min_count": 15,
+    "threshold": 10.0
+  },
+  "token_stats": {
+    "mean": 393.57,
+    "median": 263.0,
+    "min": 28,
+    "max": 3733
+  },
+  "top_terms": [
+    {
+      "term": "mexico",
+      "count": 629
+    },
+    {
+      "term": "country",
+      "count": 493
+    },
+    {
+      "term": "water",
+      "count": 413
+    },
+    {
+      "term": "include",
+      "count": 316
+    },
+    {
+      "term": "state",
+      "count": 314
+    },
+    {
+      "term": "india",
+      "count": 296
+    },
+    {
+      "term": "nigeria",
+      "count": 292
+    },
+    {
+      "term": "world",
+      "count": 254
+    },
+    {
+      "term": "government",
+      "count": 236
+    },
+    {
+      "term": "high",
+      "count": 213
+    }
+  ]
+}

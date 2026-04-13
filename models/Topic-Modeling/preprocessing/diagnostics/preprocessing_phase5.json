@@ -1,0 +1,128 @@
+{
+  "input_path": "../data/rating.csv",
+  "output_path": "../data/phase6_experiment_rating_normalized_for_LDA.csv",
+  "text_col": "article",
+  "loaded_docs": 1000,
+  "final_docs": 1000,
+  "dropped_empty_docs": 0,
+  "empty_docs_removed_pct": 0.0,
+  "tokens_before_rare_filter": 618401,
+  "tokens_after_rare_filter": 585808,
+  "tokens_removed_by_rare_filter": 32593,
+  "tokens_removed_by_rare_filter_pct": 5.2705,
+  "vocab_size_before_filtering": 20056,
+  "vocab_size_after_filtering": 7987,
+  "ngrams": {
+    "enabled": false,
+    "min_count": 15,
+    "threshold": 10.0
+  },
+  "token_stats": {
+    "mean": 585.808,
+    "median": 294.0,
+    "min": 10,
+    "max": 13004
+  },
+  "top_terms": [
+    {
+      "term": "country",
+      "count": 3299
+    },
+    {
+      "term": "nigeria",
+      "count": 2910
+    },
+    {
+      "term": "state",
+      "count": 2330
+    },
+    {
+      "term": "world",
+      "count": 2012
+    },
+    {
+      "term": "include",
+      "count": 1904
+    },
+    {
+      "term": "africa",
+      "count": 1878
+    },
+    {
+      "term": "mexico",
+      "count": 1688
+    },
+    {
+      "term": "hurricane",
+      "count": 1687
+    },
+    {
+      "term": "october",
+      "count": 1664
+    },
+    {
+      "term": "water",
+      "count": 1652
+    },
+    {
+      "term": "good",
+      "count": 1629
+    },
+    {
+      "term": "provide",
+      "count": 1563
+    },
+    {
+      "term": "company",
+      "count": 1557
+    },
+    {
+      "term": "group",
+      "count": 1553
+    },
+    {
+      "term": "south",
+      "count": 1514
+    },
+    {
+      "term": "government",
+      "count": 1502
+    },
+    {
+      "term": "china",
+      "count": 1496
+    },
+    {
+      "term": "purpose",
+      "count": 1462
+    },
+    {
+      "term": "team",
+      "count": 1444
+    },
+    {
+      "term": "need",
+      "count": 1375
+    },
+    {
+      "term": "storm",
+      "count": 1331
+    },
+    {
+      "term": "high",
+      "count": 1323
+    },
+    {
+      "term": "information",
+      "count": 1321
+    },
+    {
+      "term": "right",
+      "count": 1279
+    },
+    {
+      "term": "report",
+      "count": 1257
+    }
+  ]
+}

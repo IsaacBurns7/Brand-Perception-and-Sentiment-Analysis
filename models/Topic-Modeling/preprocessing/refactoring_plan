@@ -1,0 +1,152 @@
+Refactoring Plan: LDA_normalize_corpus.py
+
+Goal
+- Improve maintainability, testability, and reproducibility of the preprocessing pipeline without changing intended output semantics.
+- Keep LDA-focused behavior (bag-of-words friendly cleanup, lemmatization, frequency filtering) while reducing coupling and hidden assumptions.
+
+Why Refactor
+1. Mixed responsibilities in one file
+- The script currently combines CLI parsing, data I/O, regex cleaning, NLP processing, vocabulary filtering, and output formatting in a single module.
+- This makes it harder to test each stage independently and increases risk when changing one part.
+
+2. Hidden runtime assumptions
+- The pipeline assumes en_core_web_md is installed and uses n_process=4 by default, which can be unstable across environments.
+- These assumptions can cause runtime failures or non-portable behavior.
+
+3. Hard-coded processing decisions
+- POS tags, stopword behavior, and OOV handling are embedded in token-level logic with limited transparency.
+- This limits experimentation and reproducibility for topic modeling iterations.
+
+4. Debugging and quality checks are ad hoc
+- There are commented debug prints and TODO comments for bigrams/sampling, but no structured diagnostic outputs.
+- This slows iteration when tuning text normalization for model quality.
+
+5. Missing validation boundaries
+- Inputs and outputs are lightly validated (for example, text column exists via pandas usecols, but there is no explicit preflight validation and no clear error typing).
+- Stronger validation improves reliability in scheduled or repeated runs.
+
+Target Architecture
+- Keep one executable entrypoint, but split internals into focused components:
+
+1. config.py
+- Typed configuration object (dataclass) with defaults and validation.
+- Centralize rules such as min/max token length, min frequency, POS whitelist, and OOV policy.
+
+2. io_utils.py
+- CSV loading, column checks, null handling, output saving.
+- Add explicit preflight checks and clear error messages.
+
+3. cleaning.py
+- Regex/text normalization only.
+- Compile and manage regex patterns in one place.
+
+4. tokenize.py
+- spaCy model loading and tokenization pipeline.
+- Token validity checks and OOV handling.
+- Optional hooks for n-grams.
+
+5. vocab.py
+- Vocabulary statistics, corpus/doc frequency filtering.
+- Any future max_df style filtering can live here.
+
+6. pipeline.py
+- Orchestrates steps in order and returns results + diagnostics.
+- No CLI code in this layer.
+
+7. cli.py (or keep inside main guard)
+- Parse args, build config, call pipeline, handle top-level logging/errors.
+
+Proposed Refactor Steps (How)
+Phase 1: Stabilize behavior before structural changes
+- Add a small baseline run command and capture summary stats:
+  - document count
+  - dropped null rows
+  - final document count
+  - token_count mean/median/min/max
+- Save baseline output sample to compare after refactor.
+
+Phase 2: Introduce typed config and validation
+- Replace raw dict config with dataclass (e.g., PipelineConfig).
+- Validate constraints:
+  - min_token_len >= 1
+  - max_token_len >= min_token_len
+  - min_freq >= 1
+  - min_doc_freq >= 1
+  - batch_size >= 1
+  - n_process >= 1
+- Preserve CLI flags and default values.
+
+Phase 3: Isolate pure functions for unit testing
+- Keep these pure and deterministic:
+  - clean_text
+  - is_valid_token (logic isolated from spaCy object where possible)
+  - build_vocab
+  - filter_rare
+- Move side-effect operations (read/write, model loading) out of pure logic paths.
+
+Phase 4: Separate pipeline orchestration from CLI
+- Create run_pipeline(config, dataframe_or_path) that does not parse args.
+- Keep __main__ minimal: parse args -> config -> call run_pipeline.
+- Improves reuse from notebooks and other scripts.
+
+Phase 5: Improve observability and diagnostics
+- Replace commented print statements with optional debug logging.
+- Add optional diagnostics output file containing:
+  - top N most frequent tokens
+  - % empty docs removed
+  - % tokens removed by rare filtering
+- This helps tune preprocessing for topic coherence.
+
+Phase 6: Add optional bigram/trigram extension points
+- Implement disabled-by-default n-gram stage with config flags.
+- Keep this modular so experiments do not alter core path by accident.
+
+Phase 7: Error handling and portability hardening
+- Gracefully handle missing spaCy model with actionable message.
+- Document recommended n_process behavior by OS.
+- Ensure failures exit with clear context (input path, missing column, model issue).
+
+Testing Strategy
+1. Unit tests (fast)
+- cleaning.py:
+  - URL/email/mention/hashtag removal
+  - punctuation/number cleanup
+  - whitespace normalization
+- vocab.py:
+  - build_vocab frequency thresholds
+  - filter_rare correctness
+
+2. Integration tests (small fixture CSV)
+- End-to-end run with a tiny dataset.
+- Assert output columns exist and token_count > 0 for expected rows.
+- Assert deterministic behavior given fixed input and config.
+
+3. Regression checks
+- Compare pre-refactor and post-refactor summary stats.
+- Accept only expected differences (if any intentional config changes are made).
+
+Definition of Done
+- Pipeline behavior matches baseline for default settings.
+- CLI remains backward-compatible with current arguments.
+- Internal modules separated by responsibility.
+- Minimal test suite exists for core logic and end-to-end smoke test.
+- No commented debug code left in production path.
+
+Immediate Low-Risk Improvements (Can be done first)
+- Remove stale commented debug print lines.
+- Add preflight check for input file existence and text column presence.
+- Add explicit handling/logging if spaCy model is unavailable.
+- Move gensim Phrases imports behind optional feature flag if unused.
+
+Notes on LDA-specific Intent
+- Keep current design focus: normalize aggressively for bag-of-words topic modeling.
+- Preserve noun/verb/adj/adv/propn filtering unless experimentation shows better coherence with a different tag policy.
+- Keep rare-word filtering because it reduces topic noise and vocabulary sparsity.
+
+Suggested Execution Order
+1. Baseline stats capture.
+2. Config dataclass + validation.
+3. Module extraction (cleaning/vocab/tokenize/io/pipeline).
+4. CLI wiring.
+5. Diagnostics and optional n-grams.
+6. Tests and regression verification.
