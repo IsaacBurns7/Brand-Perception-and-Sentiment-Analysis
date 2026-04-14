@@ -1,0 +1,765 @@
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:10.427Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:12.622Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:15.543Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:17.518Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 7/9 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:20.153Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:21.908Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:21.909Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:21.910Z     Connect,
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:21.911Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:21.911Z )
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:21.912Z [90m {"id":"7ArFvE5HiIaWHvg","url":"https://www.reddit.com/r/news.json","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:22.375Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:23.669Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:24.388Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:25.172Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_bt73si
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:26.443Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sk1iz8
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 13/14 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:27.999Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1shwwcv
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:33.018Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sge2xs
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:35.209Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sfpnsp
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:37.125Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1se7ofz
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:39.164Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1scuofd
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 18/19 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:40.559Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sbc03i
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:42.749Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sa2g5m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:44.188Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s8t5x2
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:45.979Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s8elig
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:48.392Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s6lqax
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 22/23 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:50.624Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s57558
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:52.890Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s4muzl
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:55.542Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s3eowb
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:57.336Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s2fpe2
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:16:58.776Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s25kx4
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:00.733Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2155,"requestsFinishedPerMinute":27,"requestsFailedPerMinute":0,"requestTotalDurationMillis":58180,"requestsTotal":27,"crawlerRuntimeMillis":60177,"retryHistogram":[26,1]}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 27/28 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:00.819Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.019},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:02.095Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s1pn6v
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:04.135Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rzql0c
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:06.187Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rz3hvc
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:08.649Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rxrx2m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 31/32 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:11.053Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rx4uoj
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:13.874Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rwfo4k
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:15.994Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rvkwrr
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:18.050Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1ru1sv8
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 36/37 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:20.175Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1ru33gg
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:22.546Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rt7s72
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:24.220Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rskx45
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 39/40 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:26.605Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rrnenu
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 40/41 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:40.241Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rq7x30
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:41.619Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rpuytu
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:43.604Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rpbudy
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 43/44 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:17:45.467Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rnsk3v
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:00.733Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2396,"requestsFinishedPerMinute":21,"requestsFailedPerMinute":0,"requestTotalDurationMillis":103008,"requestsTotal":43,"crawlerRuntimeMillis":120176,"retryHistogram":[42,1]}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:00.823Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:06.288Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:06.289Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:06.289Z     Connect,
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:06.290Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:06.291Z )
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:06.292Z [90m {"id":"PS2LkDkJlpP0PQl","url":"https://www.reddit.com/r/news.json?after=t3_1rmz2g8","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:08.097Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rmz2g8
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Crawled 45/46 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:10.395Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rlirzr
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:11.630Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rl4yfh
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:13.465Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rjs02q
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:14.544Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rio1zq
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:16.729Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rhxghu
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:18.772Z [32mINFO[39m  CRAWLER: -- Found 23 items from https://www.reddit.com/r/news?after=t3_1rghpxc
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:18.938Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:18.993Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:19.143Z [32mINFO[39m [33m BasicCrawler:[39m Final request statistics:[90m {"requestsFinished":50,"requestsFailed":0,"retryHistogram":[48,2],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2295,"requestsFinishedPerMinute":22,"requestsFailedPerMinute":0,"requestTotalDurationMillis":114773,"requestsTotal":50,"crawlerRuntimeMillis":138586}[39m
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> Status: RUNNING, Message: Finished! Total 50 requests: 50 succeeded, 0 failed.
+[36m[apify.reddit-scraper runId:GxOTxmCoXScZaD6xf][0m -> 2026-04-13T23:18:19.144Z [32mINFO[39m [33m BasicCrawler:[39m Finished! Total 50 requests: 50 succeeded, 0 failed.[90m {"terminal":true}[39m
+Timestamp:  2026-04-13_18-15
+Starting run with startUrls: ['https://www.reddit.com/r/news']
+{'status': 'ok', 'csv_path': 'data/reddit-scraper-pro/2026-04-13_18-15.csv', 'database_file': '/Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/master.db', 'table_name': 'reddit_scrape_raw', 'parquet_path': 'data/reddit-scraper-pro/2026-04-13_18-15.parquet', 'csv_rows': 1225, 'inserted_rows': 1225, 'table_rows': 1225, 'parquet_rows': 1225}
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: 
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:30.930Z ACTOR: Pulling container image of build f4KCFrVt8QZoDu70n from registry.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:32.929Z ACTOR: Creating container.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:33.240Z ACTOR: Starting container.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:34.622Z [32mINFO[39m  System info[90m {"apifyVersion":"3.7.0","apifyClientVersion":"2.22.2","crawleeVersion":"3.16.0","osType":"Linux","nodeVersion":"v22.22.1"}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:34.627Z [32mINFO[39m  PHASE -- STARTING ACTOR.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.112Z [33mWARN[39m  [Status message]:
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.114Z =======
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.116Z You can pick specific proxy groups for better experience:
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.117Z
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.119Z *  RESIDENTIAL is recommended
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.120Z
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.122Z =======
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.150Z [32mINFO[39m  PHASE -- SETTING UP CRAWLER.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.152Z [32mINFO[39m  CRAWLER STARTED.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Starting the crawler.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:35.357Z [32mINFO[39m [33m BasicCrawler:[39m Starting the crawler.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:36.924Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:38.094Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:40.949Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1k13vfm
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:41.536Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1sknb76
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:43.995Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1siqosw
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 6/8 pages, 0 failed requests, desired concurrency 2.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:44.515Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:46.079Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1sfybrl
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:46.618Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:48.729Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:49.491Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1se5lu6
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:49.887Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:52.017Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1sbad3t
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:52.819Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 13/15 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:55.881Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:57.608Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:23:59.993Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_bt73si
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 16/17 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:05.635Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1s910a8
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:09.664Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1s6azwv
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 19/20 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:11.885Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1s5wvbi
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:33.082Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:33.084Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:33.085Z     Connect,
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:33.086Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:33.088Z )
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:33.089Z [90m {"id":"La0aBNMPJvunHeA","url":"https://www.reddit.com/r/pasta.json?after=t3_1s338ep","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:35.346Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1s338ep
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:35.393Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3102,"requestsFinishedPerMinute":19,"requestsFailedPerMinute":0,"requestTotalDurationMillis":58933,"requestsTotal":19,"crawlerRuntimeMillis":60241,"retryHistogram":[19]}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:35.394Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.02},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:36.793Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1s14sfg
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:39.823Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rzs45z
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:43.510Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rxa4w5
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:46.282Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. Error reading response stream: reqwest::Error { kind: Decode, source: reqwest::Error { kind: Body, source: hyper::Error(Body, Error { kind: Io(Custom { kind: InvalidData, error: "cannot decrypt peer's message" }) }) } }
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 23/24 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:46.284Z [90m {"id":"FKayHXfDWTrQZZm","url":"https://www.reddit.com/r/pasta.json?after=t3_1rvur78","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:48.058Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rvur78
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:50.718Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rtwa29
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:52.453Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rswb2t
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 27/28 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:54.648Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rrc1v1
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:57.549Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rq5ni6
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:24:59.689Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rpcokj
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:02.012Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rmuyv4
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 31/32 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:04.040Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rknpob
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:07.326Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rj7jle
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:09.619Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rixqxj
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:11.594Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rhg4cb
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:14.191Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rgo937
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 35/36 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:15.623Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1reellv
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:18.799Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1rcqaoz
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:21.953Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1ram259
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 39/40 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:24.191Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r8gt71
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:27.547Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r6sov3
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:28.847Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r5v1s3
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:31.971Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r4trtl
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:34.488Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r30y4l
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:35.393Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2670,"requestsFinishedPerMinute":21,"requestsFailedPerMinute":0,"requestTotalDurationMillis":114790,"requestsTotal":43,"crawlerRuntimeMillis":120241,"retryHistogram":[41,2]}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 43/44 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:35.397Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.039},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:36.882Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r2rpif
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:38.777Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1r055ve
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:41.997Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1qxx3ps
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 47/48 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:44.600Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1qvy7gi
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:48.455Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1qvfzu1
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:52.092Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1qthrgu
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Crawled 50/51 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:54.014Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/pasta?after=t3_1qs3atu
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:57.621Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:57.623Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:57.625Z     Connect,
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:57.626Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:57.628Z )
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:57.630Z [90m {"id":"PauJFz5QUMTFOos","url":"https://www.reddit.com/r/pasta.json?after=t3_1qqiruk","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:59.087Z [33mWARN[39m  CRAWLER: -- No items in response from https://www.reddit.com/r/pasta?after=t3_1qqiruk
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:59.182Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:59.340Z [32mINFO[39m [33m BasicCrawler:[39m Final request statistics:[90m {"requestsFinished":51,"requestsFailed":0,"retryHistogram":[48,3],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2638,"requestsFinishedPerMinute":21,"requestsFailedPerMinute":0,"requestTotalDurationMillis":134529,"requestsTotal":51,"crawlerRuntimeMillis":144188}[39m
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> Status: RUNNING, Message: Finished! Total 51 requests: 51 succeeded, 0 failed.
+[36m[apify.reddit-scraper runId:x4Zd5rP46eQgxAv4l][0m -> 2026-04-13T23:25:59.342Z [32mINFO[39m [33m BasicCrawler:[39m Finished! Total 51 requests: 51 succeeded, 0 failed.[90m {"terminal":true}[39m
+Timestamp:  2026-04-13_18-23
+Starting run with startUrls: ['https://www.reddit.com/r/pasta']
+{'status': 'ok', 'csv_path': 'data/reddit-scraper-pro/2026-04-13_18-23.csv', 'database_file': '/Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/master.db', 'table_name': 'reddit_scrape_raw', 'parquet_path': 'data/reddit-scraper-pro/2026-04-13_18-23.parquet', 'csv_rows': 1227, 'inserted_rows': 1227, 'table_rows': 2452, 'parquet_rows': 1227}
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: 
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:08.547Z ACTOR: Pulling container image of build f4KCFrVt8QZoDu70n from registry.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:08.549Z ACTOR: Creating container.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:08.612Z ACTOR: Starting container.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.199Z [32mINFO[39m  System info[90m {"apifyVersion":"3.7.0","apifyClientVersion":"2.22.2","crawleeVersion":"3.16.0","osType":"Linux","nodeVersion":"v22.22.1"}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.204Z [32mINFO[39m  PHASE -- STARTING ACTOR.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.688Z [33mWARN[39m  [Status message]:
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.689Z =======
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.689Z You can pick specific proxy groups for better experience:
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.690Z
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.690Z *  RESIDENTIAL is recommended
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.690Z
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.691Z =======
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.742Z [32mINFO[39m  PHASE -- SETTING UP CRAWLER.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.744Z [32mINFO[39m  CRAWLER STARTED.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Starting the crawler.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:10.912Z [32mINFO[39m [33m BasicCrawler:[39m Starting the crawler.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:12.465Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:13.142Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:14.794Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1k13vfm
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:16.411Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sk1iz8
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.138Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.139Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.140Z     Connect,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.140Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.141Z )
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.141Z [90m {"id":"bfCnr6SwtYZGnl8","url":"https://www.reddit.com/r/news.json?after=t3_1shwwcv","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:17.777Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.473Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.473Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.474Z     Connect,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.474Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.475Z )
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.475Z [90m {"id":"3LQGCz2LUSegjoO","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:18.668Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1shwwcv
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:20.276Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 7/9 pages, 0 failed requests, desired concurrency 2.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:20.758Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sge2xs
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 9/11 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 9/11 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:22.847Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sfpnsp
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:43.666Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:43.667Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:43.667Z     Connect,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:43.668Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:43.669Z )
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:43.670Z [90m {"id":"SbrCNPEz2qCGDiX","url":"https://www.reddit.com/r/news.json?after=t3_1se7ofz","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:45.963Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1se7ofz
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:48.483Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1scuofd
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:50.098Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sbc03i
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:50.921Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Request timeout (30000 ms) exceeded.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 12/14 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:50.922Z [90m {"id":"w1DJKBySQnwZJ4N","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:52.397Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1sa2g5m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:53.273Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:54.694Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s8t5x2
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:56.422Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:57.331Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s8elig
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:58.232Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:31:59.112Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s6lqax
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:00.448Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 20/22 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:01.615Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s57558
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:02.408Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:03.952Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s4muzl
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:04.265Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_bt73si
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:05.800Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s3eowb
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:10.911Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2092,"requestsFinishedPerMinute":25,"requestsFailedPerMinute":0,"requestTotalDurationMillis":52298,"requestsTotal":25,"crawlerRuntimeMillis":60166,"retryHistogram":[21,4]}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 25/26 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:10.916Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.086},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:26.877Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:26.878Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:26.878Z     Connect,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:26.879Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:26.879Z )
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:26.880Z [90m {"id":"gtJ5X5Mmvx1qtTa","url":"https://www.reddit.com/r/news.json?after=t3_1s2fpe2","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 26/27 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:30.166Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s2fpe2
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 27/28 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:32.761Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s25kx4
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 28/29 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:49.350Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1s1pn6v
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:52.963Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rzql0c
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:55.388Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rz3hvc
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:32:58.131Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rxrx2m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 31/32 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:01.296Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rx4uoj
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:03.851Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rwfo4k
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:05.817Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rvkwrr
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:10.911Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2650,"requestsFinishedPerMinute":17,"requestsFailedPerMinute":0,"requestTotalDurationMillis":90090,"requestsTotal":34,"crawlerRuntimeMillis":120166,"retryHistogram":[29,5]}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 34/35 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:10.922Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.038},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:36.404Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Request timeout (30000 ms) exceeded.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:36.404Z [90m {"id":"bQIc6amfIQS4o0o","url":"https://www.reddit.com/r/news.json?after=t3_1ru1sv8","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:38.367Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1ru1sv8
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 35/36 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:40.869Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1ru33gg
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:43.444Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rt7s72
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:45.614Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rskx45
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:48.473Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rrnenu
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 40/41 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:49.996Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rq7x30
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:52.473Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rpuytu
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:54.298Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rpbudy
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:57.372Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rnsk3v
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:33:59.146Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rmz2g8
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: RUNNING, Message: Crawled 45/46 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:00.439Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rlirzr
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:02.254Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rl4yfh
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:03.697Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rjs02q
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:05.489Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rio1zq
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:07.913Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/news?after=t3_1rhxghu
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:10.060Z [32mINFO[39m  CRAWLER: -- Found 23 items from https://www.reddit.com/r/news?after=t3_1rghpxc
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:10.299Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:10.489Z [32mINFO[39m [33m BasicCrawler:[39m Final request statistics:[90m {"requestsFinished":50,"requestsFailed":0,"retryHistogram":[44,6],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2435,"requestsFinishedPerMinute":17,"requestsFailedPerMinute":0,"requestTotalDurationMillis":121735,"requestsTotal":50,"crawlerRuntimeMillis":179744}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> 2026-04-13T23:34:10.491Z [32mINFO[39m [33m BasicCrawler:[39m Finished! Total 50 requests: 50 succeeded, 0 failed.[90m {"terminal":true}[39m
+[36m[apify.reddit-scraper runId:JvNcL87IBX1xYwmQS][0m -> Status: SUCCEEDED, Message: Finished! Total 50 requests: 50 succeeded, 0 failed.
+Timestamp:  2026-04-13_18-31
+Starting run with startUrls: ['https://www.reddit.com/r/news']
+{'status': 'ok', 'csv_path': 'data/reddit-scraper-pro/2026-04-13_18-31.csv', 'database_file': '/Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/master.db', 'table_name': 'reddit_scrape_raw', 'parquet_path': 'data/reddit-scraper-pro/2026-04-13_18-31.parquet', 'csv_rows': 1225, 'inserted_rows': 1225, 'table_rows': 3677, 'parquet_rows': 1225}
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: 
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:19.763Z ACTOR: Pulling container image of build f4KCFrVt8QZoDu70n from registry.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:19.766Z ACTOR: Creating container.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:19.812Z ACTOR: Starting container.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:21.985Z [32mINFO[39m  System info[90m {"apifyVersion":"3.7.0","apifyClientVersion":"2.22.2","crawleeVersion":"3.16.0","osType":"Linux","nodeVersion":"v22.22.1"}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:21.991Z [32mINFO[39m  PHASE -- STARTING ACTOR.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.434Z [33mWARN[39m  [Status message]:
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.436Z =======
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.438Z You can pick specific proxy groups for better experience:
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.440Z
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.441Z *  RESIDENTIAL is recommended
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.443Z
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.445Z =======
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.475Z [32mINFO[39m  PHASE -- SETTING UP CRAWLER.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.478Z [32mINFO[39m  CRAWLER STARTED.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Starting the crawler.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:22.652Z [32mINFO[39m [33m BasicCrawler:[39m Starting the crawler.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:24.960Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:25.348Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:27.388Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1k13vfm
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:27.566Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1skola8
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:29.435Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1shitwe
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:29.866Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:31.051Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 7/9 pages, 0 failed requests, desired concurrency 2.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:33.269Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:33.897Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1sgojae
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:34.889Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.572Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.574Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.576Z     Connect,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.577Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.579Z )
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.581Z [90m {"id":"1xnmwiAm101q6wv","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:35.876Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1sfso6e
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:37.138Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:39.927Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1seycdc
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:40.093Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 15/17 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 15/17 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:41.687Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:54.979Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1sdf1yl
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:57.662Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1samz9k
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:39:58.616Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_bt73si
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 19/20 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:00.575Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1saf9wt
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:03.634Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s8z41a
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:05.305Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s81fwq
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:08.592Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s5yqth
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 23/24 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:12.061Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s5en1i
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:15.057Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s4gvry
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:18.060Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s2mcdt
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:22.651Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3511,"requestsFinishedPerMinute":25,"requestsFailedPerMinute":0,"requestTotalDurationMillis":87765,"requestsTotal":25,"crawlerRuntimeMillis":60174,"retryHistogram":[24,1]}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 25/26 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:22.656Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.046},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:38.731Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:38.737Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:38.739Z     Connect,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:38.741Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:38.743Z )
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:38.745Z [90m {"id":"zJOo4nhE9TTZP4Y","url":"https://www.reddit.com/r/science.json?after=t3_1s1y3xh","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:40.502Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s1y3xh
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 26/27 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:42.510Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s19ykt
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:45.306Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ryuvdd
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:47.159Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ryra7e
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:49.115Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rx1q9p
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 30/31 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:52.706Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rwth6g
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:54.654Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rux8em
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 33/34 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:40:56.215Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rth0cc
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:17.334Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:17.336Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:17.338Z     Connect,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:17.341Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:17.342Z )
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:17.343Z [90m {"id":"ZrwU4E0MOUmGsSJ","url":"https://www.reddit.com/r/science.json?after=t3_1rrrkpn","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:20.007Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rrrkpn
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:22.658Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3144,"requestsFinishedPerMinute":17,"requestsFailedPerMinute":0,"requestTotalDurationMillis":106909,"requestsTotal":34,"crawlerRuntimeMillis":120174,"retryHistogram":[31,3]}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:22.695Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.045},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 34/35 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:22.990Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rqqp2i
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:25.207Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rqqo87
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 36/37 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:33.388Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rpwhvi
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:35.473Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ro9l78
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 39/40 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:38.048Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rme8q3
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:58.853Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:58.855Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:58.857Z     Connect,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:58.859Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:58.860Z )
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:41:58.862Z [90m {"id":"DNUR8Zer0Kkpsbc","url":"https://www.reddit.com/r/science.json?after=t3_1rkxhp7","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:00.726Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rkxhp7
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:01.987Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 403
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 40/41 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:01.990Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"bMI3CGeotNEWsWy","url":"https://www.reddit.com/r/science.json?after=t3_1rj4ob9","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:04.062Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rj4ob9
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:06.597Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ri4rtb
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:08.939Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 500
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:08.941Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"hAWocExOoFtMqwv","url":"https://www.reddit.com/r/science.json?after=t3_1rggd6r","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:10.691Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 500
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 42/43 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:10.693Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"hAWocExOoFtMqwv","url":"https://www.reddit.com/r/science.json?after=t3_1rggd6r","retryCount":2}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:13.785Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 500
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:13.787Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"hAWocExOoFtMqwv","url":"https://www.reddit.com/r/science.json?after=t3_1rggd6r","retryCount":3}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:15.539Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 500
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:15.541Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"hAWocExOoFtMqwv","url":"https://www.reddit.com/r/science.json?after=t3_1rggd6r","retryCount":4}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:17.794Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rggd6r
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:20.147Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rfjqh2
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:22.377Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1re72o2
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:22.689Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3075,"requestsFinishedPerMinute":15,"requestsFailedPerMinute":0,"requestTotalDurationMillis":135301,"requestsTotal":44,"crawlerRuntimeMillis":180211,"retryHistogram":[38,5,null,null,1]}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 45/46 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:22.701Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":0,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.031},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:24.101Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rd9r3e
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.375Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.376Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.378Z     Connect,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.380Z     Custom {
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.382Z         kind: UnexpectedEof,
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.383Z         error: "tls handshake eof",
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.385Z     },
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.387Z )
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:30.388Z [90m {"id":"L4873i2LYyxlUNQ","url":"https://www.reddit.com/r/science.json?after=t3_1rbtbca","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Crawled 46/47 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:32.384Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rbtbca
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:36.312Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rah7ld
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:38.024Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1r8loo9
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:40.954Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1r6wtju
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:43.060Z [33mWARN[39m  CRAWLER: -- No items in response from https://www.reddit.com/r/science?after=t3_1pkp6it
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:43.210Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:43.406Z [32mINFO[39m [33m BasicCrawler:[39m Final request statistics:[90m {"requestsFinished":51,"requestsFailed":0,"retryHistogram":[44,6,null,null,1],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2963,"requestsFinishedPerMinute":15,"requestsFailedPerMinute":0,"requestTotalDurationMillis":151110,"requestsTotal":51,"crawlerRuntimeMillis":200928}[39m
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> Status: RUNNING, Message: Finished! Total 51 requests: 51 succeeded, 0 failed.
+[36m[apify.reddit-scraper runId:UQolAA3CFQ6aL4Wfh][0m -> 2026-04-13T23:42:43.407Z [32mINFO[39m [33m BasicCrawler:[39m Finished! Total 51 requests: 51 succeeded, 0 failed.[90m {"terminal":true}[39m
+Timestamp:  2026-04-13_18-39
+Starting run with startUrls: ['https://www.reddit.com/r/science']
+{'status': 'ok', 'csv_path': 'data/reddit-scraper-pro/2026-04-13_18-39.csv', 'database_file': '/Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/master.db', 'table_name': 'reddit_scrape_raw', 'parquet_path': 'data/reddit-scraper-pro/2026-04-13_18-39.parquet', 'csv_rows': 1227, 'inserted_rows': 1227, 'table_rows': 4904, 'parquet_rows': 1227}
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: 
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:52.671Z ACTOR: Pulling container image of build f4KCFrVt8QZoDu70n from registry.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:55.088Z ACTOR: Creating container.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:55.141Z ACTOR: Starting container.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.444Z [32mINFO[39m  System info[90m {"apifyVersion":"3.7.0","apifyClientVersion":"2.22.2","crawleeVersion":"3.16.0","osType":"Linux","nodeVersion":"v22.22.1"}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.449Z [32mINFO[39m  PHASE -- STARTING ACTOR.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.810Z [33mWARN[39m  [Status message]:
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.812Z =======
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.814Z You can pick specific proxy groups for better experience:
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.816Z
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.817Z *  RESIDENTIAL is recommended
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.819Z
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.821Z =======
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.857Z [32mINFO[39m  PHASE -- SETTING UP CRAWLER.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:57.861Z [32mINFO[39m  CRAWLER STARTED.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Starting the crawler.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:58.218Z [32mINFO[39m [33m BasicCrawler:[39m Starting the crawler.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:47:59.934Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:01.116Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:01.688Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1k13vfm
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:02.695Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1skola8
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:03.931Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 403
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:03.933Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"UnQJtt5vP547Yqo","url":"https://www.reddit.com/r/science.json?after=t3_1shitwe","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 5/7 pages, 0 failed requests, desired concurrency 2.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:07.414Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1shitwe
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:09.192Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1sgojae
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:11.402Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1sfso6e
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:15.447Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1seycdc
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:16.048Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:16.049Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:16.051Z     Connect,
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:16.053Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:16.055Z )
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:16.057Z [90m {"id":"pZsKjdpFbWyk3OU","url":"https://www.reddit.com/r/science.json?after=t3_1sdf1yl","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 8/10 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:18.311Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1sdf1yl
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:20.918Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1samz9k
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:22.754Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1saf9wt
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.945Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: The internal HTTP library has thrown an error:
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.947Z reqwest::Error {
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.949Z     kind: Request,
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.952Z     url: "https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib",
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.953Z     source: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.955Z         SendRequest,
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.957Z         hyper::Error(
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.958Z             Io,
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.960Z             Custom {
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.962Z                 kind: UnexpectedEof,
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.963Z                 error: "peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof",
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.965Z             },
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.967Z         ),
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.969Z     ),
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.970Z }
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:23.972Z [90m {"id":"x0mu1ulOj1ZJwt7","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:25.361Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s8z41a
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:26.336Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 13/15 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:27.952Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s81fwq
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:29.463Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:32.881Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:35.438Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 18/20 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:37.829Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:39.875Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s5yqth
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:42.599Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s5en1i
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:44.689Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s4gvry
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 22/24 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:46.260Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s2mcdt
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:48.995Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s1y3xh
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:51.719Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1s19ykt
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:54.102Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:54.283Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ryuvdd
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:56.293Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:57.666Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_bt73si
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:58.218Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3170,"requestsFinishedPerMinute":28,"requestsFailedPerMinute":0,"requestTotalDurationMillis":88749,"requestsTotal":28,"crawlerRuntimeMillis":60363,"retryHistogram":[25,3]}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 28/29 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:48:58.224Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.019},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:01.680Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ryra7e
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:03.669Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rx1q9p
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:06.452Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rwth6g
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 32/33 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:08.062Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rux8em
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:09.892Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rth0cc
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:11.917Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rrrkpn
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:14.322Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rqqp2i
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 36/37 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:17.340Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rqqo87
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:20.150Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rpwhvi
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:21.606Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 403
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:21.608Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"1vWZwTcGWHQjpdL","url":"https://www.reddit.com/r/science.json?after=t3_1ro9l78","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:24.517Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ro9l78
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 39/40 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:27.259Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rme8q3
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:30.841Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rkxhp7
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:34.467Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rj4ob9
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 42/43 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:36.106Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1ri4rtb
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:45.229Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rggd6r
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 44/45 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:47.590Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rfjqh2
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:49.461Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 403
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:49.462Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"97gGGgnoiBWFDoq","url":"https://www.reddit.com/r/science.json?after=t3_1re72o2","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:51.259Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1re72o2
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:53.425Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rd9r3e
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:54.935Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rbtbca
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:57.034Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1rah7ld
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:58.219Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":3043,"requestsFinishedPerMinute":24,"requestsFailedPerMinute":0,"requestTotalDurationMillis":146071,"requestsTotal":48,"crawlerRuntimeMillis":120363,"retryHistogram":[43,5]}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: RUNNING, Message: Crawled 48/49 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:58.230Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:49:59.033Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1r8loo9
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:50:01.078Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/science?after=t3_1r6wtju
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:50:02.323Z [33mWARN[39m  CRAWLER: -- No items in response from https://www.reddit.com/r/science?after=t3_1pkp6it
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:50:02.406Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:50:02.628Z [32mINFO[39m [33m BasicCrawler:[39m Final request statistics:[90m {"requestsFinished":51,"requestsFailed":0,"retryHistogram":[46,5],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2958,"requestsFinishedPerMinute":25,"requestsFailedPerMinute":0,"requestTotalDurationMillis":150841,"requestsTotal":51,"crawlerRuntimeMillis":124773}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> 2026-04-13T23:50:02.630Z [32mINFO[39m [33m BasicCrawler:[39m Finished! Total 51 requests: 51 succeeded, 0 failed.[90m {"terminal":true}[39m
+[36m[apify.reddit-scraper runId:z7shX8MnoHAds3rvb][0m -> Status: SUCCEEDED, Message: Finished! Total 51 requests: 51 succeeded, 0 failed.
+Timestamp:  2026-04-13_18-47
+Starting run with startUrls: ['https://www.reddit.com/r/science']
+{'status': 'ok', 'csv_path': 'data/reddit-scraper-pro/2026-04-13_18-47.csv', 'database_file': '/Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/master.db', 'table_name': 'reddit_scrape_raw', 'parquet_path': 'data/reddit-scraper-pro/2026-04-13_18-47.parquet', 'csv_rows': 1227, 'inserted_rows': 1227, 'table_rows': 6131, 'parquet_rows': 1227}
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: 
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:11.885Z ACTOR: Pulling container image of build f4KCFrVt8QZoDu70n from registry.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:11.887Z ACTOR: Creating container.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:11.921Z ACTOR: Starting container.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.219Z [32mINFO[39m  System info[90m {"apifyVersion":"3.7.0","apifyClientVersion":"2.22.2","crawleeVersion":"3.16.0","osType":"Linux","nodeVersion":"v22.22.1"}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.227Z [32mINFO[39m  PHASE -- STARTING ACTOR.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.872Z [33mWARN[39m  [Status message]:
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.874Z =======
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.876Z You can pick specific proxy groups for better experience:
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.878Z
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.880Z *  RESIDENTIAL is recommended
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.881Z
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.883Z =======
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.918Z [32mINFO[39m  PHASE -- SETTING UP CRAWLER.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:13.920Z [32mINFO[39m  CRAWLER STARTED.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Starting the crawler.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:14.119Z [32mINFO[39m [33m BasicCrawler:[39m Starting the crawler.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:15.009Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 403
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:15.010Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"BluXYYI4HpIX4tZ","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:17.779Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:17.879Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:19.901Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sjoilf
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:20.023Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1k13vfm
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:21.650Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:23.256Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.030Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. We got blocked: 403
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.031Z     at BasicCrawler.requestHandler (file:///usr/src/app/src/main.js:65:19)[90m {"id":"w1DJKBySQnwZJ4N","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.609Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.610Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.612Z     Connect,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.613Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.614Z )
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 6/8 pages, 0 failed requests, desired concurrency 2.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:24.616Z [90m {"id":"w1DJKBySQnwZJ4N","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz","retryCount":2}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:26.176Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:28.784Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:31.018Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 10/12 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:33.461Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:36.520Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. Failed to get the items at https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz. Retrying...
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:36.522Z     at file:///usr/src/app/src/routes.js:21:15[90m {"id":"4nDYsm1zri9As0I","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:38.642Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_tbqeuz
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:39.819Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_bt73si
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:40.498Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:40.500Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:40.502Z     Connect,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:40.503Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:40.505Z )
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:40.507Z [90m {"id":"4FNfSr8qeAB3o2j","url":"https://www.reddit.com/r/funny.json?after=t3_1sidx90","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 13/14 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:43.535Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sidx90
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:45.390Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1shwixe
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:49.036Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1siook2
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 16/17 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:55:51.737Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sfmxza
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:04.349Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sesivy
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:07.060Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1se937k
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:08.541Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sdlg5c
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:09.867Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1scwhe0
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:11.747Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1scizgl
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:14.122Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2639,"requestsFinishedPerMinute":21,"requestsFailedPerMinute":0,"requestTotalDurationMillis":55420,"requestsTotal":21,"crawlerRuntimeMillis":60202,"retryHistogram":[17,3,1]}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 21/22 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:14.126Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.019},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:14.951Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sbp0v6
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:16.501Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1scj4es
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 24/25 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:18.301Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1sbud2n
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:25.016Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s89psb
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:28.940Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s7gjbq
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 27/28 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:30.600Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s747j8
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 28/29 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:43.174Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s61os6
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:45.790Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s6p8r5
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:48.572Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s3igeh
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 31/32 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:52.177Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s2qtpq
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:54.868Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s1oikt
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:56.552Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s0lx9r
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:57.338Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:57.340Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:57.342Z     Connect,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:57.344Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:57.346Z )
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:57.347Z [90m {"id":"fIJN2bjY5Li2SbO","url":"https://www.reddit.com/r/funny.json?after=t3_1s0kaim","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:56:58.501Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1s0kaim
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:00.347Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rzl7hv
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:02.806Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1ryl2d6
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 36/37 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:04.358Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1ry5yhc
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:07.363Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rz6joa
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:09.445Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1ryduz9
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:13.200Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:13.201Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:13.203Z     Connect,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:13.204Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:13.206Z )
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:13.207Z [90m {"id":"BdWVO2b9aTR9SIu","url":"https://www.reddit.com/r/funny.json?after=t3_1rva8dd","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:14.122Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2826,"requestsFinishedPerMinute":19,"requestsFailedPerMinute":0,"requestTotalDurationMillis":110219,"requestsTotal":39,"crawlerRuntimeMillis":120203,"retryHistogram":[34,4,1]}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 39/40 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:14.127Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.026},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:15.053Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rva8dd
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:18.079Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1ruoas1
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:20.138Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rtukl1
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 43/44 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:23.024Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rsqvfn
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:25.295Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rsbpfn
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:27.124Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rqz3po
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:29.644Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rqlu7g
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:32.089Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rr050p
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: RUNNING, Message: Crawled 48/49 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:33.763Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rofdso
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:35.906Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/funny?after=t3_1rnk9ba
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:37.762Z [32mINFO[39m  CRAWLER: -- Found 23 items from https://www.reddit.com/r/funny?after=t3_1rl8uw1
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:37.973Z [32mINFO[39m [33m BasicCrawler:[39m All requests from the queue have been processed, the crawler will shut down.
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:38.201Z [32mINFO[39m [33m BasicCrawler:[39m Final request statistics:[90m {"requestsFinished":50,"requestsFailed":0,"retryHistogram":[44,5,1],"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2656,"requestsFinishedPerMinute":21,"requestsFailedPerMinute":0,"requestTotalDurationMillis":132775,"requestsTotal":50,"crawlerRuntimeMillis":144281}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> 2026-04-13T23:57:38.203Z [32mINFO[39m [33m BasicCrawler:[39m Finished! Total 50 requests: 50 succeeded, 0 failed.[90m {"terminal":true}[39m
+[36m[apify.reddit-scraper runId:3PKTvmvWnou1na2vz][0m -> Status: SUCCEEDED, Message: Finished! Total 50 requests: 50 succeeded, 0 failed.
+Timestamp:  2026-04-13_18-55
+Starting run with startUrls: ['https://www.reddit.com/r/funny']
+{'status': 'ok', 'csv_path': 'data/reddit-scraper-pro/2026-04-13_18-55.csv', 'database_file': '/Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/services/reddit_data/master.db', 'table_name': 'reddit_scrape_raw', 'parquet_path': 'data/reddit-scraper-pro/2026-04-13_18-55.parquet', 'csv_rows': 1225, 'inserted_rows': 1225, 'table_rows': 7356, 'parquet_rows': 1225}
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: 
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:47.099Z ACTOR: Pulling container image of build f4KCFrVt8QZoDu70n from registry.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:47.102Z ACTOR: Creating container.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:47.140Z ACTOR: Starting container.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:48.877Z [32mINFO[39m  System info[90m {"apifyVersion":"3.7.0","apifyClientVersion":"2.22.2","crawleeVersion":"3.16.0","osType":"Linux","nodeVersion":"v22.22.1"}[39m
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:48.882Z [32mINFO[39m  PHASE -- STARTING ACTOR.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.667Z [33mWARN[39m  [Status message]:
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.668Z =======
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.668Z You can pick specific proxy groups for better experience:
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.668Z
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.669Z *  RESIDENTIAL is recommended
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.669Z
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.669Z =======
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.709Z [32mINFO[39m  PHASE -- SETTING UP CRAWLER.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: 
+=======
+You can pick specific proxy groups for better experience:
+
+*  RESIDENTIAL is recommended
+
+=======
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.711Z [32mINFO[39m  CRAWLER STARTED.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Starting the crawler.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:49.996Z [32mINFO[39m [33m BasicCrawler:[39m Starting the crawler.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:51.357Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:52.752Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:52.829Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1k13vfm
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:54.928Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1skra69
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:55.597Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1jde6ib
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:56.299Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sk128z
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:58.462Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sixuwk
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:02:58.900Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_pzudbj
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 8/10 pages, 0 failed requests, desired concurrency 2.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:00.647Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1mhaydz
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:04.349Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1lwi16t
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 11/13 pages, 0 failed requests, desired concurrency 3.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:06.196Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_an5ndh
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:11.599Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sieita
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:14.336Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sirftd
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:17.106Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1shm3g5
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 14/16 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:19.881Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sgpixi
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:23.982Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1shodce
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:26.182Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1shm978
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:27.091Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Failed to connect to the server.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:27.093Z Reason: hyper_util::client::legacy::Error(
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:27.094Z     Connect,
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:27.094Z     TunnelUnsuccessful,
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:27.094Z )
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:27.095Z [90m {"id":"ZM3kgixMspqQya9","url":"https://www.reddit.com/search.json?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:28.892Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_asushk
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 19/21 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:29.518Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sfzw39
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:31.621Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1si8mtv
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:32.111Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1pvkhhn
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:33.043Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sgaz42
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:33.633Z [32mINFO[39m  CRAWLER: -- Found 2 items from https://www.reddit.com/search?q=lasagna&type=link&sort=relevance&t=all&after=t3_1pv115p
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:35.180Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sge4u7
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:38.309Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sg03th
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 25/26 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:40.423Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sga3kq
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:42.651Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sf65fg
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:44.721Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sf58a7
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:49.996Z [32mINFO[39m [33m BasicCrawler:Statistics:[39m BasicCrawler request statistics:[90m {"requestAvgFailedDurationMillis":null,"requestAvgFinishedDurationMillis":2640,"requestsFinishedPerMinute":28,"requestsFailedPerMinute":0,"requestTotalDurationMillis":73933,"requestsTotal":28,"crawlerRuntimeMillis":60286,"retryHistogram":[27,1]}[39m
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 28/29 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:03:50.034Z [32mINFO[39m [33m BasicCrawler:AutoscaledPool:[39m state[90m {"currentConcurrency":1,"desiredConcurrency":4,"systemStatus":{"isSystemIdle":true,"memInfo":{"isOverloaded":false,"limitRatio":0.2,"actualRatio":0},"eventLoopInfo":{"isOverloaded":false,"limitRatio":0.6,"actualRatio":0.039},"cpuInfo":{"isOverloaded":false,"limitRatio":0.4,"actualRatio":0},"clientInfo":{"isOverloaded":false,"limitRatio":0.3,"actualRatio":0}}}[39m
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:15.017Z [33mWARN[39m [33m BasicCrawler:[39m Reclaiming failed request back to the list or queue. impit error: Request timeout (30000 ms) exceeded.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:15.018Z [90m {"id":"b7HtnUujNSGFZ5M","url":"https://www.reddit.com/r/technology.json?after=t3_1sebhsi","retryCount":1}[39m
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 29/30 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:16.758Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sebhsi
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:22.132Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sfdwci
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:26.136Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sdtg16
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> Status: RUNNING, Message: Crawled 32/33 pages, 0 failed requests, desired concurrency 4.
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:28.114Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sd1wc3
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:31.150Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1se84qk
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:32.876Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sbofzo
+[36m[apify.reddit-scraper runId:IXW7h2E7DRMScK5IU][0m -> 2026-04-14T00:04:35.446Z [32mINFO[39m  CRAWLER: -- Found 25 items from https://www.reddit.com/r/technology?after=t3_1sc4e5n
