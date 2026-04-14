@@ -62,18 +62,44 @@ def generic_embed_table(
     text_col: str,
     table_embedded: str,
     text_col_embedded: str,
-    embed_config: dict[str, Any],
+    embed_config: dict,
 ) -> Any:
-    # PSEUDOCODE (detailed: logic is defined in this file):
-    # - validate source table and text_col exist
-    # - read source rows from table
-    # - remove null/empty text values
-    # - split rows into configured batches
-    # - embed each batch via embedding backend
-    # - map vector output into text_col_embedded
-    # - write/upsert into table_embedded
-    # - return rows_processed + rows_embedded stats
-    pass
+    import duckdb
+    from sentence_transformers import SentenceTransformer
+
+    db_path = "services/duckdb/brand_perception.duckdb"
+    con = duckdb.connect(db_path)
+    
+    try:
+        # 1. Read the cleaned data
+        df = con.execute(f"SELECT * FROM {table}").df()
+        if df.empty:
+            return f"No data found in {table} to embed."
+
+        # 2. Load the embedding model and create vectors
+        print(f"Loading local embedding model... (this may take a moment the first time)")
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+        
+        print(f"Embedding {len(df)} rows from {table}...")
+        # Drop rows missing text
+        df = df.dropna(subset=[text_col]).copy()
+        
+        # Create embeddings and convert them to a format DuckDB likes
+        embeddings = model.encode(df[text_col].tolist(), show_progress_bar=True)
+        df[text_col_embedded] = embeddings.tolist()
+
+        # 3. Write back to DuckDB as a new table
+        print(f"Writing embeddings to {table_embedded}...")
+        con.execute(f"CREATE TABLE IF NOT EXISTS {table_embedded} AS SELECT * FROM df WHERE 1=0")
+        con.execute(f"DELETE FROM {table_embedded}")
+        con.execute(f"INSERT INTO {table_embedded} SELECT * FROM df")
+
+        return f"Success: Embedded {len(df)} rows and saved to {table_embedded}."
+        
+    except Exception as e:
+        return f"Embedding Error: {e}"
+    finally:
+        con.close()
 
 #Return conn to database using config - just define here 
     #Do I need a pool - advantages vs disadvantages
@@ -112,16 +138,55 @@ def filter_top_documents_by_relevance(
     docs_table: str,
     query_text: str,
     top_k: int,
-    relevance_config: dict[str, Any],
+    relevance_config: dict,
 ) -> Any:
-    # PSEUDOCODE (detailed: logic is defined in this file):
-    # - read candidate docs from docs_table
-    # - compute or load embeddings for docs and query_text
-    # - score similarity/relevance for each doc
-    # - optionally apply SpecIR-style MIG diversification
-    # - rank by final score and keep top_k
-    # - return ranked docs + scores
-    pass
+    import duckdb
+    import numpy as np
+    from numpy.linalg import norm
+    from sentence_transformers import SentenceTransformer
+
+    db_path = "services/duckdb/brand_perception.duckdb"
+    con = duckdb.connect(db_path)
+    
+    try:
+        # 1. Read the embedded data. (We append '_embedded' because the orchestrator passed 'reddit_data' but we need the vectors)
+        target_table = docs_table + "_embedded"
+        df = con.execute(f"SELECT * FROM {target_table}").df()
+        
+        if df.empty or 'text_embedding' not in df.columns:
+            return f"No embeddings found in {target_table}."
+
+        # 2. Embed the User Query
+        print(f"Calculating relevance for query: '{query_text}'...")
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+        query_vec = model.encode([query_text])[0]
+
+        # 3. Calculate Cosine Similarity (How closely the document matches the query)
+        def compute_similarity(doc_vec):
+            doc_vec = np.array(doc_vec)
+            if norm(doc_vec) == 0 or norm(query_vec) == 0: 
+                return 0.0
+            return np.dot(query_vec, doc_vec) / (norm(query_vec) * norm(doc_vec))
+
+        df['relevance_score'] = df['text_embedding'].apply(compute_similarity)
+        
+        # 4. Sort to get the top results
+        top_docs = df.sort_values(by='relevance_score', ascending=False).head(top_k).copy()
+        
+        # 5. Save the top results as a new table (Drop the giant embedding column so it's readable)
+        out_table = "rag_top_results"
+        top_docs = top_docs.drop(columns=['text_embedding'])
+        
+        con.execute(f"CREATE TABLE IF NOT EXISTS {out_table} AS SELECT * FROM top_docs WHERE 1=0")
+        con.execute(f"DELETE FROM {out_table}")
+        con.execute(f"INSERT INTO {out_table} SELECT * FROM top_docs")
+
+        return f"Success: Filtered top {top_k} documents and saved to {out_table}."
+        
+    except Exception as e:
+        return f"RAG Search Error: {e}"
+    finally:
+        con.close()
 
 ##### Model stuff #####
 #Load topic model from cache - use import
