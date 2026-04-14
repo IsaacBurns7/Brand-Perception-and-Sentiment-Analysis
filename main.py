@@ -3,6 +3,9 @@
 #IGNORE FOR NOW: Gather real-world data from csv dataset (Test it out?) 
 
 from typing import Any
+import duckdb
+import pandas as pd
+from pathlib import Path
 
 ##### Setup / Utils #####
 #Gather real-world data from reddit service (for now can just be apify_client) - use import from services
@@ -21,21 +24,36 @@ def gather_reddit_data_to_staging(service_config: dict[str, Any], out_table: str
     # - return write/fetch summary
     pass
 
-#Filter / clean / normalize / strip reddit data - use import from services 
-    #Write to DB as reddit_data 
 def clean_reddit_data_to_curated(in_table: str, out_table: str, clean_config: dict[str, Any]) -> Any:
+    db_path = "services/duckdb/brand_perception.duckdb"
+    Path(db_path).parent.mkdir(parents=True, exist_ok=True)
+    
+    con = duckdb.connect(db_path)
     try:
-        from services.reddit_data.cleaning import clean_reddit_data  # fictitious import
-    except ImportError:
-        clean_reddit_data = None
-
-    # PSEUDOCODE:
-    # - read staged rows from in_table
-    # - filter and normalize text fields
-    # - strip noise and unwanted tokens/urls
-    # - write cleaned rows to out_table (reddit_data)
-    # - return transformation summary
-    pass
+        df = con.execute(f"SELECT * FROM {in_table}").df()
+        if df.empty:
+            return "No data found to clean."
+            
+        df = df.dropna(subset=['text']).copy()
+        
+        cleaned_df = pd.DataFrame({
+            'url': df['id'],
+            'title': df['title'],
+            'full_content': df['text'],
+            'source_name': 'Reddit - ' + df['subreddit'], 
+            'category': df['subreddit'],
+            'published_at': df['createdAt']
+        })
+        
+        con.execute(f"CREATE TABLE IF NOT EXISTS {out_table} AS SELECT * FROM cleaned_df WHERE 1=0")
+        con.execute(f"DELETE FROM {out_table}") 
+        con.execute(f"INSERT INTO {out_table} SELECT * FROM cleaned_df")
+        
+        return f"Success: Cleaned {len(cleaned_df)} rows and saved to {out_table} table."
+    except Exception as e:
+        return f"Error cleaning data: {e}"
+    finally:
+        con.close()
 
 #Generic embed (table w/ specified text_col) -> (table_embedded w/ text_col_embedded) - just define here
     #table, text_col, table_embedded, text_col_embedded are all func args
@@ -250,38 +268,29 @@ def predict_sentiment_batch(sentiment_model: Any, in_table: str, out_table: str)
     # - write predictions to out_table
     pass
 
-#Data Aggregator - use import 
-    #Call data aggregator on specified tables
-    #Write to specified out table 
 def run_data_aggregator(in_tables: list[str], out_table: str, agg_config: dict[str, Any]) -> Any:
     try:
-        from data_aggregation import aggregate_data  # fictitious import
-    except ImportError:
-        aggregate_data = None
+        from data_aggregation import run_data_aggregation
+        db_path = "services/duckdb/brand_perception.duckdb"
+        csv_path = f"data/{out_table}.csv"
+        
+        # Trigger your script
+        run_data_aggregation(db_path, csv_path)
+        return "Success: Data Aggregation complete."
+    except Exception as e:
+        return f"Data Aggregation Error: {e}"
 
-    # PSEUDOCODE:
-    # - read required inputs from in_tables
-    # - aggregate by configured dimensions/metrics
-    # - validate output schema
-    # - write aggregated result to out_table
-    pass
-
-#Timeseries - use import 
-    #Call timeseries on specified table 
-    #Write to specified out table 
 def run_timeseries_aggregation(in_table: str, out_table: str, timeseries_config: dict[str, Any]) -> Any:
     try:
-        from temporal_aggregation import run_timeseries  # fictitious import
-    except ImportError:
-        run_timeseries = None
-
-    # PSEUDOCODE:
-    # - read aggregate rows from in_table
-    # - group by configured time grain
-    # - compute temporal metrics/trends
-    # - write result into out_table
-    pass
-
+        from temporal_aggregation import run_temporal_aggregation
+        db_path = "services/duckdb/brand_perception.duckdb"
+        csv_path = f"data/{out_table}.csv"
+        
+        # Trigger your script
+        run_temporal_aggregation(db_path, csv_path)
+        return "Success: Timeseries Aggregation complete."
+    except Exception as e:
+        return f"Timeseries Error: {e}"
 
 def checkpoint_io(io_table: list[dict[str, Any]], step_name: str, fn_return: Any) -> None:
     entry = {"step": step_name, "return": fn_return}
