@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, text
 
 # --- CONFIGURATION ---
 DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING", "postgresql://user:password@localhost:5432/mydatabase")
-TARGET_TABLE = "sentiment_data"
+TARGET_TABLE = "aggregated_documents"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
