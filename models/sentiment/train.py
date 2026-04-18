@@ -361,6 +361,7 @@ def train_hf_stage_csv(
     gradient_accumulation_steps: int = 1,
     use_mps: bool = True,
     resume_from_checkpoint: str | None = None,
+    save_steps: int | None = None,
 ) -> dict[str, Any]:
     """Fine-tune a HF encoder on CSV with integer labels (binary 0/2 or 3-class 0/1/2)."""
 
@@ -448,7 +449,8 @@ def train_hf_stage_csv(
         "learning_rate": learning_rate,
         "weight_decay": weight_decay,
         "warmup_steps": warmup_steps,
-        "save_strategy": "epoch",
+        "save_strategy": "steps" if save_steps is not None else "epoch",
+        "save_steps": save_steps if save_steps is not None else 500,
         "load_best_model_at_end": True,
         "metric_for_best_model": "macro_f1",
         "greater_is_better": True,
@@ -463,12 +465,17 @@ def train_hf_stage_csv(
         kwargs["gradient_accumulation_steps"] = gradient_accumulation_steps
 
     parameters = inspect.signature(TrainingArguments.__init__).parameters
+    _eval_strategy = "steps" if save_steps is not None else "epoch"
     if "evaluation_strategy" in parameters:
-        kwargs["evaluation_strategy"] = "epoch"
+        kwargs["evaluation_strategy"] = _eval_strategy
     elif "eval_strategy" in parameters:
-        kwargs["eval_strategy"] = "epoch"
+        kwargs["eval_strategy"] = _eval_strategy
+    if save_steps is not None:
+        kwargs["eval_steps"] = save_steps
     if "use_mps_device" in parameters and _mps_on:
         kwargs["use_mps_device"] = True
+    if "save_only_model" in parameters:
+        kwargs["save_only_model"] = True
 
     training_args = TrainingArguments(**kwargs)
 
@@ -624,6 +631,15 @@ def parse_args() -> argparse.Namespace:
         metavar="PATH_OR_TRUE",
         help="HF stage training: resume from checkpoint-* dir, or 'true' / 'last' for latest under --output-dir.",
     )
+    parser.add_argument(
+        "--save-steps",
+        "--save_steps",
+        dest="save_steps",
+        type=int,
+        default=None,
+        metavar="N",
+        help="HF stage training: save a checkpoint every N steps (default: save once per epoch).",
+    )
     return parser.parse_args()
 
 
@@ -680,6 +696,7 @@ def main() -> None:
             gradient_accumulation_steps=args.gradient_accumulation_steps,
             use_mps=not args.no_mps,
             resume_from_checkpoint=args.resume_from_checkpoint,
+            save_steps=args.save_steps,
         )
         return
 
