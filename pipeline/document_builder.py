@@ -1,0 +1,173 @@
+from __future__ import annotations
+
+from typing import Any
+
+import pandas as pd
+
+from .schemas import PROCESSED_DOCUMENT_COLUMNS
+
+
+DEFAULT_BRAND = "unknown"
+DEFAULT_SENTIMENT = 0.0
+DEFAULT_SENTIMENT_LABEL = "neutral"
+DEFAULT_TOPIC = "unclassified"
+DEFAULT_SOURCE = "unknown"
+
+
+def build_stub_sentiment_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
+    if clean_documents.empty:
+        return pd.DataFrame(columns=["doc_id", "sentiment", "sentiment_label"])
+
+    return pd.DataFrame(
+        {
+            "doc_id": clean_documents["doc_id"].astype(str),
+            "sentiment": DEFAULT_SENTIMENT,
+            "sentiment_label": DEFAULT_SENTIMENT_LABEL,
+        }
+    )
+
+
+def build_stub_topic_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
+    if clean_documents.empty:
+        return pd.DataFrame(columns=["doc_id", "topic"])
+
+    return pd.DataFrame(
+        {
+            "doc_id": clean_documents["doc_id"].astype(str),
+            "topic": DEFAULT_TOPIC,
+        }
+    )
+
+
+def _coerce_ner_output(ner_output: pd.DataFrame | None, clean_documents: pd.DataFrame) -> pd.DataFrame:
+    if ner_output is None or ner_output.empty:
+        return pd.DataFrame(
+            {
+                "doc_id": clean_documents["doc_id"].astype(str),
+                "brand": DEFAULT_BRAND,
+            }
+        )
+
+    df = ner_output.copy()
+    if "doc_id" not in df.columns:
+        if "article_url" in df.columns:
+            df["doc_id"] = df["article_url"].astype(str)
+        elif "url" in df.columns:
+            df["doc_id"] = df["url"].astype(str)
+        else:
+            raise ValueError("NER output must include doc_id or a compatible identifier column.")
+
+    if "brand" in df.columns:
+        brand_df = df[["doc_id", "brand"]].copy()
+    elif "canonical_name" in df.columns:
+        brand_df = df[["doc_id", "canonical_name"]].rename(columns={"canonical_name": "brand"})
+    elif "ner_brands" in df.columns:
+        brand_df = df[["doc_id", "ner_brands"]].explode("ner_brands").rename(columns={"ner_brands": "brand"})
+    else:
+        brand_df = pd.DataFrame({"doc_id": clean_documents["doc_id"].astype(str), "brand": DEFAULT_BRAND})
+
+    brand_df["doc_id"] = brand_df["doc_id"].astype(str)
+    brand_df["brand"] = brand_df["brand"].fillna(DEFAULT_BRAND).astype(str)
+    brand_df.loc[brand_df["brand"].str.len() == 0, "brand"] = DEFAULT_BRAND
+    return brand_df.drop_duplicates().reset_index(drop=True)
+
+
+def _coerce_sentiment_output(sentiment_output: pd.DataFrame | None, clean_documents: pd.DataFrame) -> pd.DataFrame:
+    df = build_stub_sentiment_output(clean_documents) if sentiment_output is None or sentiment_output.empty else sentiment_output.copy()
+
+    if "doc_id" not in df.columns:
+        if "article_url" in df.columns:
+            df["doc_id"] = df["article_url"].astype(str)
+        else:
+            raise ValueError("Sentiment output must include doc_id or article_url.")
+
+    if "sentiment" not in df.columns and "sentiment_score" in df.columns:
+        df["sentiment"] = df["sentiment_score"]
+    if "sentiment_label" not in df.columns:
+        df["sentiment_label"] = DEFAULT_SENTIMENT_LABEL
+
+    out = df[["doc_id", "sentiment", "sentiment_label"]].copy()
+    out["doc_id"] = out["doc_id"].astype(str)
+    out["sentiment"] = pd.to_numeric(out["sentiment"], errors="coerce").fillna(DEFAULT_SENTIMENT)
+    out["sentiment_label"] = out["sentiment_label"].fillna(DEFAULT_SENTIMENT_LABEL).astype(str)
+    return out.drop_duplicates(subset=["doc_id"]).reset_index(drop=True)
+
+
+def _coerce_topic_output(topic_output: pd.DataFrame | None, clean_documents: pd.DataFrame) -> pd.DataFrame:
+    df = build_stub_topic_output(clean_documents) if topic_output is None or topic_output.empty else topic_output.copy()
+
+    if "doc_id" not in df.columns:
+        if "article_url" in df.columns:
+            df["doc_id"] = df["article_url"].astype(str)
+        else:
+            raise ValueError("Topic output must include doc_id or article_url.")
+
+    if "topic" not in df.columns and "topic_name" in df.columns:
+        df["topic"] = df["topic_name"]
+    elif "topic" not in df.columns:
+        df["topic"] = DEFAULT_TOPIC
+
+    out = df[["doc_id", "topic"]].copy()
+    out["doc_id"] = out["doc_id"].astype(str)
+    out["topic"] = out["topic"].fillna(DEFAULT_TOPIC).astype(str)
+    return out.drop_duplicates(subset=["doc_id"]).reset_index(drop=True)
+
+
+def build_processed_documents(
+    clean_documents: pd.DataFrame,
+    *,
+    ner_output: pd.DataFrame | None = None,
+    sentiment_output: pd.DataFrame | None = None,
+    topic_output: pd.DataFrame | None = None,
+) -> pd.DataFrame:
+    """
+    Join canonical cleaned documents with downstream model outputs.
+
+    Produces one row per (doc_id, brand). If NER is unavailable, a single
+    fallback brand row is emitted so the rest of the pipeline stays runnable.
+    """
+    if clean_documents.empty:
+        return pd.DataFrame(columns=PROCESSED_DOCUMENT_COLUMNS)
+
+    docs = clean_documents.copy()
+    docs["doc_id"] = docs["doc_id"].astype(str)
+    docs["text"] = docs["text"].fillna("").astype(str)
+    if "source" not in docs.columns:
+        docs["source"] = DEFAULT_SOURCE
+    docs["source"] = docs["source"].fillna(DEFAULT_SOURCE).astype(str)
+    docs["created_utc"] = pd.to_datetime(
+        docs["created_utc"] if "created_utc" in docs.columns else pd.NaT,
+        utc=True,
+        errors="coerce",
+    )
+
+    brand_df = _coerce_ner_output(ner_output, docs)
+    sentiment_df = _coerce_sentiment_output(sentiment_output, docs)
+    topic_df = _coerce_topic_output(topic_output, docs)
+
+    processed = docs.merge(brand_df, on="doc_id", how="left")
+    processed = processed.merge(sentiment_df, on="doc_id", how="left")
+    processed = processed.merge(topic_df, on="doc_id", how="left")
+
+    processed["brand"] = processed["brand"].fillna(DEFAULT_BRAND).astype(str)
+    processed["sentiment"] = pd.to_numeric(processed["sentiment"], errors="coerce").fillna(DEFAULT_SENTIMENT)
+    processed["sentiment_label"] = processed["sentiment_label"].fillna(DEFAULT_SENTIMENT_LABEL).astype(str)
+    processed["topic"] = processed["topic"].fillna(DEFAULT_TOPIC).astype(str)
+    processed["source"] = processed["source"].fillna(DEFAULT_SOURCE).astype(str)
+
+    return processed.loc[:, PROCESSED_DOCUMENT_COLUMNS].drop_duplicates().reset_index(drop=True)
+
+
+def build_processed_document_records(
+    clean_documents: list[dict[str, Any]],
+    *,
+    ner_output: list[dict[str, Any]] | None = None,
+    sentiment_output: list[dict[str, Any]] | None = None,
+    topic_output: list[dict[str, Any]] | None = None,
+) -> pd.DataFrame:
+    return build_processed_documents(
+        pd.DataFrame(clean_documents),
+        ner_output=pd.DataFrame(ner_output or []),
+        sentiment_output=pd.DataFrame(sentiment_output or []),
+        topic_output=pd.DataFrame(topic_output or []),
+    )

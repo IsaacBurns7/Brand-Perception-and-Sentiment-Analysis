@@ -1,4 +1,5 @@
-**/*.csv
-**/*.out
+__pycache__/
+*.pyc
+.mplconfig/
+.env
 .DS_Store
-**/*.env

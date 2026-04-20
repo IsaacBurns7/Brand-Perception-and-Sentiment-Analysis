@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import ruptures as rpt
 from sqlalchemy import create_engine
 
+from pipeline.storage import normalize_processed_documents
 
 
 # CONFIG
@@ -67,11 +68,27 @@ def load_data(engine) -> pd.DataFrame:
     return df
 
 
-def build_daily_aggregation(df: pd.DataFrame) -> pd.DataFrame:
+def ensure_processed_documents(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate and normalize the canonical processed-document shape.
+    """
+    normalized = normalize_processed_documents(df)
+    if normalized.empty:
+        raise ValueError("No valid rows remain after parsing created_utc.")
+
+    return normalized
+
+
+def build_daily_aggregation(
+    processed_documents: pd.DataFrame,
+    *,
+    rolling_window_days: int = ROLLING_WINDOW_DAYS,
+) -> pd.DataFrame:
     """
     Aggregate to daily buckets and reindex to continuous daily dates so
     rolling windows are based on calendar days not just observed rows.
     """
+    df = ensure_processed_documents(processed_documents)
     df["day"] = df["created_utc"].dt.floor("D")
 
     daily = (
@@ -109,19 +126,23 @@ def build_daily_aggregation(df: pd.DataFrame) -> pd.DataFrame:
     # Rolling averages (leaving base avg_sentiment as NaN for missing days so it doesn't skew the mean)
     daily["sentiment_7d"] = (
         daily["avg_sentiment"]
-        .rolling(window=ROLLING_WINDOW_DAYS, min_periods=1)
+        .rolling(window=rolling_window_days, min_periods=1)
         .mean()
     )
     daily["count_7d"] = (
         daily["doc_count"]
-        .rolling(window=ROLLING_WINDOW_DAYS, min_periods=1)
+        .rolling(window=rolling_window_days, min_periods=1)
         .mean()
     )
 
     return daily
 
 
-def detect_changepoints(daily: pd.DataFrame) -> list[pd.Timestamp]:
+def detect_changepoints(
+    daily: pd.DataFrame,
+    *,
+    penalty: int | float = CHANGEPOINT_PENALTY,
+) -> list[pd.Timestamp]:
     """
     Run changepoint detection on the daily sentiment signal.
     """
@@ -131,7 +152,7 @@ def detect_changepoints(daily: pd.DataFrame) -> list[pd.Timestamp]:
         return []
 
     model = rpt.Pelt(model="l2").fit(signal)
-    breakpoints = model.predict(pen=CHANGEPOINT_PENALTY)
+    breakpoints = model.predict(pen=penalty)
 
     cp_idx = [bp - 1 for bp in breakpoints[:-1] if 0 < bp <= len(daily)]
     cp_dates = daily.iloc[cp_idx]["day"].tolist()
@@ -171,6 +192,20 @@ def plot_changepoints(daily: pd.DataFrame, cp_dates: list[pd.Timestamp]) -> None
     plt.close()
 
 
+def run_temporal_aggregation(
+    processed_documents: pd.DataFrame,
+    *,
+    rolling_window_days: int = ROLLING_WINDOW_DAYS,
+    changepoint_penalty: int | float = CHANGEPOINT_PENALTY,
+) -> tuple[pd.DataFrame, list[pd.Timestamp]]:
+    daily = build_daily_aggregation(
+        processed_documents,
+        rolling_window_days=rolling_window_days,
+    )
+    cp_dates = detect_changepoints(daily, penalty=changepoint_penalty)
+    return daily, cp_dates
+
+
 
 # MAIN
 
@@ -184,12 +219,10 @@ def main() -> None:
     print("\nLoaded data preview:")
     print(df.head())
 
-    daily = build_daily_aggregation(df)
+    daily, cp_dates = run_temporal_aggregation(df)
 
     print("\nDaily aggregation preview:")
     print(daily.head())
-
-    cp_dates = detect_changepoints(daily)
 
     print("\nChangepoints:")
     if cp_dates:
@@ -213,4 +246,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()# PR update
+    main()
