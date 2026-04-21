@@ -3,9 +3,26 @@ import importlib
 import logging
 import os
 from pathlib import Path
+import json
+from contextlib import contextmanager
+import time
 
+import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
+from gensim.models.coherencemodel import CoherenceModel
+from rbo import RankingSimilarity
+
+@contextmanager
+def stage(name: str):
+    """Print wall-clock timings for long-running pipeline stages."""
+    start = time.perf_counter()
+    print(f"[timing] start: {name}", flush=True)
+    try:
+        yield
+    finally:
+        elapsed = time.perf_counter() - start
+        print(f"[timing] end:   {name} ({elapsed:.2f}s)", flush=True)
 
 
 def parse_args() -> argparse.Namespace:
@@ -13,6 +30,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", required=True, help="Path to preprocessed CSV")
     parser.add_argument("--text-col", default="cleaned_text", help="Text column to train BERTopic on")
     parser.add_argument("--output-dir", default="./cache/bertopic", help="Directory for BERTopic outputs")
+    parser.add_argument("--eval-path", help = "Path for eval outputs")
     parser.add_argument(
         "--embedding-model",
         default="sentence-transformers/all-MiniLM-L6-v2",
@@ -79,6 +97,149 @@ def _parse_nr_topics(value: str | None):
     if value == "auto":
         return "auto"
     return int(value)
+
+def evaluate_bertopic(
+    topic_model,
+    # docs,
+    tokenized_docs: list[list[str]],
+    dictionary,
+    topics: list[int],
+    # probabilities,
+    topk: int = 10,
+) -> dict:
+    """
+    Evaluate a trained BERTopic model using coherence, outlier rate,
+    topic diversity, and inverted RBO.
+
+    Args:
+        topic_model:    Trained BERTopic instance.
+        docs:           Raw document strings (used for outlier rate).
+        tokenized_docs: Raw tokenized documents (list of list of str) for coherence.
+        dictionary:     Gensim Dictionary built from tokenized_docs.
+        topics:         Topic assignments returned by fit_transform().
+        probabilities:  Probability matrix returned by fit_transform() — may be None
+                        if calculate_probabilities=False.
+        topk:           Number of top words per topic used in all calculations.
+
+    Returns:
+        Dictionary with keys:
+            coherence_cv        – float, c_v coherence (higher = better)
+            coherence_umass     – float, u_mass coherence (less negative = better)
+            coherence_cnpmi     – float, c_npmi coherence (higher = better)
+            coherence_cuci      – float, c_uci coherence (higher = better)
+            outlier_rate        – float in [0, 1], fraction of docs assigned to topic -1
+            topic_diversity     – float in [0, 1] (higher = less redundancy)
+            inverted_rbo        – float in [0, 1] (higher = more distinct topic rankings)
+            mean_topic_size     – float, average number of docs per non-outlier topic
+            std_topic_size      – float, std dev of topic sizes (high = imbalanced)
+            num_topics          – int, number of topics excluding outlier topic -1
+            top_words           – list of lists of str, top-k words per topic
+    """
+
+    # ------------------------------------------------------------------ #
+    # 1. Extract top-k words for every non-outlier topic.
+    #    get_topic() returns [(word, score), ...]; topic -1 is the outlier
+    #    bucket and has no meaningful word distribution so we skip it.
+    # ------------------------------------------------------------------ #
+    topic_ids = [tid for tid in topic_model.get_topics().keys() if tid != -1]
+    top_words: list[list[str]] = []
+    for tid in topic_ids:
+        words = topic_model.get_topic(tid)
+        if words:  # get_topic() returns False for empty/missing topics
+            top_words.append([word for word, _ in words[:topk]])
+
+    num_topics = len(top_words)
+
+    # ------------------------------------------------------------------ #
+    # 2. Coherence — identical approach to evaluate_lda().
+    #    We reuse the Gensim CoherenceModel by passing top_words directly
+    #    instead of a Gensim model object, which both APIs support.
+    # ------------------------------------------------------------------ #
+    valid_vocab = set(dictionary.token2id.keys())
+
+    # CoherenceModel requires topic words to exist in dictionary vocab.
+    # BERTopic phrase presets can emit n-grams that are absent from this unigram dictionary.
+    topics_for_coherence = []
+    for topic in top_words:
+        cleaned_topic = []
+        for tok in topic:
+            tok_str = str(tok).strip()
+            if tok_str and tok_str in valid_vocab:
+                cleaned_topic.append(tok_str)
+        if len(cleaned_topic) >= 2:
+            topics_for_coherence.append(cleaned_topic)
+
+    def _coherence(metric: str) -> float:
+        if not topics_for_coherence:
+            return float(np.nan)
+
+        kwargs = dict(topics=topics_for_coherence, dictionary=dictionary, coherence=metric)
+        if metric == "u_mass":
+            kwargs["corpus"] = [dictionary.doc2bow(doc) for doc in tokenized_docs]
+        else:
+            kwargs["texts"] = tokenized_docs
+
+        try:
+            return CoherenceModel(**kwargs).get_coherence()
+        except Exception:
+            return float(np.nan)
+
+    coherence_cv = _coherence("c_v")
+    coherence_umass = _coherence("u_mass")
+    coherence_cnpmi = _coherence("c_npmi")
+    coherence_cuci = _coherence("c_uci")
+
+    # ------------------------------------------------------------------ #
+    # 3. Outlier rate.
+    #    HDBSCAN assigns topic -1 to documents it cannot cluster.
+    #    High outlier rates (>20–30%) suggest min_cluster_size is too large
+    #    or the corpus is too heterogeneous for the chosen embeddings.
+    # ------------------------------------------------------------------ #
+    outlier_rate: float = sum(1 for t in topics if t == -1) / len(topics)
+
+    # ------------------------------------------------------------------ #
+    # 4. Topic size distribution (excluding outliers).
+    #    High std_topic_size relative to mean indicates a few mega-topics
+    #    dominating and many tiny ones — a sign of poor granularity.
+    # ------------------------------------------------------------------ #
+    topic_info = topic_model.get_topic_info()
+    non_outlier_sizes = topic_info.loc[topic_info["Topic"] != -1, "Count"].values
+    mean_topic_size = float(np.mean(non_outlier_sizes)) if len(non_outlier_sizes) else 0.0
+    std_topic_size  = float(np.std(non_outlier_sizes))  if len(non_outlier_sizes) else 0.0
+
+    # ------------------------------------------------------------------ #
+    # 5. Topic diversity — same formula as evaluate_lda().
+    # ------------------------------------------------------------------ #
+    all_top_words = [word for topic in top_words for word in topic]
+    topic_diversity: float = len(set(all_top_words)) / len(all_top_words) if all_top_words else 0.0
+
+    # ------------------------------------------------------------------ #
+    # 6. Inverted RBO — same formula as evaluate_lda().
+    # ------------------------------------------------------------------ #
+    rbo_scores: list[float] = []
+    for i in range(num_topics):
+        for j in range(i + 1, num_topics):
+            list_i = list(dict.fromkeys(top_words[i]))
+            list_j = list(dict.fromkeys(top_words[j]))
+
+            score = RankingSimilarity(list_i, list_j).rbo()
+            rbo_scores.append(score)
+
+    inverted_rbo: float = 1.0 - float(np.mean(rbo_scores)) if rbo_scores else 1.0
+
+    return {
+        "coherence_cv":     coherence_cv,
+        "coherence_umass":  coherence_umass,
+        "coherence_cnpmi":  coherence_cnpmi,
+        "coherence_cuci":   coherence_cuci,
+        "outlier_rate":     outlier_rate,
+        "topic_diversity":  topic_diversity,
+        "inverted_rbo":     inverted_rbo,
+        "mean_topic_size":  mean_topic_size,
+        "std_topic_size":   std_topic_size,
+        "num_topics":       num_topics,
+        "top_words":        top_words,
+    }
 
 
 def main() -> None:
@@ -148,7 +309,7 @@ def main() -> None:
 
     log.info("Loading input CSV: %s", args.input)
     df = pd.read_csv(args.input, low_memory=False)
-    # df = df.head(1000)
+    # df = df.head(10000)
     if args.text_col not in df.columns:
         raise ValueError(f"Column '{args.text_col}' not found in input CSV")
 
@@ -244,6 +405,67 @@ def main() -> None:
     topic_model.save(str(model_path), save_ctfidf=True)
     log.info("Saved model: %s", model_path)
 
+    # ================================================================= #
+    # Prepare tokenized documents and Gensim dictionary for evaluation
+    # ================================================================= #
+    log.info("Preparing evaluation data ...")
+    try:
+        nltk_module = importlib.import_module("nltk")
+        from nltk.corpus import stopwords
+        from nltk.tokenize import word_tokenize
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "nltk is not installed. Install with: pip install nltk"
+        ) from exc
+ 
+    try:
+        from gensim.corpora import Dictionary
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "gensim is not installed. Install with: pip install gensim"
+        ) from exc
+ 
+    # Download required NLTK data if not already present
+    try:
+        stopwords.words('english')
+        word_tokenize("test")
+    except LookupError:
+        nltk_module.download('stopwords', quiet=True)
+        nltk_module.download('punkt', quiet=True)
+        nltk_module.download('punkt_tab', quiet=True)
+ 
+    stop_words = set(stopwords.words('english'))
+    tokenized_docs = [
+        [word.lower() for word in word_tokenize(doc) 
+         if word.isalpha() and word.lower() not in stop_words]
+        for doc in docs
+    ]
+ 
+    dictionary = Dictionary(tokenized_docs)
+    dictionary.filter_extremes(no_below=args.min_df, no_above=0.95)
+ 
+    eval_path = Path(args.eval_path)
+    evaluation_json = evaluate_bertopic(
+        topic_model=topic_model,
+        tokenized_docs=tokenized_docs,
+        dictionary=dictionary,
+        topics=topics,
+        topk=args.top_n_words,
+    )
+
+    # cache_path.mkdir(parents=True, exist_ok=True)
+    # model_path = cache_path / "lda_model.gensim"
+    # dictionary_path = cache_path / "lda_dictionary.gensim"
+
+    # with stage("save LDA artifacts"):
+    #     lda_model.save(str(model_path))
+    #     dictionary.save(str(dictionary_path))
+    #     with open(evaluation_path, 'w') as f:
+    #         json.dump(evaluation, f, indent=2)
+    with stage("Evaluation"):
+        with open(eval_path, 'w') as f:
+            json.dump(evaluation_json, f, indent=2)
+        log.info("Saved eval: %s", eval_path)
 
 if __name__ == "__main__":
     main()

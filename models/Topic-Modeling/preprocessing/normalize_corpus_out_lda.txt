@@ -1,0 +1,456 @@
+17:21:26 [INFO]   Loaded 5000 rows.
+17:21:26 [INFO]   4504 rows after dropping nulls.
+17:21:26 [INFO] Loading spaCy model 'en_core_web_md' ...
+17:21:30 [INFO] Running spaCy pipeline (batch_size=100) ...
+17:21:30 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 263.3 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.001s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 263.5 MB
+  RSS delta        : +0.2 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.005s
+  CPU user/sys     : 0.003s / 0.002s
+  Peak RSS         : 269.8 MB
+  RSS delta        : +6.2 MB
+  Tracemalloc peak : 0.1 MB
+
+── Load spaCy model and stopwords ──
+  Wall time        : 4.044s
+  CPU user/sys     : 3.771s / 0.151s
+  Peak RSS         : 508.3 MB
+  RSS delta        : +238.5 MB
+  Tracemalloc peak : 237.4 MB
+
+── Initialize token columns ──
+  Wall time        : 0.002s
+  CPU user/sys     : 0.002s / 0.001s
+  Peak RSS         : 509.8 MB
+  RSS delta        : +1.5 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/46 [00:00<?, ?it/s]Clean Batches:   4%|▍         | 2/46 [00:00<00:03, 12.75it/s]Clean Batches:   9%|▊         | 4/46 [00:00<00:02, 14.58it/s]Clean Batches:  13%|█▎        | 6/46 [00:00<00:02, 14.47it/s]Clean Batches:  17%|█▋        | 8/46 [00:00<00:02, 14.88it/s]Clean Batches:  22%|██▏       | 10/46 [00:00<00:02, 15.52it/s]Clean Batches:  26%|██▌       | 12/46 [00:00<00:02, 16.19it/s]Clean Batches:  30%|███       | 14/46 [00:00<00:01, 16.46it/s]Clean Batches:  37%|███▋      | 17/46 [00:01<00:01, 17.85it/s]Clean Batches:  41%|████▏     | 19/46 [00:01<00:01, 18.36it/s]Clean Batches:  46%|████▌     | 21/46 [00:01<00:01, 17.95it/s]Clean Batches:  50%|█████     | 23/46 [00:01<00:01, 18.22it/s]Clean Batches:  54%|█████▍    | 25/46 [00:01<00:01, 17.65it/s]Clean Batches:  59%|█████▊    | 27/46 [00:01<00:01, 18.13it/s]Clean Batches:  63%|██████▎   | 29/46 [00:01<00:00, 18.24it/s]Clean Batches:  67%|██████▋   | 31/46 [00:01<00:00, 18.19it/s]Clean Batches:  74%|███████▍  | 34/46 [00:01<00:00, 18.56it/s]Clean Batches:  78%|███████▊  | 36/46 [00:02<00:00, 18.88it/s]Clean Batches:  83%|████████▎ | 38/46 [00:02<00:00, 19.08it/s]Clean Batches:  87%|████████▋ | 40/46 [00:02<00:00, 19.10it/s]Clean Batches:  93%|█████████▎| 43/46 [00:02<00:00, 19.23it/s]Clean Batches: 100%|██████████| 46/46 [00:02<00:00, 20.36it/s]Clean Batches: 100%|██████████| 46/46 [00:02<00:00, 17.94it/s]
+17:21:33 [INFO] Tokenizing full corpus in one spaCy pipe pass (n_process=4) ...
+
+── Clean text batches ──
+  Wall time        : 2.572s
+  CPU user/sys     : 2.108s / 0.443s
+  Peak RSS         : 572.5 MB
+  RSS delta        : +62.7 MB
+  Tracemalloc peak : 234.0 MB
+Tokenize Docs:   0%|          | 0/4504 [00:00<?, ?doc/s]Tokenize Docs: 100%|██████████| 4504/4504 [01:04<00:00, 69.35doc/s]
+17:22:38 [INFO] Applying n-gram detection (min_count=15, threshold=10.00) ...
+17:22:38 [INFO] collecting all words and their counts
+17:22:38 [INFO] PROGRESS: at sentence #0, processed 0 words and 0 word types
+17:22:40 [INFO] collected 180915 token types (unigram + bigrams) from a corpus of 291222 words and 4504 sentences
+17:22:40 [INFO] merged Phrases<180915 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:22:40 [INFO] Phrases lifecycle event {'msg': 'built Phrases<180915 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 1.67s', 'datetime': '2026-04-15T17:22:40.205746', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:22:40 [INFO] exporting phrases from Phrases<180915 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:22:41 [INFO] FrozenPhrases lifecycle event {'msg': 'exported FrozenPhrases<416 phrases, min_count=15, threshold=10.0> from Phrases<180915 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 0.89s', 'datetime': '2026-04-15T17:22:41.141637', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:22:41 [INFO] Building vocabulary and filtering rare tokens ...
+17:22:41 [INFO] Vocabulary: 13771 unique tokens before filtering -> 5224 after (min_freq=5, min_doc_freq=2)
+17:22:41 [INFO] Dropped 0 empty documents after filtering.
+17:22:41 [INFO] Final corpus: 4504 documents.
+17:22:41 [INFO] Saved normalized output to ../data/lda/reuters.csv
+17:22:41 [INFO] Token stats -> mean: 57.1 | median: 39.0 | min: 2 | max: 550
+17:22:41 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+17:22:42 [INFO]   Loaded 5000 rows.
+17:22:42 [INFO]   4517 rows after dropping nulls.
+17:22:42 [INFO] Loading spaCy model 'en_core_web_md' ...
+17:22:46 [INFO] Running spaCy pipeline (batch_size=100) ...
+17:22:46 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Tokenize corpus with spaCy ──
+  Wall time        : 64.954s
+  CPU user/sys     : 62.107s / 2.295s
+  Peak RSS         : 762.8 MB
+  RSS delta        : +190.2 MB
+  Tracemalloc peak : 386.3 MB
+
+── Optional n-gram detection ──
+  Wall time        : 3.180s
+  CPU user/sys     : 3.024s / 0.063s
+  Peak RSS         : 548.5 MB
+  RSS delta        : -214.6 MB
+  Tracemalloc peak : 19.9 MB
+
+── Compute token strings and counts ──
+  Wall time        : 0.021s
+  CPU user/sys     : 0.017s / 0.003s
+  Peak RSS         : 556.7 MB
+  RSS delta        : +8.2 MB
+  Tracemalloc peak : 2.4 MB
+
+── Build vocabulary and filter rare tokens ──
+  Wall time        : 0.142s
+  CPU user/sys     : 0.139s / 0.002s
+  Peak RSS         : 561.5 MB
+  RSS delta        : +4.8 MB
+  Tracemalloc peak : 5.2 MB
+
+── Drop empty documents ──
+  Wall time        : 0.001s
+  CPU user/sys     : 0.001s / 0.000s
+  Peak RSS         : 562.2 MB
+  RSS delta        : +0.8 MB
+  Tracemalloc peak : 0.0 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.049s
+  CPU user/sys     : 0.045s / 0.003s
+  Peak RSS         : 566.5 MB
+  RSS delta        : +4.3 MB
+  Tracemalloc peak : 2.4 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.045s
+  CPU user/sys     : 0.044s / 0.001s
+  Peak RSS         : 567.3 MB
+  RSS delta        : +0.2 MB
+  Tracemalloc peak : 0.1 MB
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 579.3 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 579.3 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.003s
+  CPU user/sys     : 0.002s / 0.001s
+  Peak RSS         : 584.2 MB
+  RSS delta        : +4.9 MB
+  Tracemalloc peak : 0.1 MB
+
+── Load spaCy model and stopwords ──
+  Wall time        : 3.674s
+  CPU user/sys     : 3.404s / 0.207s
+  Peak RSS         : 384.4 MB
+  RSS delta        : -199.8 MB
+  Tracemalloc peak : 235.7 MB
+
+── Initialize token columns ──
+  Wall time        : 0.006s
+  CPU user/sys     : 0.001s / 0.002s
+  Peak RSS         : 391.6 MB
+  RSS delta        : +7.0 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/46 [00:00<?, ?it/s]Clean Batches:   7%|▋         | 3/46 [00:00<00:02, 20.98it/s]Clean Batches:  13%|█▎        | 6/46 [00:00<00:01, 20.10it/s]Clean Batches:  20%|█▉        | 9/46 [00:00<00:01, 20.30it/s]Clean Batches:  26%|██▌       | 12/46 [00:00<00:01, 19.49it/s]Clean Batches:  30%|███       | 14/46 [00:00<00:01, 18.48it/s]Clean Batches:  37%|███▋      | 17/46 [00:00<00:01, 19.09it/s]Clean Batches:  41%|████▏     | 19/46 [00:00<00:01, 18.81it/s]Clean Batches:  48%|████▊     | 22/46 [00:01<00:01, 19.27it/s]Clean Batches:  52%|█████▏    | 24/46 [00:01<00:01, 19.38it/s]Clean Batches:  57%|█████▋    | 26/46 [00:01<00:01, 19.24it/s]Clean Batches:  61%|██████    | 28/46 [00:01<00:00, 18.99it/s]Clean Batches:  65%|██████▌   | 30/46 [00:01<00:00, 18.88it/s]Clean Batches:  70%|██████▉   | 32/46 [00:01<00:00, 19.00it/s]Clean Batches:  74%|███████▍  | 34/46 [00:01<00:00, 19.24it/s]Clean Batches:  78%|███████▊  | 36/46 [00:01<00:00, 19.27it/s]Clean Batches:  83%|████████▎ | 38/46 [00:01<00:00, 18.80it/s]Clean Batches:  87%|████████▋ | 40/46 [00:02<00:00, 19.05it/s]Clean Batches:  91%|█████████▏| 42/46 [00:02<00:00, 18.96it/s]Clean Batches:  96%|█████████▌| 44/46 [00:02<00:00, 18.67it/s]Clean Batches: 100%|██████████| 46/46 [00:02<00:00, 19.33it/s]
+17:22:48 [INFO] Tokenizing full corpus in one spaCy pipe pass (n_process=4) ...
+
+── Clean text batches ──
+  Wall time        : 2.380s
+  CPU user/sys     : 2.071s / 0.305s
+  Peak RSS         : 519.8 MB
+  RSS delta        : +128.1 MB
+  Tracemalloc peak : 106.1 MB
+Tokenize Docs:   0%|          | 0/4517 [00:00<?, ?doc/s]Tokenize Docs: 100%|██████████| 4517/4517 [01:00<00:00, 74.25doc/s]
+17:23:49 [INFO] Applying n-gram detection (min_count=15, threshold=10.00) ...
+17:23:49 [INFO] collecting all words and their counts
+17:23:49 [INFO] PROGRESS: at sentence #0, processed 0 words and 0 word types
+17:23:50 [INFO] collected 169417 token types (unigram + bigrams) from a corpus of 279319 words and 4517 sentences
+17:23:50 [INFO] merged Phrases<169417 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:23:50 [INFO] Phrases lifecycle event {'msg': 'built Phrases<169417 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 1.59s', 'datetime': '2026-04-15T17:23:50.882947', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:23:50 [INFO] exporting phrases from Phrases<169417 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:23:51 [INFO] FrozenPhrases lifecycle event {'msg': 'exported FrozenPhrases<418 phrases, min_count=15, threshold=10.0> from Phrases<169417 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 0.69s', 'datetime': '2026-04-15T17:23:51.577284', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:23:52 [INFO] Building vocabulary and filtering rare tokens ...
+17:23:52 [INFO] Vocabulary: 13204 unique tokens before filtering -> 5016 after (min_freq=5, min_doc_freq=2)
+17:23:52 [INFO] Dropped 0 empty documents after filtering.
+17:23:52 [INFO] Final corpus: 4517 documents.
+17:23:52 [INFO] Saved normalized output to ../data/lda/reuters.csv
+17:23:52 [INFO] Token stats -> mean: 54.5 | median: 37.0 | min: 3 | max: 406
+17:23:52 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+17:23:52 [INFO]   Loaded 5000 rows.
+17:23:52 [INFO]   4577 rows after dropping nulls.
+17:23:52 [INFO] Loading spaCy model 'en_core_web_md' ...
+17:23:56 [INFO] Running spaCy pipeline (batch_size=100) ...
+17:23:56 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Tokenize corpus with spaCy ──
+  Wall time        : 60.853s
+  CPU user/sys     : 58.533s / 2.039s
+  Peak RSS         : 948.9 MB
+  RSS delta        : +429.2 MB
+  Tracemalloc peak : 345.3 MB
+
+── Optional n-gram detection ──
+  Wall time        : 2.805s
+  CPU user/sys     : 2.766s / 0.027s
+  Peak RSS         : 833.7 MB
+  RSS delta        : -115.6 MB
+  Tracemalloc peak : 15.4 MB
+
+── Compute token strings and counts ──
+  Wall time        : 0.028s
+  CPU user/sys     : 0.018s / 0.004s
+  Peak RSS         : 842.7 MB
+  RSS delta        : +9.0 MB
+  Tracemalloc peak : 2.3 MB
+
+── Build vocabulary and filter rare tokens ──
+  Wall time        : 0.134s
+  CPU user/sys     : 0.131s / 0.002s
+  Peak RSS         : 846.4 MB
+  RSS delta        : +3.7 MB
+  Tracemalloc peak : 5.0 MB
+
+── Drop empty documents ──
+  Wall time        : 0.003s
+  CPU user/sys     : 0.001s / 0.001s
+  Peak RSS         : 847.4 MB
+  RSS delta        : +1.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.057s
+  CPU user/sys     : 0.043s / 0.004s
+  Peak RSS         : 853.2 MB
+  RSS delta        : +5.8 MB
+  Tracemalloc peak : 2.2 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.045s
+  CPU user/sys     : 0.043s / 0.001s
+  Peak RSS         : 850.3 MB
+  RSS delta        : -3.7 MB
+  Tracemalloc peak : 0.1 MB
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 868.2 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 868.2 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.007s
+  CPU user/sys     : 0.003s / 0.001s
+  Peak RSS         : 871.2 MB
+  RSS delta        : +3.0 MB
+  Tracemalloc peak : 0.1 MB
+
+── Load spaCy model and stopwords ──
+  Wall time        : 3.485s
+  CPU user/sys     : 3.280s / 0.135s
+  Peak RSS         : 492.7 MB
+  RSS delta        : -378.6 MB
+  Tracemalloc peak : 235.4 MB
+
+── Initialize token columns ──
+  Wall time        : 0.005s
+  CPU user/sys     : 0.001s / 0.001s
+  Peak RSS         : 493.2 MB
+  RSS delta        : +0.6 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/46 [00:00<?, ?it/s]Clean Batches:   4%|▍         | 2/46 [00:00<00:02, 17.03it/s]Clean Batches:   9%|▊         | 4/46 [00:00<00:02, 17.29it/s]Clean Batches:  13%|█▎        | 6/46 [00:00<00:02, 18.28it/s]Clean Batches:  17%|█▋        | 8/46 [00:00<00:02, 17.97it/s]Clean Batches:  22%|██▏       | 10/46 [00:00<00:02, 17.80it/s]Clean Batches:  26%|██▌       | 12/46 [00:00<00:01, 17.86it/s]Clean Batches:  30%|███       | 14/46 [00:00<00:01, 16.91it/s]Clean Batches:  35%|███▍      | 16/46 [00:00<00:01, 17.37it/s]Clean Batches:  39%|███▉      | 18/46 [00:01<00:01, 17.90it/s]Clean Batches:  43%|████▎     | 20/46 [00:01<00:01, 17.85it/s]Clean Batches:  48%|████▊     | 22/46 [00:01<00:01, 18.03it/s]Clean Batches:  52%|█████▏    | 24/46 [00:01<00:01, 18.10it/s]Clean Batches:  57%|█████▋    | 26/46 [00:01<00:01, 18.55it/s]Clean Batches:  63%|██████▎   | 29/46 [00:01<00:00, 18.91it/s]Clean Batches:  67%|██████▋   | 31/46 [00:01<00:00, 18.71it/s]Clean Batches:  72%|███████▏  | 33/46 [00:01<00:00, 18.81it/s]Clean Batches:  76%|███████▌  | 35/46 [00:01<00:00, 18.52it/s]Clean Batches:  80%|████████  | 37/46 [00:02<00:00, 18.72it/s]Clean Batches:  85%|████████▍ | 39/46 [00:02<00:00, 18.43it/s]Clean Batches:  89%|████████▉ | 41/46 [00:02<00:00, 17.60it/s]Clean Batches:  93%|█████████▎| 43/46 [00:02<00:00, 16.27it/s]Clean Batches:  98%|█████████▊| 45/46 [00:02<00:00, 16.37it/s]Clean Batches: 100%|██████████| 46/46 [00:02<00:00, 17.76it/s]
+17:23:58 [INFO] Tokenizing full corpus in one spaCy pipe pass (n_process=4) ...
+
+── Clean text batches ──
+  Wall time        : 2.591s
+  CPU user/sys     : 2.238s / 0.334s
+  Peak RSS         : 521.6 MB
+  RSS delta        : +28.3 MB
+  Tracemalloc peak : 116.3 MB
+Tokenize Docs:   0%|          | 0/4577 [00:00<?, ?doc/s]Tokenize Docs: 100%|██████████| 4577/4577 [01:11<00:00, 63.58doc/s]
+17:25:10 [INFO] Applying n-gram detection (min_count=15, threshold=10.00) ...
+17:25:10 [INFO] collecting all words and their counts
+17:25:10 [INFO] PROGRESS: at sentence #0, processed 0 words and 0 word types
+17:25:12 [INFO] collected 186531 token types (unigram + bigrams) from a corpus of 315260 words and 4577 sentences
+17:25:12 [INFO] merged Phrases<186531 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:25:12 [INFO] Phrases lifecycle event {'msg': 'built Phrases<186531 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 1.83s', 'datetime': '2026-04-15T17:25:12.734596', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:25:12 [INFO] exporting phrases from Phrases<186531 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:25:13 [INFO] FrozenPhrases lifecycle event {'msg': 'exported FrozenPhrases<469 phrases, min_count=15, threshold=10.0> from Phrases<186531 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 0.78s', 'datetime': '2026-04-15T17:25:13.518127', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:25:14 [INFO] Building vocabulary and filtering rare tokens ...
+17:25:14 [INFO] Vocabulary: 13507 unique tokens before filtering -> 5396 after (min_freq=5, min_doc_freq=2)
+17:25:14 [INFO] Dropped 0 empty documents after filtering.
+17:25:14 [INFO] Final corpus: 4577 documents.
+17:25:14 [INFO] Saved normalized output to ../data/lda/reuters.csv
+17:25:14 [INFO] Token stats -> mean: 60.9 | median: 40.0 | min: 2 | max: 462
+17:25:14 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+17:25:14 [INFO]   Loaded 4813 rows.
+17:25:14 [INFO]   4420 rows after dropping nulls.
+17:25:14 [INFO] Loading spaCy model 'en_core_web_md' ...
+17:25:18 [INFO] Running spaCy pipeline (batch_size=100) ...
+17:25:18 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Tokenize corpus with spaCy ──
+  Wall time        : 72.006s
+  CPU user/sys     : 68.098s / 2.895s
+  Peak RSS         : 504.3 MB
+  RSS delta        : -17.2 MB
+  Tracemalloc peak : 399.4 MB
+
+── Optional n-gram detection ──
+  Wall time        : 3.207s
+  CPU user/sys     : 3.157s / 0.038s
+  Peak RSS         : 399.7 MB
+  RSS delta        : -105.0 MB
+  Tracemalloc peak : 20.4 MB
+
+── Compute token strings and counts ──
+  Wall time        : 0.027s
+  CPU user/sys     : 0.019s / 0.004s
+  Peak RSS         : 410.0 MB
+  RSS delta        : +10.3 MB
+  Tracemalloc peak : 2.6 MB
+
+── Build vocabulary and filter rare tokens ──
+  Wall time        : 0.151s
+  CPU user/sys     : 0.148s / 0.002s
+  Peak RSS         : 414.2 MB
+  RSS delta        : +4.2 MB
+  Tracemalloc peak : 5.6 MB
+
+── Drop empty documents ──
+  Wall time        : 0.002s
+  CPU user/sys     : 0.001s / 0.000s
+  Peak RSS         : 415.2 MB
+  RSS delta        : +1.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.055s
+  CPU user/sys     : 0.047s / 0.003s
+  Peak RSS         : 421.3 MB
+  RSS delta        : +6.1 MB
+  Tracemalloc peak : 2.5 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.050s
+  CPU user/sys     : 0.050s / 0.001s
+  Peak RSS         : 422.5 MB
+  RSS delta        : +0.5 MB
+  Tracemalloc peak : 0.1 MB
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 428.5 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 428.5 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.005s
+  CPU user/sys     : 0.002s / 0.001s
+  Peak RSS         : 433.1 MB
+  RSS delta        : +4.6 MB
+  Tracemalloc peak : 0.1 MB
+
+── Load spaCy model and stopwords ──
+  Wall time        : 3.901s
+  CPU user/sys     : 3.551s / 0.172s
+  Peak RSS         : 407.9 MB
+  RSS delta        : -25.2 MB
+  Tracemalloc peak : 235.1 MB
+
+── Initialize token columns ──
+  Wall time        : 0.004s
+  CPU user/sys     : 0.002s / 0.002s
+  Peak RSS         : 414.7 MB
+  RSS delta        : +6.5 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/45 [00:00<?, ?it/s]Clean Batches:   4%|▍         | 2/45 [00:00<00:03, 13.69it/s]Clean Batches:   9%|▉         | 4/45 [00:00<00:02, 15.09it/s]Clean Batches:  13%|█▎        | 6/45 [00:00<00:02, 15.64it/s]Clean Batches:  18%|█▊        | 8/45 [00:00<00:02, 15.76it/s]Clean Batches:  22%|██▏       | 10/45 [00:00<00:02, 15.77it/s]Clean Batches:  27%|██▋       | 12/45 [00:00<00:02, 16.14it/s]Clean Batches:  31%|███       | 14/45 [00:00<00:01, 16.26it/s]Clean Batches:  36%|███▌      | 16/45 [00:00<00:01, 16.63it/s]Clean Batches:  40%|████      | 18/45 [00:01<00:01, 16.06it/s]Clean Batches:  44%|████▍     | 20/45 [00:01<00:01, 16.63it/s]Clean Batches:  49%|████▉     | 22/45 [00:01<00:01, 16.47it/s]Clean Batches:  53%|█████▎    | 24/45 [00:01<00:01, 16.73it/s]Clean Batches:  58%|█████▊    | 26/45 [00:01<00:01, 17.06it/s]Clean Batches:  62%|██████▏   | 28/45 [00:01<00:01, 16.98it/s]Clean Batches:  67%|██████▋   | 30/45 [00:01<00:00, 17.52it/s]Clean Batches:  71%|███████   | 32/45 [00:01<00:00, 17.72it/s]Clean Batches:  76%|███████▌  | 34/45 [00:02<00:00, 17.34it/s]Clean Batches:  80%|████████  | 36/45 [00:02<00:00, 17.16it/s]Clean Batches:  84%|████████▍ | 38/45 [00:02<00:00, 17.26it/s]Clean Batches:  89%|████████▉ | 40/45 [00:02<00:00, 17.29it/s]Clean Batches:  93%|█████████▎| 42/45 [00:02<00:00, 17.44it/s]Clean Batches:  98%|█████████▊| 44/45 [00:02<00:00, 17.81it/s]Clean Batches: 100%|██████████| 45/45 [00:02<00:00, 16.94it/s]
+17:25:21 [INFO] Tokenizing full corpus in one spaCy pipe pass (n_process=4) ...
+
+── Clean text batches ──
+  Wall time        : 2.657s
+  CPU user/sys     : 2.089s / 0.528s
+  Peak RSS         : 409.9 MB
+  RSS delta        : -4.8 MB
+  Tracemalloc peak : 148.2 MB
+Tokenize Docs:   0%|          | 0/4420 [00:00<?, ?doc/s]Tokenize Docs: 100%|██████████| 4420/4420 [01:08<00:00, 64.46doc/s]
+17:26:30 [INFO] Applying n-gram detection (min_count=15, threshold=10.00) ...
+17:26:30 [INFO] collecting all words and their counts
+17:26:30 [INFO] PROGRESS: at sentence #0, processed 0 words and 0 word types
+17:26:31 [INFO] collected 181308 token types (unigram + bigrams) from a corpus of 302802 words and 4420 sentences
+17:26:31 [INFO] merged Phrases<181308 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:26:31 [INFO] Phrases lifecycle event {'msg': 'built Phrases<181308 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 1.75s', 'datetime': '2026-04-15T17:26:31.778974', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:26:31 [INFO] exporting phrases from Phrases<181308 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000>
+17:26:32 [INFO] FrozenPhrases lifecycle event {'msg': 'exported FrozenPhrases<454 phrases, min_count=15, threshold=10.0> from Phrases<181308 vocab, min_count=15, threshold=10.0, max_vocab_size=40000000> in 0.78s', 'datetime': '2026-04-15T17:26:32.554362', 'gensim': '4.4.0', 'python': '3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]', 'platform': 'macOS-15.6.1-arm64-arm-64bit-Mach-O', 'event': 'created'}
+17:26:33 [INFO] Building vocabulary and filtering rare tokens ...
+17:26:33 [INFO] Vocabulary: 13486 unique tokens before filtering -> 5329 after (min_freq=5, min_doc_freq=2)
+17:26:33 [INFO] Dropped 1 empty documents after filtering.
+17:26:33 [INFO] Final corpus: 4419 documents.
+17:26:33 [INFO] Saved normalized output to ../data/lda/reuters.csv
+17:26:33 [INFO] Token stats -> mean: 60.7 | median: 40.0 | min: 3 | max: 647
+17:26:33 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+
+── Tokenize corpus with spaCy ──
+  Wall time        : 68.589s
+  CPU user/sys     : 64.980s / 2.784s
+  Peak RSS         : 517.0 MB
+  RSS delta        : +107.1 MB
+  Tracemalloc peak : 378.5 MB
+
+── Optional n-gram detection ──
+  Wall time        : 3.103s
+  CPU user/sys     : 3.051s / 0.035s
+  Peak RSS         : 403.1 MB
+  RSS delta        : -114.4 MB
+  Tracemalloc peak : 19.9 MB
+
+── Compute token strings and counts ──
+  Wall time        : 0.029s
+  CPU user/sys     : 0.018s / 0.004s
+  Peak RSS         : 413.4 MB
+  RSS delta        : +10.3 MB
+  Tracemalloc peak : 2.5 MB
+
+── Build vocabulary and filter rare tokens ──
+  Wall time        : 0.153s
+  CPU user/sys     : 0.148s / 0.005s
+  Peak RSS         : 412.8 MB
+  RSS delta        : -0.6 MB
+  Tracemalloc peak : 5.4 MB
+
+── Drop empty documents ──
+  Wall time        : 0.018s
+  CPU user/sys     : 0.002s / 0.005s
+  Peak RSS         : 420.9 MB
+  RSS delta        : +8.1 MB
+  Tracemalloc peak : 0.1 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.053s
+  CPU user/sys     : 0.045s / 0.003s
+  Peak RSS         : 416.4 MB
+  RSS delta        : -4.5 MB
+  Tracemalloc peak : 2.4 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.049s
+  CPU user/sys     : 0.048s / 0.001s
+  Peak RSS         : 417.5 MB
+  RSS delta        : +0.5 MB
+  Tracemalloc peak : 0.1 MB

@@ -1,128 +1,128 @@
 {
-  "input_path": "../data/rating.csv",
-  "output_path": "../data/lda/rating.csv",
-  "text_col": "article",
-  "pre_empty_filter_docs": 5000,
-  "final_docs": 5000,
-  "dropped_empty_docs": 0,
-  "empty_docs_removed_pct": 0.0,
-  "tokens_before_rare_filter": 1781738,
-  "tokens_after_rare_filter": 1650764,
-  "tokens_removed_by_rare_filter": 130974,
-  "tokens_removed_by_rare_filter_pct": 7.3509,
-  "vocab_size_before_filtering": 46149,
-  "vocab_size_after_filtering": 19651,
+  "input_path": "../data/ModLewis_train.csv",
+  "output_path": "../data/lda/ModLewis_train.csv",
+  "text_col": "text",
+  "pre_empty_filter_docs": 3340,
+  "final_docs": 3339,
+  "dropped_empty_docs": 1,
+  "empty_docs_removed_pct": 0.0299,
+  "tokens_before_rare_filter": 214394,
+  "tokens_after_rare_filter": 200727,
+  "tokens_removed_by_rare_filter": 13667,
+  "tokens_removed_by_rare_filter_pct": 6.3747,
+  "vocab_size_before_filtering": 11872,
+  "vocab_size_after_filtering": 4472,
   "ngrams": {
     "enabled": true,
     "min_count": 15,
     "threshold": 10.0
   },
   "token_stats": {
-    "mean": 330.1528,
-    "median": 212.0,
-    "min": 4,
-    "max": 12047
+    "mean": 60.11590296495957,
+    "median": 40.0,
+    "min": 3,
+    "max": 640
   },
   "top_terms": [
     {
-      "term": "country",
-      "count": 6003
+      "term": "reuter",
+      "count": 3380
     },
     {
-      "term": "work",
-      "count": 5592
+      "term": "pct",
+      "count": 2878
     },
     {
-      "term": "include",
-      "count": 5540
-    },
-    {
-      "term": "need",
-      "count": 5511
-    },
-    {
-      "term": "come",
-      "count": 5046
-    },
-    {
-      "term": "israel",
-      "count": 4836
+      "term": "dlrs",
+      "count": 2409
     },
     {
       "term": "company",
-      "count": 4790
+      "count": 1968
     },
     {
-      "term": "state",
-      "count": 4660
+      "term": "bank",
+      "count": 1608
     },
     {
-      "term": "world",
-      "count": 4329
+      "term": "share",
+      "count": 1591
     },
     {
-      "term": "good",
-      "count": 4082
+      "term": "mln",
+      "count": 1324
     },
     {
-      "term": "report",
-      "count": 3752
+      "term": "market",
+      "count": 1222
     },
     {
-      "term": "support",
-      "count": 3741
+      "term": "price",
+      "count": 1100
     },
     {
-      "term": "help",
-      "count": 3699
+      "term": "corp",
+      "count": 1094
     },
     {
-      "term": "find",
-      "count": 3475
+      "term": "inc",
+      "count": 1038
     },
     {
-      "term": "want",
-      "count": 3363
+      "term": "mln_dlrs",
+      "count": 971
     },
     {
-      "term": "change",
-      "count": 3359
+      "term": "trade",
+      "count": 838
     },
     {
-      "term": "accord",
-      "count": 3311
+      "term": "issue",
+      "count": 759
     },
     {
-      "term": "add",
-      "count": 3165
+      "term": "sale",
+      "count": 759
     },
     {
-      "term": "group",
-      "count": 3159
+      "term": "month",
+      "count": 732
+    },
+    {
+      "term": "expect",
+      "count": 731
     },
     {
       "term": "government",
-      "count": 3133
+      "count": 723
     },
     {
-      "term": "high",
-      "count": 2910
+      "term": "april",
+      "count": 721
     },
     {
-      "term": "look",
-      "count": 2891
+      "term": "increase",
+      "count": 713
     },
     {
-      "term": "provide",
-      "count": 2854
+      "term": "official",
+      "count": 701
     },
     {
-      "term": "start",
-      "count": 2767
+      "term": "japan",
+      "count": 679
     },
     {
-      "term": "lead",
-      "count": 2737
+      "term": "plan",
+      "count": 649
+    },
+    {
+      "term": "note",
+      "count": 640
+    },
+    {
+      "term": "offer",
+      "count": 633
     }
   ]
 }

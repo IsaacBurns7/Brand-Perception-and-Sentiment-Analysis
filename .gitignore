@@ -3,3 +3,13 @@
 .DS_Store
 **/*.env
 **/*.parquet
+**/cache/** 
+**/__pycache__/**
+**/*.db
+**/*.log
+**/bertopic_model
+**/eval/*
+**/visualizations/*
+**/output/*
+**/log/*
+*.pyc 
