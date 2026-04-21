@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug LDA Normalize",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/models/Topic-Modeling/preprocessing/LDA_normalize_corpus.py",
+      "cwd": "${workspaceFolder}/models/Topic-Modeling/preprocessing",
+      "console": "integratedTerminal",
+      "args": [
+        "--input",
+        "../data/rating.csv",
+        "--text-col",
+        "article",
+        "--output",
+        "../data/rating_normalized_for_LDA.csv",
+        "--diagnostics-output",
+        "diagnostics/preprocessing_phasefinal.json",
+        "--diagnostics-top-n",
+        "25",
+        "--enable-ngrams",
+        "--ngram-min-count",
+        "15",
+        "--ngram-threshold",
+        "10.0",
+        "--n-process",
+        "4",
+        "--batch-size",
+        "100",
+        "--max-doc-count",
+        "100"
+      ],
+      "justMyCode": true
+    },
+    {
+      "name": "Python Debugger: Current File with Arguments",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "args": "${command:pickArgs}"
+    }
+  ]
+}

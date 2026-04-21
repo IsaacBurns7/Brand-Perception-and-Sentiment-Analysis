@@ -1,0 +1,174 @@
+17:40:05 [INFO]   Loaded 5000 rows.
+17:40:05 [INFO]   4613 rows after dropping nulls.
+17:40:05 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 228.0 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.001s
+  CPU user/sys     : 0.001s / 0.000s
+  Peak RSS         : 228.2 MB
+  RSS delta        : +0.2 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.004s
+  CPU user/sys     : 0.003s / 0.001s
+  Peak RSS         : 235.5 MB
+  RSS delta        : +7.3 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/47 [00:00<?, ?it/s]Clean Batches:   4%|▍         | 2/47 [00:00<00:03, 13.38it/s]Clean Batches:   9%|▊         | 4/47 [00:00<00:04,  9.52it/s]Clean Batches:  13%|█▎        | 6/47 [00:00<00:04,  9.56it/s]Clean Batches:  15%|█▍        | 7/47 [00:00<00:04,  9.58it/s]Clean Batches:  21%|██▏       | 10/47 [00:00<00:02, 13.93it/s]Clean Batches:  30%|██▉       | 14/47 [00:00<00:01, 19.76it/s]Clean Batches:  38%|███▊      | 18/47 [00:01<00:01, 24.07it/s]Clean Batches:  47%|████▋     | 22/47 [00:01<00:00, 27.84it/s]Clean Batches:  55%|█████▌    | 26/47 [00:01<00:00, 30.95it/s]Clean Batches:  64%|██████▍   | 30/47 [00:01<00:00, 32.74it/s]Clean Batches:  72%|███████▏  | 34/47 [00:01<00:00, 33.15it/s]Clean Batches:  81%|████████  | 38/47 [00:01<00:00, 34.39it/s]Clean Batches:  89%|████████▉ | 42/47 [00:01<00:00, 35.78it/s]Clean Batches:  98%|█████████▊| 46/47 [00:01<00:00, 34.88it/s]Clean Batches: 100%|██████████| 47/47 [00:01<00:00, 25.60it/s]
+17:40:07 [INFO] Dropped 0 short/empty documents for BERTopic mode.
+17:40:07 [INFO] Final corpus: 4613 documents.
+17:40:07 [INFO] Saved normalized output to ../data/bertopic/ModLewis_train.csv
+17:40:07 [INFO] Token stats -> mean: 127.9 | median: 86.0 | min: 7 | max: 964
+17:40:07 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+17:40:07 [INFO]   Loaded 5000 rows.
+17:40:07 [INFO]   4579 rows after dropping nulls.
+17:40:07 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Clean text batches ──
+  Wall time        : 1.846s
+  CPU user/sys     : 1.323s / 0.043s
+  Peak RSS         : 156.9 MB
+  RSS delta        : -78.6 MB
+  Tracemalloc peak : 2.3 MB
+
+── Prepare BERTopic text output ──
+  Wall time        : 0.489s
+  CPU user/sys     : 0.285s / 0.030s
+  Peak RSS         : 211.6 MB
+  RSS delta        : +54.3 MB
+  Tracemalloc peak : 33.6 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.070s
+  CPU user/sys     : 0.064s / 0.005s
+  Peak RSS         : 218.5 MB
+  RSS delta        : +6.9 MB
+  Tracemalloc peak : 3.8 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.459s
+  CPU user/sys     : 0.428s / 0.017s
+  Peak RSS         : 221.5 MB
+  RSS delta        : +2.2 MB
+  Tracemalloc peak : 33.6 MB
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 232.7 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 232.7 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.003s
+  CPU user/sys     : 0.002s / 0.001s
+  Peak RSS         : 237.0 MB
+  RSS delta        : +4.3 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/46 [00:00<?, ?it/s]Clean Batches:   7%|▋         | 3/46 [00:00<00:01, 26.77it/s]Clean Batches:  15%|█▌        | 7/46 [00:00<00:01, 32.53it/s]Clean Batches:  24%|██▍       | 11/46 [00:00<00:01, 32.97it/s]Clean Batches:  33%|███▎      | 15/46 [00:00<00:00, 33.96it/s]Clean Batches:  41%|████▏     | 19/46 [00:00<00:00, 34.86it/s]Clean Batches:  50%|█████     | 23/46 [00:00<00:00, 34.89it/s]Clean Batches:  59%|█████▊    | 27/46 [00:00<00:00, 34.11it/s]Clean Batches:  67%|██████▋   | 31/46 [00:00<00:00, 33.44it/s]Clean Batches:  76%|███████▌  | 35/46 [00:01<00:00, 32.30it/s]Clean Batches:  85%|████████▍ | 39/46 [00:01<00:00, 32.22it/s]Clean Batches:  93%|█████████▎| 43/46 [00:01<00:00, 33.40it/s]Clean Batches: 100%|██████████| 46/46 [00:01<00:00, 32.63it/s]
+17:40:09 [INFO] Dropped 0 short/empty documents for BERTopic mode.
+17:40:09 [INFO] Final corpus: 4579 documents.
+17:40:10 [INFO] Saved normalized output to ../data/bertopic/ModLewis_train.csv
+17:40:10 [INFO] Token stats -> mean: 136.7 | median: 88.0 | min: 5 | max: 1031
+17:40:10 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+17:40:10 [INFO]   Loaded 3625 rows.
+17:40:10 [INFO]   3340 rows after dropping nulls.
+17:40:10 [INFO] Cleaning text in batches (in-place DataFrame updates) ...
+
+── Clean text batches ──
+  Wall time        : 1.411s
+  CPU user/sys     : 1.328s / 0.031s
+  Peak RSS         : 182.8 MB
+  RSS delta        : -54.2 MB
+  Tracemalloc peak : 2.4 MB
+
+── Prepare BERTopic text output ──
+  Wall time        : 0.565s
+  CPU user/sys     : 0.287s / 0.045s
+  Peak RSS         : 190.1 MB
+  RSS delta        : +6.9 MB
+  Tracemalloc peak : 35.7 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.102s
+  CPU user/sys     : 0.079s / 0.008s
+  Peak RSS         : 176.0 MB
+  RSS delta        : -14.2 MB
+  Tracemalloc peak : 4.0 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.555s
+  CPU user/sys     : 0.480s / 0.027s
+  Peak RSS         : 201.2 MB
+  RSS delta        : +24.3 MB
+  Tracemalloc peak : 35.7 MB
+
+── Validate configuration ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 210.8 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Load CSV and cap document count ──
+  Wall time        : 0.000s
+  CPU user/sys     : 0.000s / 0.000s
+  Peak RSS         : 210.8 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 0.0 MB
+
+── Drop null rows ──
+  Wall time        : 0.004s
+  CPU user/sys     : 0.003s / 0.001s
+  Peak RSS         : 214.3 MB
+  RSS delta        : +3.5 MB
+  Tracemalloc peak : 0.1 MB
+Clean Batches:   0%|          | 0/34 [00:00<?, ?it/s]Clean Batches:   9%|▉         | 3/34 [00:00<00:01, 27.76it/s]Clean Batches:  18%|█▊        | 6/34 [00:00<00:01, 27.66it/s]Clean Batches:  26%|██▋       | 9/34 [00:00<00:00, 27.82it/s]Clean Batches:  35%|███▌      | 12/34 [00:00<00:00, 25.67it/s]Clean Batches:  47%|████▋     | 16/34 [00:00<00:00, 29.47it/s]Clean Batches:  59%|█████▉    | 20/34 [00:00<00:00, 31.05it/s]Clean Batches:  71%|███████   | 24/34 [00:00<00:00, 32.65it/s]Clean Batches:  82%|████████▏ | 28/34 [00:00<00:00, 33.77it/s]Clean Batches:  94%|█████████▍| 32/34 [00:01<00:00, 34.33it/s]Clean Batches: 100%|██████████| 34/34 [00:01<00:00, 32.30it/s]
+17:40:11 [INFO] Dropped 1 short/empty documents for BERTopic mode.
+17:40:11 [INFO] Final corpus: 3339 documents.
+17:40:11 [INFO] Saved normalized output to ../data/bertopic/ModLewis_train.csv
+17:40:11 [INFO] Token stats -> mean: 133.5 | median: 88.0 | min: 7 | max: 1326
+17:40:12 [INFO] Saved diagnostics output to diagnostics/preprocessing_phasefinal.json
+
+── Clean text batches ──
+  Wall time        : 1.054s
+  CPU user/sys     : 0.977s / 0.022s
+  Peak RSS         : 177.7 MB
+  RSS delta        : -36.6 MB
+  Tracemalloc peak : 3.3 MB
+
+── Prepare BERTopic text output ──
+  Wall time        : 0.198s
+  CPU user/sys     : 0.179s / 0.012s
+  Peak RSS         : 198.5 MB
+  RSS delta        : +20.8 MB
+  Tracemalloc peak : 25.4 MB
+
+── Write normalized output CSV ──
+  Wall time        : 0.052s
+  CPU user/sys     : 0.049s / 0.002s
+  Peak RSS         : 198.5 MB
+  RSS delta        : +0.0 MB
+  Tracemalloc peak : 2.9 MB
+
+── Optional diagnostics generation ──
+  Wall time        : 0.649s
+  CPU user/sys     : 0.388s / 0.027s
+  Peak RSS         : 165.8 MB
+  RSS delta        : -32.7 MB
+  Tracemalloc peak : 25.4 MB

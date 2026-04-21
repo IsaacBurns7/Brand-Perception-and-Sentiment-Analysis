@@ -10,3 +10,93 @@ All docs, preprocessed
 
 Humans have to assign the actual topic itself 
 Maybe an LLM can do this? It actually might be a good application for the clanker... 
+
+datasets 
+- sklearn.datasets.fetch_20newsgroups
+- bbc news dataset on kaggle
+- global news dataset
+- arXiv abstracts
+
+models
+- LDA
+- BERTopic 
+    - HDBScan feature not in LDA 
+    - try UMAP vs PCA 
+- extra 
+    - nmf, top2vec, lsa 
+
+===========================================================================
+TOPIC MODELING COMPARISON: LDA VS. BERTOPIC
+===========================================================================
+
+METRIC            LDA (Statistical)             BERTopic (Neural/Clustering)
+---------------------------------------------------------------------------
+Doc Length        Longer is better. Needs       Short to Mid-range. Struggles 
+                  high word co-occurrence.      with >512 tokens (BERT limit).
+
+Doc Count         Needs 1k+ documents to        Works with hundreds; 
+                  avoid "noise" topics.         thrives at 10k-100k.
+
+Scaling (N)       Very efficient. Handles       Bottlenecked by UMAP/HDBSCAN.
+                  millions of docs on CPU.      Usually requires a GPU.
+
+Preprocessing     Aggressive (Lemmatization,    Lax (Needs context, 
+                  Stopword removal).            stopwords, and structure).
+
+Noise Tolerance   Low. Sensitive to high-       High. Transformers handle 
+                  frequency generic words.      polysemy and noise well.
+
+Output Type       Probabilistic distribution    Centroid-based clustering
+                  (Topic-Word / Doc-Topic).     (Document-Topic).
+
+===========================================================================
+SCALING EXPECTATIONS
+===========================================================================
+
+* LDA Performance: Best for large archives (N > 10,000) with long, formal 
+  documents. Scales linearly.
+  
+* BERTopic Performance: Best for short-form text or semantic granularity. 
+  Performance is tied to the quality of the embedding model used.
+
+to batch run lda on dataset:
+./lda_run_presets.sh <dataset_name> 
+-- example ./lda_run_presets.sh rating 
+* arxiv_data_210930-054931 - DONE 
+* arxiv_data - DONE
+* bbc_news - DONE
+* rating - DONE
+* raw-data - DONE
+
+BERTopic preset commands (replace <dataset> with your dataset name):
+
+# 1) Balanced baseline
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/<dataset>/bertopic_preset01_balanced --eval-path ./eval/<dataset>/preset01_balanced.json --embedding-model sentence-transformers/all-MiniLM-L6-v2 --min-topic-size 25 --nr-topics auto --top-n-words 12 --min-df 8 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 30 --umap-n-components 5 --umap-min-dist 0.05 --hdbscan-min-samples 10
+python bertopic_train.py --input ./data/bertopic/bbc_news.csv --text-col cleaned_text --output-dir ./cache/bbc_news/bertopic_preset01_balanced --eval-path ./eval/bbc_news/bertopic_preset01_balanced.json --embedding-model sentence-transformers/all-MiniLM-L6-v2 --min-topic-size 25 --nr-topics auto --top-n-words 12 --min-df 8 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 30 --umap-n-components 5 --umap-min-dist 0.05 --hdbscan-min-samples 10
+
+# 2) High sensitivity for short social posts
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset02_social_granular --min-topic-size 5 --nr-topics auto --top-n-words 15 --min-df 1 --ngram-min 1 --ngram-max 1 --umap-n-neighbors 10 --umap-n-components 5 --umap-min-dist 0.0 --hdbscan-min-samples 2
+
+# 3) Small dataset stabilization
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset03_small_stable --min-topic-size 3 --nr-topics 12 --top-n-words 10 --min-df 1 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 5 --umap-n-components 3 --umap-min-dist 0.1 --hdbscan-min-samples 1
+
+# 4) Large-scale coarse clustering
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset04_large_coarse --min-topic-size 60 --nr-topics auto --top-n-words 10 --min-df 20 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 50 --umap-n-components 5 --umap-min-dist 0.15 --hdbscan-min-samples 20
+
+# 5) Phrase-aware (bigrams/trigrams)
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset05_phrase_aware --min-topic-size 12 --nr-topics auto --top-n-words 15 --min-df 2 --ngram-min 1 --ngram-max 3 --umap-n-neighbors 20 --umap-n-components 5 --umap-min-dist 0.0 --hdbscan-min-samples 5
+
+# 6) Executive-level theme buckets
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset06_exec_coarse --min-topic-size 100 --nr-topics 20 --top-n-words 8 --min-df 25 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 70 --umap-n-components 5 --umap-min-dist 0.2 --hdbscan-min-samples 30
+
+# 7) Fine-grained discovery for long technical text
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset07_research_fine --min-topic-size 8 --nr-topics auto --top-n-words 20 --min-df 3 --ngram-min 1 --ngram-max 3 --umap-n-neighbors 12 --umap-n-components 8 --umap-min-dist 0.0 --hdbscan-min-samples 3
+
+# 8) Confidence-first with probability outputs
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset08_confidence --min-topic-size 20 --nr-topics auto --top-n-words 10 --min-df 5 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 25 --umap-n-components 5 --umap-min-dist 0.1 --hdbscan-min-samples 15 --calculate-probabilities
+
+# 9) Multilingual embedding setup
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset09_multilingual --embedding-model sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 --language multilingual --min-topic-size 15 --nr-topics auto --top-n-words 12 --min-df 3 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 20 --umap-n-components 5 --umap-min-dist 0.05 --hdbscan-min-samples 6
+
+# 10) Reproducible CPU benchmark baseline
+python bertopic_train.py --input ./data/bertopic/<dataset>.csv --text-col cleaned_text --output-dir ./cache/bertopic/preset10_repro_cpu --cpu-only --embedding-model sentence-transformers/all-MiniLM-L6-v2 --min-topic-size 15 --nr-topics auto --top-n-words 10 --min-df 4 --ngram-min 1 --ngram-max 2 --umap-n-neighbors 15 --umap-n-components 5 --umap-min-dist 0.0 --umap-random-state 42 --umap-n-jobs 1 --hdbscan-min-samples 5 --hdbscan-core-dist-n-jobs 1 --omp-num-threads 1

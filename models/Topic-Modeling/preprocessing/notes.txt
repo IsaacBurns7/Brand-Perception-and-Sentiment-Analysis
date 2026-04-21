@@ -28,3 +28,6 @@ Preprocessing NLP data for LDA has the following stages:
 
 Refactor LDA_normalize_corpus into these 10 stages, each with a file of their own, and then aggregated via main.py
 This will make this shii a lot easier to optimize, and extend later, while making it easier to understand - just a lot of work... 
+
+spacy array interface
+1 process, with threads that are chunked
