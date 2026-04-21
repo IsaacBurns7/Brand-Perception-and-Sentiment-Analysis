@@ -90,6 +90,14 @@ Run the API:
 uvicorn api.app:app --reload
 ```
 
+Run the Streamlit dashboard:
+
+```bash
+streamlit run dashboard.py
+```
+
+If the API is not running, the dashboard will fall back to built-in sample data so the layout remains usable for demos and presentation prep.
+
 Test API endpoints:
 
 ```bash
