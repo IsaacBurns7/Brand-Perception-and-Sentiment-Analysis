@@ -1,4 +1,8 @@
-**/*.csv
-**/*.out
-.DS_Store
-**/*.env
+__pycache__/
+*.pyc
+.mplconfig/
+data/
+.venv/
+venv/
+.venv311/
+brand-absa-emcgcn/
