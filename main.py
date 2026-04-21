@@ -25,7 +25,7 @@ def gather_reddit_data_to_staging(service_config: dict[str, Any], out_table: str
     pass
 
 def clean_reddit_data_to_curated(in_table: str, out_table: str, clean_config: dict[str, Any]) -> Any:
-    db_path = "services/duckdb/brand_perception.duckdb"
+    db_path = "services/reddit_data/master.dbd"
     Path(db_path).parent.mkdir(parents=True, exist_ok=True)
     
     con = duckdb.connect(db_path)

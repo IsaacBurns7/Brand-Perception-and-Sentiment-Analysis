@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import duckdb
 
 import pandas as pd
 
@@ -12,12 +13,35 @@ from pipeline.document_builder import (
 )
 from pipeline.preprocessing import clean_documents
 
+from main import (
+    clean_reddit_data_to_curated
+)
+
 
 # Avoid matplotlib cache warnings during temporal_aggregation import.
 os.environ.setdefault("MPLCONFIGDIR", str(Path(__file__).resolve().parent / ".mplconfig"))
 
 from temporal_aggregation import run_temporal_aggregation
 
+def gather_data() -> pd.DataFrame:
+    master_db_path = Path("./services/reddit_data/master.db")
+    query = """
+        WITH cleaned AS (
+            SELECT text,
+                string_split(trim(regexp_replace(text, '\\s+', ' ', 'g')), ' ') AS tokens
+            FROM reddit_scrape_raw
+        )
+        SELECT text
+        FROM cleaned
+        WHERE array_length(tokens) > 10;
+    """
+
+    con = duckdb.connect(str(master_db_path))
+
+    df = con.execute(query).df()
+
+    con.close()
+    return df
 
 def build_sample_raw_rows() -> pd.DataFrame:
     return pd.DataFrame(
@@ -78,32 +102,41 @@ def print_frame(title: str, df: pd.DataFrame) -> None:
 
 
 def main() -> None:
-    raw_rows = build_sample_raw_rows()
+    #gather raw data 
+    raw_rows = gather_data()
+    print(raw_rows)
+    #generate embed table
+    
+    #run RAG according to pre-defined user query  
 
     clean_docs = clean_documents(raw_rows)
+    print(clean_docs)
     sentiment_output = build_stub_sentiment_output(clean_docs)
-    topic_output = build_stub_topic_output(clean_docs)
-    processed_docs = build_processed_documents(
-        clean_docs,
-        sentiment_output=sentiment_output,
-        topic_output=topic_output,
-    )
-    daily_aggregation, changepoints = run_temporal_aggregation(processed_docs)
+        #connect absa model and sentiment model 
+    # topic_output = build_stub_topic_output(clean_docs)
+        #connect bertopic rating - 08_confidence
+        #add LLM inference of topics 
+    # processed_docs = build_processed_documents(
+    #     clean_docs,
+    #     sentiment_output=sentiment_output,
+    #     topic_output=topic_output,
+    # )
+    # daily_aggregation, changepoints = run_temporal_aggregation(processed_docs)
 
-    print_frame("Raw Sample Rows", raw_rows)
-    print_frame("Cleaned Documents", clean_docs)
-    print_frame("Processed Documents", processed_docs)
-    print_frame(
-        "Daily Aggregation Summary",
-        daily_aggregation[["day", "doc_count", "avg_sentiment", "sentiment_7d", "count_7d"]],
-    )
+    # print_frame("Raw Sample Rows", raw_rows)
+    # print_frame("Cleaned Documents", clean_docs)
+    # print_frame("Processed Documents", processed_docs)
+    # print_frame(
+    #     "Daily Aggregation Summary",
+    #     daily_aggregation[["day", "doc_count", "avg_sentiment", "sentiment_7d", "count_7d"]],
+    # )
 
-    print("\nChangepoints")
-    if changepoints:
-        for changepoint in changepoints:
-            print(changepoint.isoformat())
-    else:
-        print("No changepoints detected.")
+    # print("\nChangepoints")
+    # if changepoints:
+    #     for changepoint in changepoints:
+    #         print(changepoint.isoformat())
+    # else:
+    #     print("No changepoints detected.")
 
 
 if __name__ == "__main__":

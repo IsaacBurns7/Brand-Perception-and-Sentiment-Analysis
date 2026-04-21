@@ -169,6 +169,17 @@ def write_to_db(csv_path):
         con.close()
 
 if __name__ == "__main__":
-    exit_code = reddit_api_scraper()
-    result = write_to_db(csv_path)
-    print(result)
+    # exit_code = reddit_api_scraper()
+    for file in Path("./data/reddit-scraper-pro").iterdir():
+        if file.suffix == ".csv" and file.stat().st_size > 0:
+            result = write_to_db(file)
+            print(result)
+
+# WITH cleaned AS (
+#              SELECT *,
+#                     string_split(trim(regexp_replace(text, '\\s+', ' ', 'g')), ' ') AS tokens
+#              FROM reddit_scrape_raw
+#          )
+#          SELECT *
+#          FROM cleaned
+#          WHERE array_length(tokens) > 50;

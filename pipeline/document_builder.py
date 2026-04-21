@@ -35,7 +35,10 @@ def build_stub_sentiment_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
             "sentiment_label": DEFAULT_SENTIMENT_LABEL,
         }
     )
-
+def build_sentiment_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
+    if clean_documents.empty:
+        return pd.DataFrame(columns=["doc_id", "sentiment", "sentiment_label"])
+    
 
 def build_stub_topic_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
     if clean_documents.empty:
@@ -97,7 +100,7 @@ def _coerce_ner_output(ner_output: pd.DataFrame | None, clean_documents: pd.Data
 
 
 def _coerce_sentiment_output(sentiment_output: pd.DataFrame | None, clean_documents: pd.DataFrame) -> pd.DataFrame:
-    df = build_stub_sentiment_output(clean_documents) if sentiment_output is None or sentiment_output.empty else sentiment_output.copy()
+    df = build_sentiment_output(clean_documents) if sentiment_output is None or sentiment_output.empty else sentiment_output.copy()
 
     if "doc_id" not in df.columns:
         if "article_url" in df.columns:
