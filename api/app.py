@@ -16,12 +16,13 @@ def create_app() -> FastAPI:
             "endpoints": [
                 "/health",
                 "/analytics/summary",
-                "/analytics/timeseries",
-                "/analytics/sources",
-                "/analytics/topics",
-                "/analytics/changepoints",
-            ],
-        }
+            "/analytics/timeseries",
+            "/analytics/sources",
+            "/analytics/topics",
+            "/analytics/aspects",
+            "/analytics/changepoints",
+        ],
+    }
 
     return app
 

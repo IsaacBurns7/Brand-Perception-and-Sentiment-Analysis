@@ -43,7 +43,7 @@ def load_data(engine) -> pd.DataFrame:
     # Query only the columns we need to save memory
     query = f"""
         SELECT 
-            doc_id, text, brand, sentiment, 
+            doc_id, text, brand, aspect, sentiment, 
             sentiment_label, topic, source, created_utc 
         FROM {TARGET_TABLE}
     """

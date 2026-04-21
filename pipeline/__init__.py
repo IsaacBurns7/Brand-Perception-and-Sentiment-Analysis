@@ -2,6 +2,7 @@
 
 from .document_builder import (
     build_processed_documents,
+    build_stub_absa_output,
     build_stub_sentiment_output,
     build_stub_topic_output,
 )
@@ -31,6 +32,7 @@ __all__ = [
     "clean_text",
     "clean_documents",
     "build_processed_documents",
+    "build_stub_absa_output",
     "build_stub_sentiment_output",
     "build_stub_topic_output",
     "read_processed_documents",

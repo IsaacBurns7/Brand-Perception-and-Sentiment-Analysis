@@ -33,6 +33,7 @@ def get_summary_metrics(processed_documents: pd.DataFrame) -> dict[str, Any]:
             "source_count": 0,
             "topic_count": 0,
             "brand_count": 0,
+            "aspect_count": 0,
             "average_sentiment": 0.0,
             "positive_share": 0.0,
             "negative_share": 0.0,
@@ -48,6 +49,7 @@ def get_summary_metrics(processed_documents: pd.DataFrame) -> dict[str, Any]:
         "source_count": int(df["source"].nunique()),
         "topic_count": int(df["topic"].nunique()),
         "brand_count": int(df["brand"].nunique()),
+        "aspect_count": int(df["aspect"].nunique()),
         "average_sentiment": round(float(df["sentiment"].mean()), 4),
         "positive_share": round(float(label_share.get("positive", 0.0)), 4),
         "negative_share": round(float(label_share.get("negative", 0.0)), 4),
@@ -126,6 +128,32 @@ def get_topic_breakdown(
     return grouped.to_dict(orient="records")
 
 
+def get_aspect_breakdown(
+    processed_documents: pd.DataFrame,
+    *,
+    limit: int = 10,
+) -> list[dict[str, Any]]:
+    df = normalize_processed_documents(processed_documents)
+    if df.empty:
+        return []
+
+    grouped = (
+        df.groupby("aspect", as_index=False)
+        .agg(
+            document_count=("doc_id", "nunique"),
+            row_count=("doc_id", "count"),
+            average_sentiment=("sentiment", "mean"),
+            topic_count=("topic", "nunique"),
+            brand_count=("brand", "nunique"),
+        )
+        .sort_values(["document_count", "aspect"], ascending=[False, True])
+        .head(limit)
+        .reset_index(drop=True)
+    )
+    grouped["average_sentiment"] = grouped["average_sentiment"].round(4)
+    return grouped.to_dict(orient="records")
+
+
 def get_changepoints(
     processed_documents: pd.DataFrame,
     *,
@@ -190,6 +218,9 @@ class AnalyticsService:
 
     def topic_breakdown(self, *, limit: int = 10) -> list[dict[str, Any]]:
         return get_topic_breakdown(self.load_processed_documents(), limit=limit)
+
+    def aspect_breakdown(self, *, limit: int = 10) -> list[dict[str, Any]]:
+        return get_aspect_breakdown(self.load_processed_documents(), limit=limit)
 
     def changepoints(
         self,

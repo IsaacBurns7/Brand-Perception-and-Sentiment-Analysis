@@ -1,5 +1,8 @@
 __pycache__/
 *.pyc
 .mplconfig/
-.env
-.DS_Store
+data/
+.venv/
+venv/
+.venv311/
+brand-absa-emcgcn/

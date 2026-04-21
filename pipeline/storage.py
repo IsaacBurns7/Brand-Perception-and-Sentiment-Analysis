@@ -43,8 +43,12 @@ def normalize_processed_documents(processed_documents: pd.DataFrame) -> pd.DataF
     if processed_documents.empty:
         return pd.DataFrame(columns=PROCESSED_DOCUMENT_COLUMNS)
 
+    normalized = processed_documents.copy()
+    if "aspect" not in normalized.columns:
+        normalized["aspect"] = "general"
+
     missing_columns = [
-        column for column in PROCESSED_DOCUMENT_COLUMNS if column not in processed_documents.columns
+        column for column in PROCESSED_DOCUMENT_COLUMNS if column not in normalized.columns
     ]
     if missing_columns:
         raise ValueError(
@@ -52,10 +56,11 @@ def normalize_processed_documents(processed_documents: pd.DataFrame) -> pd.DataF
             + ", ".join(missing_columns)
         )
 
-    normalized = processed_documents.loc[:, PROCESSED_DOCUMENT_COLUMNS].copy()
+    normalized = normalized.loc[:, PROCESSED_DOCUMENT_COLUMNS].copy()
     normalized["doc_id"] = normalized["doc_id"].astype(str)
     normalized["text"] = normalized["text"].fillna("").astype(str)
     normalized["brand"] = normalized["brand"].fillna("unknown").astype(str)
+    normalized["aspect"] = normalized["aspect"].fillna("general").astype(str)
     normalized["sentiment"] = pd.to_numeric(normalized["sentiment"], errors="coerce").fillna(0.0)
     normalized["sentiment_label"] = normalized["sentiment_label"].fillna("neutral").astype(str)
     normalized["topic"] = normalized["topic"].fillna("unclassified").astype(str)
@@ -107,7 +112,19 @@ def _write_duckdb(
         if mode == "replace":
             conn.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM processed_documents_df")
         elif mode == "append":
-            conn.execute(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM processed_documents_df WHERE 1=0")
+            tables = conn.execute("SHOW TABLES").fetchall()
+            if table_name in {row[0] for row in tables}:
+                existing_columns = {
+                    row[1]
+                    for row in conn.execute(f"PRAGMA table_info('{table_name}')").fetchall()
+                }
+                if "aspect" not in existing_columns:
+                    conn.execute(f"ALTER TABLE {table_name} ADD COLUMN aspect VARCHAR")
+                    conn.execute(
+                        f"UPDATE {table_name} SET aspect = 'general' WHERE aspect IS NULL"
+                    )
+            else:
+                conn.execute(f"CREATE TABLE {table_name} AS SELECT * FROM processed_documents_df WHERE 1=0")
             conn.execute(f"INSERT INTO {table_name} SELECT * FROM processed_documents_df")
         else:
             raise ValueError("mode must be 'replace' or 'append'")
@@ -239,12 +256,12 @@ def build_sample_processed_documents() -> pd.DataFrame:
     )
 
     clean_df = clean_documents(raw_rows)
-    sentiment_df = build_stub_sentiment_output(clean_df)
     topic_df = build_stub_topic_output(clean_df)
     return build_processed_documents(
         clean_df,
-        sentiment_output=sentiment_df,
+        sentiment_output=build_stub_sentiment_output(clean_df),
         topic_output=topic_df,
+        absa_enabled=False,
     )
 
 

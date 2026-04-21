@@ -25,6 +25,7 @@ PROCESSED_DOCUMENT_COLUMNS = [
     "doc_id",
     "text",
     "brand",
+    "aspect",
     "sentiment",
     "sentiment_label",
     "topic",
@@ -54,6 +55,7 @@ class ProcessedDocument:
     doc_id: str
     text: str
     brand: str
+    aspect: str
     sentiment: float
     sentiment_label: str
     topic: str

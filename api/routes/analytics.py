@@ -64,6 +64,15 @@ def analytics_topics(limit: int = 10) -> dict:
     }
 
 
+@router.get("/analytics/aspects")
+def analytics_aspects(limit: int = 10) -> dict:
+    service = get_analytics_service()
+    return {
+        "limit": limit,
+        "aspects": service.aspect_breakdown(limit=limit),
+    }
+
+
 @router.get("/analytics/changepoints")
 def analytics_changepoints(
     rolling_window_days: int = 7,

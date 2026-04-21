@@ -26,6 +26,7 @@ def build_aggregated_table(engine) -> pd.DataFrame:
             a.url AS doc_id, 
             a.full_content AS text, 
             b.canonical_name AS brand, 
+            'general' AS aspect,
             s.sentiment_score AS sentiment, 
             s.sentiment_label AS sentiment_label, 
             t.topic_name AS topic, 
@@ -67,6 +68,7 @@ def clean_and_normalize(df: pd.DataFrame) -> pd.DataFrame:
     df = df.dropna(subset=["created_utc", "doc_id", "brand"]).copy()
     
     # Fill missing sentiment/topic fields with defaults if downstream models failed
+    df["aspect"] = df["aspect"].fillna("general")
     df["sentiment"] = df["sentiment"].fillna(0.0).astype(float)
     df["sentiment_label"] = df["sentiment_label"].fillna("neutral")
     df["topic"] = df["topic"].fillna("unclassified")
