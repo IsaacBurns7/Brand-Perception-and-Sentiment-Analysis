@@ -13,7 +13,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Evaluate a trained BERTopic model on a test CSV")
     parser.add_argument("--input", required=True, help="Path to test CSV")
     parser.add_argument("--text-col", default="cleaned_text", help="Text column in test CSV")
-    parser.add_argument("--model-path", required=True, help="Path to saved BERTopic model artifact")
+    parser.add_argument(
+        "--model-path",
+        required=True,
+        help="Path to BERTopic model artifact (legacy bertopic_model or bertopic_bundle directory)",
+    )
     parser.add_argument("--output-path", required=True, help="Path to output evaluation JSON")
     parser.add_argument(
         "--min-df",
@@ -124,6 +128,25 @@ def _prepare_eval_tokens(docs: list[str], min_df: int):
     return tokenized_docs, dictionary
 
 
+def _resolve_model_load_path(model_path: Path) -> Path:
+    """Resolve legacy/portable model paths to a BERTopic.load-compatible target."""
+    if model_path.is_file():
+        return model_path
+
+    if model_path.is_dir():
+        state_dir = model_path / "artifacts" / "bertopic_state"
+        if state_dir.is_dir():
+            return state_dir
+        # Support passing the state dir directly.
+        if (model_path / "config.json").exists() and (model_path / "topics.json").exists():
+            return model_path
+
+    raise FileNotFoundError(
+        "Could not resolve BERTopic model path. Expected a legacy model file or "
+        "a bertopic_bundle directory containing artifacts/bertopic_state."
+    )
+
+
 def main() -> None:
     args = parse_args()
 
@@ -152,7 +175,8 @@ def main() -> None:
     docs = _prepare_docs(input_path=input_path, text_col=args.text_col, max_doc_count=args.max_doc_count)
     tokenized_docs, dictionary = _prepare_eval_tokens(docs=docs, min_df=args.min_df)
 
-    topic_model = BERTopic.load(str(model_path))
+    resolved_model_path = _resolve_model_load_path(model_path)
+    topic_model = BERTopic.load(str(resolved_model_path))
     topics = _infer_topics(topic_model=topic_model, docs=docs, assignment_method=args.assignment_method)
 
     evaluation_json = evaluate_bertopic(

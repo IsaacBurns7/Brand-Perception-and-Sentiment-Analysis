@@ -1,4 +1,6 @@
 from __future__ import annotations
+import importlib
+from pathlib import Path
 
 import os
 from typing import Any
@@ -22,6 +24,33 @@ _SENTIMENT_MAP = {
     "neutral": 0,
     "negative": -1,
 }
+
+_TOPIC_MODEL_CACHE: Any | None = None
+
+
+def _load_portable_bertopic_model():
+    global _TOPIC_MODEL_CACHE
+    if _TOPIC_MODEL_CACHE is not None:
+        return _TOPIC_MODEL_CACHE
+
+    try:
+        bertopic_module = importlib.import_module("bertopic")
+        BERTopic = bertopic_module.BERTopic
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "BERTopic is not installed. Install with: pip install bertopic sentence-transformers"
+        ) from exc
+
+    default_state_path = (
+        Path(__file__).resolve().parents[1]
+        / "models/Topic-Modeling/cache/bertopic/preset08_confidence/bertopic_bundle/artifacts/bertopic_state"
+    )
+    state_path = Path(os.environ.get("BRAND_PERCEPTION_BERTOPIC_STATE_PATH", str(default_state_path)))
+    if not state_path.exists():
+        raise FileNotFoundError(f"Portable BERTopic state not found: {state_path}")
+
+    _TOPIC_MODEL_CACHE = BERTopic.load(str(state_path))
+    return _TOPIC_MODEL_CACHE
 
 
 def build_stub_sentiment_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
@@ -50,7 +79,26 @@ def build_stub_topic_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
             "topic": DEFAULT_TOPIC,
         }
     )
+def build_topic_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
+    if clean_documents.empty:
+        return pd.DataFrame(columns=["doc_id", "topic"])
 
+    if "doc_id" not in clean_documents.columns:
+        raise ValueError("clean_documents must include doc_id")
+    if "text" not in clean_documents.columns:
+        raise ValueError("clean_documents must include text")
+
+    topic_model = _load_portable_bertopic_model()
+    docs = clean_documents["text"].fillna("").astype(str).tolist()
+    topics, probs = topic_model.transform(docs)
+
+    return pd.DataFrame(
+        {
+            "doc_id": clean_documents["doc_id"].astype(str),
+            "topic": [str(topic) for topic in topics],
+            #should I include probs in advanced? meh probably not right now
+        }
+    )
 
 def build_stub_absa_output(clean_documents: pd.DataFrame) -> pd.DataFrame:
     if clean_documents.empty:
@@ -239,6 +287,8 @@ def build_processed_documents(
         absa_enabled=absa_enabled,
         sentiment_output=sentiment_output,
     )
+    #rows: list[dict[str, Any]] = []
+    #return pd.DataFrame(rows, columns=["doc_id", "aspect", "sentiment", "sentiment_label"])
     topic_df = _coerce_topic_output(topic_output, docs)
 
     processed = docs.merge(brand_df, on="doc_id", how="left")

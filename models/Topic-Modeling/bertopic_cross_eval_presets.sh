@@ -150,9 +150,15 @@ for train_alias in "${!EVAL_MAP[@]}"; do
         continue
       fi
 
-      model_path="$cache_dir/bertopic_model"
-      if [[ ! -f "$model_path" ]]; then
-        echo "Skipping preset (missing model file): $model_path"
+      bundle_model_path="$cache_dir/bertopic_bundle"
+      legacy_model_path="$cache_dir/bertopic_model"
+
+      if [[ -d "$bundle_model_path" ]]; then
+        model_path="$bundle_model_path"
+      elif [[ -e "$legacy_model_path" ]]; then
+        model_path="$legacy_model_path"
+      else
+        echo "Skipping preset (missing model artifact): $bundle_model_path or $legacy_model_path"
         skip_count=$((skip_count + 1))
         continue
       fi

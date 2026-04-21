@@ -294,8 +294,8 @@ def run_hf_batch_inference(
     else:
         df = _load_hf_input_text_only(input_path, text_column=text_column)
 
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    model = AutoModelForSequenceClassification.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, subfolder="distilbert_stage2")
+    model = AutoModelForSequenceClassification.from_pretrained(model_path, subfolder="distilbert_stage2")
     id2label = _build_hf_id2label(model)
     device = _resolve_hf_device()
 

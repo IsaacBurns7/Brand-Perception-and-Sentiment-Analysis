@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import duckdb
+import joblib
 
 import pandas as pd
 
@@ -10,11 +11,15 @@ from pipeline.document_builder import (
     build_processed_documents,
     build_stub_sentiment_output,
     build_stub_topic_output,
+    build_topic_output
 )
 from pipeline.preprocessing import clean_documents
 
 from main import (
     clean_reddit_data_to_curated
+)
+from models.sentiment.predict import (
+    run_hf_batch_inference
 )
 
 
@@ -26,15 +31,17 @@ from temporal_aggregation import run_temporal_aggregation
 def gather_data() -> pd.DataFrame:
     master_db_path = Path("./services/reddit_data/master.db")
     query = """
-        WITH cleaned AS (
-            SELECT text,
-                string_split(trim(regexp_replace(text, '\\s+', ' ', 'g')), ' ') AS tokens
-            FROM reddit_scrape_raw
-        )
-        SELECT text
-        FROM cleaned
-        WHERE array_length(tokens) > 10;
-    """
+        SELECT
+            text,
+            CASE
+                WHEN createdAt IS NULL THEN NULL
+                WHEN CAST(createdAt AS BIGINT) >= 1000000000000
+                    THEN to_timestamp(CAST(createdAt AS DOUBLE) / 1000.0)
+                ELSE to_timestamp(CAST(createdAt AS DOUBLE))
+            END AS created_utc
+        FROM reddit_scrape_raw
+        WHERE text IS NOT NULL
+     """
 
     con = duckdb.connect(str(master_db_path))
 
@@ -100,28 +107,80 @@ def print_frame(title: str, df: pd.DataFrame) -> None:
     print(f"\n{title}")
     print(df.to_string(index=False))
 
-
 def main() -> None:
     #gather raw data 
     raw_rows = gather_data()
-    print(raw_rows)
+    # print(raw_rows)
     #generate embed table
-    
     #run RAG according to pre-defined user query  
 
     clean_docs = clean_documents(raw_rows)
-    print(clean_docs)
+    # print(clean_docs)
+    #write clean docs to some csv 
+
     sentiment_output = build_stub_sentiment_output(clean_docs)
-        #connect absa model and sentiment model 
+    args = {
+        "model_path": "deepakm10/brand-perception-models",
+        "input_path": Path("services/reddit_data/data/reddit-scraper-pro/2026-04-13_18-15.csv"),
+        "output_path": Path("inference.csv"),
+        "text_column": "text",
+        "label_column": "sentiment",
+        "batch_size": 50,
+    }
+    info = run_hf_batch_inference(
+        model_path=args["model_path"],
+        input_path=args["input_path"],
+        output_path=args["output_path"],
+        text_column=args["text_column"],
+        label_column=args["label_column"],
+        batch_size=args["batch_size"],
+        include_true_labels=not args.get("omit_labels", True),
+    )
+    # print(info)
+        # load output file into DF     
+    sentiment_output = pd.read_csv(args["output_path"])
+    # print(sentiment_output)
+        #write sentiment output to db (ignore for now)
+
     # topic_output = build_stub_topic_output(clean_docs)
-        #connect bertopic rating - 08_confidence
-        #add LLM inference of topics 
-    # processed_docs = build_processed_documents(
-    #     clean_docs,
-    #     sentiment_output=sentiment_output,
-    #     topic_output=topic_output,
+    topic_output = build_topic_output(clean_docs)
+    # print(topic_output)
+
+    # clustered = clean_docs.merge(topic_output, on="doc_id", how="left")
+
+    # clusters = (
+    #     clustered.groupby("topic", dropna=False)
+    #     .agg(
+    #         doc_count=("doc_id", "count"),
+    #         doc_ids=("doc_id", list),
+    #         sample_text=("text", lambda s: s.iloc[0] if len(s) else "")
+    #     )
+    #     .reset_index()
+    #     .sort_values("doc_count", ascending=False)
     # )
-    # daily_aggregation, changepoints = run_temporal_aggregation(processed_docs)
+
+    # print(clusters)
+
+    processed_docs = build_processed_documents(
+        clean_docs,
+        sentiment_output=sentiment_output,
+        topic_output=topic_output,
+        absa_enabled=True
+    )
+    processed_docs.to_csv(Path("processed_documents.csv"), index=False)
+    #current at 
+    #doc_id,text,brand,aspect,sentiment,sentiment_label,topic,source,created_utc
+    #6,a family of two maybe,unknown,general,0.0,neutral,82,unknown,2025-07-23 22:56:16+00:00
+    #fix brand(probably NER coercion), aspect(ABSA model), sentiment(use ABSA model), sentiment_label(use ABSA model), source="reddit"
+
+    # build_daily_aggregation expects processed-document schema columns:
+    # doc_id, text, brand, aspect, sentiment, sentiment_label, topic, source, created_utc.
+    # Aggregation itself uses created_utc (time bucket), doc_id (count), and sentiment (mean).
+    daily_aggregation, changepoints = run_temporal_aggregation(processed_docs)
+    aggregation_output_path = Path("temporal_aggregation_daily.csv")
+    aggregation_output_path.parent.mkdir(parents=True, exist_ok=True)
+    daily_aggregation.to_csv(aggregation_output_path, index=False)
+    print(f"Saved temporal aggregation CSV: {aggregation_output_path}")
 
     # print_frame("Raw Sample Rows", raw_rows)
     # print_frame("Cleaned Documents", clean_docs)
@@ -131,12 +190,12 @@ def main() -> None:
     #     daily_aggregation[["day", "doc_count", "avg_sentiment", "sentiment_7d", "count_7d"]],
     # )
 
-    # print("\nChangepoints")
-    # if changepoints:
-    #     for changepoint in changepoints:
-    #         print(changepoint.isoformat())
-    # else:
-    #     print("No changepoints detected.")
+    print("\nChangepoints")
+    if changepoints:
+        for changepoint in changepoints:
+            print(changepoint.isoformat())
+    else:
+        print("No changepoints detected.")
 
 
 if __name__ == "__main__":

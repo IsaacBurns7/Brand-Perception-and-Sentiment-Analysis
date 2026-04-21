@@ -398,6 +398,8 @@ def checkpoint_io(io_table: list[dict[str, Any]], step_name: str, fn_return: Any
     print(f"[CHECKPOINT] Added entry: {entry}")
     print(f"[CHECKPOINT] Return for {step_name}: {fn_return}")
 
+#so we want to preload inference 
+
 if __name__ == "__main__":
     io_table: list[dict[str, Any]] = []
 
