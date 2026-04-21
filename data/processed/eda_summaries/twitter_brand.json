@@ -1,0 +1,14 @@
+{
+  "dataset": "twitter_brand",
+  "row_count_train": 8589,
+  "row_count_test": 504,
+  "text_column_train": "tweet_text",
+  "text_column_test": "Tweet",
+  "label_column": "is_there_an_emotion_directed_at_a_brand_or_product",
+  "label_space": "[\"I can't tell\", 'Negative emotion', 'No emotion toward brand or product', 'Positive emotion']",
+  "avg_word_count": 17.750844102922343,
+  "median_word_count": 18.0,
+  "duplicate_text_pct": 0.31435557107928747,
+  "null_pct": 20.56506384134746,
+  "preprocessing": "Remap string labels to integers; clean URLs/mentions optional; test set label-free."
+}

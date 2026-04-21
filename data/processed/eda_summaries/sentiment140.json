@@ -1,0 +1,12 @@
+{
+  "dataset": "sentiment140",
+  "row_count": 1600000,
+  "text_column": "text",
+  "label_column": "polarity",
+  "label_space": "0 (neg), 2 (neu), 4 (pos)",
+  "avg_word_count": 13.176150625,
+  "median_word_count": 12.0,
+  "duplicate_text_pct": 1.158375,
+  "null_pct": 0.0,
+  "preprocessing": "Map 0/2/4 -> 0/1/2; dedupe optional; filter empty."
+}

@@ -1,0 +1,5 @@
+dataset,rows,labels_present,n_labels,neutral_present,balanced,three_class,avg_text_words,avg_text_chars,duplicates_pct,neutral_note,balanced_note,three_class_note,recommended_usage
+train.csv,27481,"negative, neutral, positive",3,Y,YES,YES,12.902405298206034,68.35246170081147,0.0,string label 'neutral' present,"min class share 28.3%, max 40.5%",neutral rows ~11118; 3 classes,neutral source; fine-tuning; fine-tuning / eval
+test.csv,4815,"negative, neutral, positive",3,Y,YES,YES,9.367601246105918,49.745794392523365,26.58,string label 'neutral' present,"min class share 28.3%, max 40.5%",neutral rows ~1430; 3 classes,neutral source; fine-tuning; fine-tuning / eval
+testdata.manual.2009.06.14.csv,516,"0, 2, 4",3,Y,YES,YES,13.472868217054264,79.79069767441861,3.49,numeric polarity 2 (Sentiment140 neutral),"min class share 27.1%, max 38.4%",neutral rows ~280; 3 classes,neutral source; fine-tuning / held-out eval; fine-tuning / eval
+training.1600000.processed.noemoticon.csv,1048572,"0, 4",2,N,YES,NO,13.404419534376276,74.29765338002541,1.19,"numeric labels only (sample): [np.int64(0), np.int64(4)]","min class share 23.7%, max 76.3%",no neutral class detected,pretraining

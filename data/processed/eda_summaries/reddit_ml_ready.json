@@ -1,0 +1,12 @@
+{
+  "dataset": "reddit_ml_ready",
+  "row_count": 1533145,
+  "text_column": "clean_text",
+  "label_column": "label",
+  "label_space": "[0, 4]",
+  "avg_word_count": 13.231668889765809,
+  "median_word_count": 12.0,
+  "duplicate_text_pct": 0.0,
+  "null_pct": 0.0,
+  "preprocessing": "Confirm 0/1 meaning; map to 3-class if needed; keep clean_text + label."
+}
