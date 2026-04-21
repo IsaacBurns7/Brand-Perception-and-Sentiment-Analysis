@@ -1,0 +1,128 @@
+{
+  "input_path": "../data/rating.csv",
+  "output_path": "../data/lda/rating_smoke.csv",
+  "text_col": "article",
+  "pre_empty_filter_docs": 1000,
+  "final_docs": 1000,
+  "dropped_empty_docs": 0,
+  "empty_docs_removed_pct": 0.0,
+  "tokens_before_rare_filter": 509625,
+  "tokens_after_rare_filter": 441764,
+  "tokens_removed_by_rare_filter": 67861,
+  "tokens_removed_by_rare_filter_pct": 13.3159,
+  "vocab_size_before_filtering": 23857,
+  "vocab_size_after_filtering": 9308,
+  "ngrams": {
+    "enabled": true,
+    "min_count": 15,
+    "threshold": 10.0
+  },
+  "token_stats": {
+    "mean": 441.764,
+    "median": 270.5,
+    "min": 8,
+    "max": 5751
+  },
+  "top_terms": [
+    {
+      "term": "country",
+      "count": 2882
+    },
+    {
+      "term": "nigeria",
+      "count": 2147
+    },
+    {
+      "term": "state",
+      "count": 1718
+    },
+    {
+      "term": "include",
+      "count": 1661
+    },
+    {
+      "term": "company",
+      "count": 1518
+    },
+    {
+      "term": "china",
+      "count": 1351
+    },
+    {
+      "term": "group",
+      "count": 1312
+    },
+    {
+      "term": "need",
+      "count": 1176
+    },
+    {
+      "term": "world",
+      "count": 1125
+    },
+    {
+      "term": "government",
+      "count": 1123
+    },
+    {
+      "term": "good",
+      "count": 1110
+    },
+    {
+      "term": "report",
+      "count": 1056
+    },
+    {
+      "term": "team",
+      "count": 1011
+    },
+    {
+      "term": "water",
+      "count": 1002
+    },
+    {
+      "term": "project",
+      "count": 1002
+    },
+    {
+      "term": "game",
+      "count": 996
+    },
+    {
+      "term": "work",
+      "count": 980
+    },
+    {
+      "term": "region",
+      "count": 959
+    },
+    {
+      "term": "come",
+      "count": 940
+    },
+    {
+      "term": "add",
+      "count": 897
+    },
+    {
+      "term": "africa",
+      "count": 891
+    },
+    {
+      "term": "area",
+      "count": 882
+    },
+    {
+      "term": "month",
+      "count": 874
+    },
+    {
+      "term": "mexico",
+      "count": 853
+    },
+    {
+      "term": "lead",
+      "count": 845
+    }
+  ]
+}

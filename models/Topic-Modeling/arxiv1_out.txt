@@ -1,0 +1,2 @@
+Launching 7 BERTopic jobs for dataset 'arxiv_data' (input: ./data/bertopic/arxiv_data.csv)
+Starting preset02_social_granular -> output: /Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/models/Topic-Modeling/output/arxiv_data/preset02_social_granular, log: /Users/kingisaac/Github/Brand-Perception-and-Sentiment-Analysis/models/Topic-Modeling/log/arxiv_data/bertopic_preset02_social_granular.txt

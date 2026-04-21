@@ -7,17 +7,17 @@ Handles: Tokenization, Noise Removal, Text Normalization,
 
 Requirements:
     pip install spacy pandas tqdm
-    python -m spacy download en_core_web_md
+    python -m spacy download en_core_web_sm
 
 Usage:
-    python LDA_normalize_corpus.py --input articles.csv --text-col content --output normalized.csv
-    python LDA_normalize_corpus.py --input articles.csv --text-col content --output normalized.csv --min-freq 5 --batch-size 500
+    look in README.md
 """
 
 import argparse
 import logging
+import pandas as pd
 
-from lda_pipeline import run_pipeline
+from pipeline import run_pipeline
 from pipeline_config import DEFAULT_CONFIG, PipelineConfig
 
 # ── Logging ──────────────────────────────────────────────────────────────────
@@ -46,6 +46,8 @@ def parse_args():
                    help="spaCy pipe batch size")
     p.add_argument("--n-process",  type=int, default=DEFAULT_CONFIG.n_process,
                    help="Number of parallel spaCy workers (use 1 on Windows)")
+    p.add_argument("--spacy-model", default=DEFAULT_CONFIG.spacy_model,
+                   help="spaCy model name (default: en_core_web_md)")
     p.add_argument("--oov-placeholder", default=None,
                    help="Replace OOV tokens with this string instead of dropping them")
     p.add_argument("--diagnostics-output", default=None,
@@ -59,6 +61,30 @@ def parse_args():
     p.add_argument("--ngram-threshold", type=float, default=DEFAULT_CONFIG.ngram_threshold,
                    help="Threshold for n-gram phrase detection")
     p.add_argument("--max-doc-count", type=int, default=DEFAULT_CONFIG.max_doc_count)
+    p.add_argument(
+        "--topic-model-target",
+        choices=["lda", "bertopic"],
+        default=DEFAULT_CONFIG.topic_model_target,
+        help="Select preprocessing target behavior (default: lda)",
+    )
+    p.add_argument(
+        "--bertopic-min-words",
+        type=int,
+        default=DEFAULT_CONFIG.bertopic_min_words,
+        help="Minimum word count for a cleaned document in BERTopic mode",
+    )
+    p.add_argument(
+        "--bertopic-drop-empty-text",
+        action=argparse.BooleanOptionalAction,
+        default=DEFAULT_CONFIG.bertopic_drop_empty_text,
+        help="Drop short/empty cleaned documents in BERTopic mode",
+    )
+    p.add_argument(
+        "--bertopic-keep-original-text",
+        action=argparse.BooleanOptionalAction,
+        default=DEFAULT_CONFIG.bertopic_keep_original_text,
+        help="Include original source text column in BERTopic output",
+    )
     return p.parse_args()
 
 
@@ -66,6 +92,8 @@ if __name__ == "__main__":
     args = parse_args()
 
     cfg = PipelineConfig(
+        topic_model_target=args.topic_model_target,
+        spacy_model=args.spacy_model,
         min_token_len=args.min_token_len,
         max_token_len=DEFAULT_CONFIG.max_token_len,
         min_freq=args.min_freq,
@@ -78,13 +106,31 @@ if __name__ == "__main__":
         enable_ngrams=args.enable_ngrams,
         ngram_min_count=args.ngram_min_count,
         ngram_threshold=args.ngram_threshold,
-        max_doc_count=args.max_doc_count
+        max_doc_count=args.max_doc_count,
+        bertopic_min_words=args.bertopic_min_words,
+        bertopic_drop_empty_text=args.bertopic_drop_empty_text,
+        bertopic_keep_original_text=args.bertopic_keep_original_text,
     )
 
-    run_pipeline(
-        input_path  = args.input,
-        text_col    = args.text_col,
-        output_path = args.output,
-        cfg         = cfg,
-        sep         = args.sep,
-    )
+    # Stream the input CSV in chunks and call run_pipeline for each chunk.
+    # This respects the configured maximum document count (`cfg.max_doc_count`).
+    chunksize = 5000
+    processed = 0
+    for chunk in pd.read_csv(args.input, sep=args.sep, usecols=[args.text_col], chunksize=chunksize, low_memory=False):
+        # enforce global max doc count if set
+        remaining = cfg.max_doc_count - processed if cfg.max_doc_count is not None else None
+        if remaining is not None and remaining <= 0:
+            break
+        if remaining is not None and len(chunk) > remaining:
+            chunk = chunk.iloc[:remaining]
+
+        processed += len(chunk)
+
+        run_pipeline(
+            input_path = args.input,
+            df = chunk,
+            text_col    = args.text_col,
+            output_path = args.output,
+            cfg         = cfg,
+            sep         = args.sep,
+        )
